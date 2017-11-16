@@ -79,7 +79,7 @@ export const CustomProdConfig: CustomConfig = {
   rules: [
 
   ]
-};
+}
 
 // head
 export const CustomHeadTags: HeadTags = {
@@ -106,15 +106,21 @@ export const CustomHeadTags: HeadTags = {
     { name: 'msapplication-TileColor', content: '#00bcd4' },
     { name: 'msapplication-TileImage', content: '/icon/ms-icon-144x144.png', '=content': true },
     { name: 'theme-color', content: '#00bcd4' },
-    { name: 'description', content: 'A teeny Vue.js template to get your next project booted. It is opinionated and powered by Webpack' },
+    { name: 'description', content: 'Sebastian Döll is an Software Engineer @ Axel Springer' },
+    { name: 'twitter:site', content: '@katallaxie' },
+    { name: 'twitter:content', content: '@katallaxie' },
+    { name: 'og:site_name', content: 'Sebastian Döll' },
+    { name: 'og:description', content: 'Sebastian Döll is an Software Engineer @ Axel Springer' },
+    { name: 'og:url', content: 'http://katallaxie.me' },
+    { name: 'og:title', content: 'Sebastian Döll' },
   ],
-  title: 'Vue.js Preboot'
+  title: 'Sebastian Döll'
 }
 
 // copy folders
 export const CustomCopyFolders = [
 
-];
+]
 
 // webpack-dev-server
 export const DevServerConfig = {

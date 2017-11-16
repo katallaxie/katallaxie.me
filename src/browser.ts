@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { App } from './components/app'
 import store from './store'
 import router from './router'
-import { Layout, Table } from 'bootstrap-vue/es/components'
+import BootstrapVue from 'bootstrap-vue'
 
 // critical css
 import './boot'
@@ -22,8 +22,7 @@ document.body.removeChild(loading[0])
 document.body.classList.remove('critical')
 
 // register plugins
-Vue.use(Layout)
-Vue.use(Table)
+Vue.use(BootstrapVue)
 
 // bootstrap application
 const bootstrap = new Vue({

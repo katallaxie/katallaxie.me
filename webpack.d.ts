@@ -69,6 +69,7 @@ interface WebpackLoader {
   test?: any;
   use?: any;
   exclude?: any;
+  include?: any;
 }
 
 interface DefaultLoaders {

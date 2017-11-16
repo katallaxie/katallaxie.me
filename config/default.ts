@@ -122,6 +122,7 @@ export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
       new CheckerPlugin(),
       new TsConfigPathsPlugin(),
       new DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
         __DEV__: isDev,
         __PROD__: !isDev
       }),

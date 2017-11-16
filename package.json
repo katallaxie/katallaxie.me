@@ -26,7 +26,7 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --progress --profile",
     "build:docker": "npm run build:prod && docker build -t vue-preboot:latest .",
-    "build:prod": "cross-env NODE_ENV=production webpack --progress --profile --bail --debug",
+    "build:prod": "cross-env NODE_ENV=production webpack -p --progress --profile --bail --debug",
     "build": "npm run build:dev",
     "ci": "npm test --runInBand && bundlesize",
     "clean:public": "npm run rimraf -- public",

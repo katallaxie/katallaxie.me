@@ -39,7 +39,7 @@ export const styledTable = style(
   }, {
       $nest: {
         'tbody td:nth-last-child(1)': {
-          float: 'right',
+          textAlign: 'right',
           width: percent(50)
         }
       }

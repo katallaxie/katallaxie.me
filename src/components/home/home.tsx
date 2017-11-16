@@ -33,7 +33,7 @@ export class Home extends Vue {
             <bTable items={this.experience} class={styledTable}>
             </bTable>
           </bCol>
-          <bCol lg='5' offset-lg='1' offset-xl='2' class={dataCol}>
+          <bCol lg='5' offset-lg='1' class={dataCol}>
             <h2>Education</h2>
             <bTable items={this.education} class={styledTable}>
             </bTable>
