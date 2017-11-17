@@ -16,6 +16,7 @@ export class Home extends Vue {
   @Getter('education') public education
   @Getter('coding') public coding
   @Getter('devOps') public devOps
+  @Getter('framework') public framework
   @Getter('tech') public tech
 
   public render(h) {
@@ -45,17 +46,21 @@ export class Home extends Vue {
         </Tile>
 
         <bRow>
-          <bCol sm='6' lg='4' class={dataCol}>
+          <bCol cols='6' lg='4' xl='3' class={dataCol}>
             <h2>Coding</h2>
             {this.coding.map(el => (<StyledData>{el}</StyledData>))}
           </bCol>
-          <bCol sm='6' lg='4' class={dataCol}>
-            <h2>Tech</h2>
-            {this.tech.map(el => (<StyledData>{el}</StyledData>))}
+          <bCol cols='6' lg='4' xl='3' class={dataCol}>
+            <h2>Framework</h2>
+            {this.framework.map(el => (<StyledData>{el}</StyledData>))}
           </bCol>
-          <bCol sm='6' lg='4' class={dataCol}>
+          <bCol cols='6' lg='4' xl='3' class={dataCol}>
             <h2>DevOps</h2>
             {this.devOps.map(el => (<StyledData>{el}</StyledData>))}
+          </bCol>
+          <bCol cols='6' lg='4' xl='3' class={dataCol}>
+            <h2>Tech</h2>
+            {this.tech.map(el => (<StyledData>{el}</StyledData>))}
           </bCol>
         </bRow>
       </div>

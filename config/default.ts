@@ -1,43 +1,43 @@
 /*** DO NOT TOUCH ***/
-import { root } from './helpers';
+import { root } from './helpers'
 import {
   DefinePlugin,
   ProgressPlugin
-} from 'webpack';
-import { CheckerPlugin } from 'awesome-typescript-loader';
-import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
-import * as HtmlElementsWebpackPlugin from 'html-elements-webpack-plugin';
-import * as AutoDllPlugin from 'autodll-webpack-plugin';
-import * as CopyWebpackPlugin from 'copy-webpack-plugin';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
+} from 'webpack'
+import { CheckerPlugin } from 'awesome-typescript-loader'
+import { TsConfigPathsPlugin } from 'awesome-typescript-loader'
+import * as HtmlElementsWebpackPlugin from 'html-elements-webpack-plugin'
+import * as AutoDllPlugin from 'autodll-webpack-plugin'
+import * as CopyWebpackPlugin from 'copy-webpack-plugin'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
 
 // optimization
-import * as BrotliPlugin from 'brotli-webpack-plugin';
-import * as CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
-import * as CompressionPlugin from 'compression-webpack-plugin';
-import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin';
-import * as OptimizeJsPlugin from 'optimize-js-plugin';
-import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin';
+import * as BrotliPlugin from 'brotli-webpack-plugin'
+import * as CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin'
+import * as CompressionPlugin from 'compression-webpack-plugin'
+import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin'
+import * as OptimizeJsPlugin from 'optimize-js-plugin'
+import * as UglifyJsPlugin from 'webpack/lib/optimize/UglifyJsPlugin'
 
 // postCss
-import * as Autoprefixer from 'autoprefixer';
-import * as CssNano from 'cssnano';
+import * as Autoprefixer from 'autoprefixer'
+import * as CssNano from 'cssnano'
 
 // pws
-import * as OfflinePlugin from 'offline-plugin';
-import * as ManifestPlugin from 'webpack-manifest-plugin';
+import * as OfflinePlugin from 'offline-plugin'
+import * as ManifestPlugin from 'webpack-manifest-plugin'
 
-import { CustomHeadTags, CustomCopyFolders } from './custom';
+import { CustomHeadTags, CustomCopyFolders } from './custom'
 
 // copy
 export const DefaultCopyFolders = [
   { from: 'src/static', ignore: ['favicon.ico'] },
   { from: 'src/meta' }
-];
+]
 
 // dll's
-import { polyfills, vendor } from './dll';
+import { polyfills, vendor } from './dll'
 
 export const loader: DefaultLoaders = {
   tsLintLoader: {
@@ -112,7 +112,7 @@ export const loader: DefaultLoaders = {
     test: /\.(jpg|png|gif)$/,
     use: 'file-loader'
   }
-};
+}
 
 export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
   return {
@@ -130,8 +130,8 @@ export const DefaultCommonConfig = ({ isDev }): DefaultConfig => {
         headTags: Object.assign({}, { link: CustomHeadTags.link, meta: CustomHeadTags.meta })
       })
     ]
-  };
-};
+  }
+}
 
 export const DefaultDevConfig = (): DefaultConfig => {
   return {
@@ -158,8 +158,8 @@ export const DefaultDevConfig = (): DefaultConfig => {
         defaultAttribute: 'defer'
       })
     ]
-  };
-};
+  }
+}
 
 export const DefaultProdConfig = (): DefaultConfig => {
   return {
@@ -189,7 +189,7 @@ export const DefaultProdConfig = (): DefaultConfig => {
         algorithm: 'gzip',
         test: /\.js$|\.html$/,
         threshold: 2 * 1024,
-        minRatio: 0.8
+        minRatio: 0.73
       }),
       new CopyWebpackPlugin([...DefaultCopyFolders, ...CustomCopyFolders]),
       new HtmlWebpackPlugin({
@@ -243,5 +243,5 @@ export const DefaultProdConfig = (): DefaultConfig => {
         }
       })
     ]
-  };
-};
+  }
+}

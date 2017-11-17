@@ -14,7 +14,7 @@ export class Footer extends Vue {
       <StyledFooter fluid>
         <bRow>
           <bCol>
-            <p>&copy; 2017&mdash;present.</p>
+            <p>&copy; 2017&mdash;present. 🤘</p>
           </bCol>
         </bRow>
       </StyledFooter>

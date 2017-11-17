@@ -47,10 +47,17 @@ const init = {
     'HTML & CSS',
     'Ruby'
   ],
-  tech: [
+  framework: [
     'React (Native)',
     'Angular',
     'Vue',
+    'jQuery',
+    'UIKit',
+    'AppKit'
+  ],
+  tech: [
+    'Wordpress',
+    'K/V + DO',
     'Electron',
     'GraphQL',
     'REST'
@@ -74,6 +81,7 @@ const getters = {
   education: state => state.education,
   coding: state => state.coding,
   devOps: state => state.devOps,
+  framework: state => state.framework,
   tech: state => state.tech
 }
 

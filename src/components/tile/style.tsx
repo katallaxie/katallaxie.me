@@ -10,13 +10,25 @@ export const tileStyle = style(
     $nest: {
       'h1': {
         width: percent(85),
-        padding: rem(2),
+        padding: rem(1.333),
         paddingTop: viewWidth(33.333),
-        paddingBottom: rem(2),
+        paddingBottom: rem(1.333),
         ...h1.xs
       }
     }
   },
+  media(
+    { minWidth: size.md },
+    {
+      $nest: {
+        'h1': {
+          padding: rem(2.333),
+          paddingTop: viewWidth(33.333),
+          paddingBottom: rem(2.333),
+        }
+      }
+    }
+  ),
   media(
     { minWidth: size.lg },
     {
