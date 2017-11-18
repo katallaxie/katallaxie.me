@@ -1,0 +1,67 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.overlay {
+  opacity: .94;
+  background: rgba(10,10,10,1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -2;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9998;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    margin-top: 15%;
+    padding: 0;
+    width: auto;
+
+    li {
+      font-size: 2.333rem;
+      animation-name: fadeInLeft;
+      text-align: right;
+    }
+
+    li:nth-child(1) {
+      animation-duration: .3s;
+    }
+
+    li:nth-child(2) {
+      animation-duration: 2 * .3s;
+    }
+
+    li:nth-child(3) {
+      animation-duration: 3 * .3s;
+    }
+
+    a, a:visited {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

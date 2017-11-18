@@ -31,6 +31,31 @@ export const CustomCommonConfig: CustomConfig = {
   ],
   rules: [
     {
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoader: 1,
+            modules: true,
+            localIdentName: '[name]__[local]___[hash:base64:5]'
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [
+              Autoprefixer(),
+              CssNano({ zindex: false })
+            ]
+          }
+        },
+        'sass-loader'
+      ],
+      exclude: /boot\.scss/
+    },
+    {
       test: /boot\.scss$/,
       use: ExtractTextPlugin.extract({
         use: [

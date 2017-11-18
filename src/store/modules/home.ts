@@ -69,6 +69,20 @@ const init = {
     'Jenkins',
     'Terraform',
     'Jenkins'
+  ],
+  drawer: [
+    {
+      title: 'GitHub',
+      href: 'https://github.com/katallaxie'
+    },
+    {
+      title: 'Twitter',
+      href: 'https://twitter.com/katallaxie'
+    },
+    {
+      title: 'LinkedIn',
+      href: 'https:/www.linkedin.com/in/katallaxie'
+    }
   ]
 }
 
@@ -82,7 +96,8 @@ const getters = {
   coding: state => state.coding,
   devOps: state => state.devOps,
   framework: state => state.framework,
-  tech: state => state.tech
+  tech: state => state.tech,
+  drawer: state => state.drawer
 }
 
 // actions

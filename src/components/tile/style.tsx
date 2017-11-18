@@ -7,7 +7,11 @@ export const tileStyle = style(
   {
     marginTop: rem(1.333),
     marginBottom: rem(1.333),
+    transition: '.5s',
     $nest: {
+      '&:hover': {
+        transform: 'scale3d(1.033,1.033,1.033)'
+      },
       'h1': {
         width: percent(85),
         padding: rem(1.333),
