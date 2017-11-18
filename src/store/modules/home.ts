@@ -81,7 +81,7 @@ const init = {
     },
     {
       title: 'LinkedIn',
-      href: 'https:/www.linkedin.com/in/katallaxie'
+      href: 'https://www.linkedin.com/in/katallaxie'
     }
   ]
 }
