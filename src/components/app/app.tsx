@@ -23,13 +23,15 @@ export class App extends Vue {
   public render(h) {
     if (this.props.show) {
       return (
-        <transition name='fade'>
-          <div class={wrap}>
-            <Header name={this.name} job={this.job} />
-            <Home />
-            <Footer />
-          </div>
-        </transition>
+        <div id='app'>
+          <transition name='fade'>
+            <div class={wrap}>
+              <Header name={this.name} job={this.job} />
+              <Home />
+              <Footer />
+            </div>
+          </transition>
+        </div>
       )
     }
   }

@@ -20,6 +20,7 @@ import * as CssNano from 'cssnano'
 import * as PreloadWebpackPlugin from 'preload-webpack-plugin'
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin'
 import * as HtmlCriticalPlugin from 'html-critical-webpack-plugin'
+import * as PrerenderSpaPlugin from 'prerender-spa-plugin'
 
 const bootCss = new ExtractTextPlugin('boot.css')
 
@@ -89,6 +90,14 @@ export const CustomDevConfig: CustomConfig = {
 // production
 export const CustomProdConfig: CustomConfig = {
   plugins: [
+    new PrerenderSpaPlugin(
+      root(`public`),
+      ['/'],
+      {
+        captureAfterTime: 2000,
+        ignoreJSErrors: false
+      }
+    ),
     new HtmlCriticalPlugin({
       base: root(`public`),
       src: 'index.html',

@@ -13,22 +13,28 @@ if (__PROD__) {
 }
 
 // add application
-const root = document.createElement('div')
-document.body.appendChild(root)
+// const root = document.createElement('div')
+// document.body.appendChild(root)
 
 // // remove loading
 const loading = document.getElementsByClassName('loading')
-document.body.removeChild(loading[0])
+if (loading.length > 0) {
+  document.body.removeChild(loading[0])
+}
 document.body.classList.remove('critical')
 
 // register plugins
 Vue.use(BootstrapVue)
 
-// bootstrap application
 const bootstrap = new Vue({
-  render: (h) => h(App),
   store,
   router,
+  render: (h) => h(App),
 })
 
-bootstrap.$mount(root)
+bootstrap.$mount('#app')
+
+// bootstrap application
+
+
+

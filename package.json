@@ -108,6 +108,7 @@
     "optimize-js-plugin": "0.0.4",
     "postcss-loader": "^2.0.8",
     "preload-webpack-plugin": "^2.0.0",
+    "prerender-spa-plugin": "^2.1.0",
     "prettier": "^1.6.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
