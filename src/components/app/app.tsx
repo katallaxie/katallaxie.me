@@ -12,27 +12,15 @@ export class App extends Vue {
   @Getter('job') public job
   @Getter('teaser') public teaser
 
-  public props = {
-    show: false
-  }
-
-  public mounted() {
-    this.props.show = true
-  }
-
   public render(h) {
-    if (this.props.show) {
-      return (
-        <div id='app'>
-          <transition name='fade'>
-            <div class={wrap}>
-              <Header name={this.name} job={this.job} />
-              <Home />
-              <Footer />
-            </div>
-          </transition>
+    return (
+      <div id='app'>
+        <div class={wrap}>
+          <Header name={this.name} job={this.job} />
+          <Home />
+          <Footer />
         </div>
-      )
-    }
+      </div>
+    )
   }
 }

@@ -12,10 +12,6 @@ if (__PROD__) {
   require('./pwa')
 }
 
-// add application
-// const root = document.createElement('div')
-// document.body.appendChild(root)
-
 // // remove loading
 const loading = document.getElementsByClassName('loading')
 if (loading.length > 0) {
@@ -32,9 +28,10 @@ const bootstrap = new Vue({
   render: (h) => h(App),
 })
 
+// bootstrap application
 bootstrap.$mount('#app')
 
-// bootstrap application
+
 
 
 

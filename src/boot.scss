@@ -18,9 +18,6 @@ $spinner-size: 2.333rem;
 @import "~bootstrap/scss/mixins/grid-framework";
 @import "~bootstrap/scss/mixins/grid";
 
-// vue
-@import './lib/vue';
-
 // base
 html, body  {
   font-family:  Helvetica, Arial, sans-serif;
@@ -68,6 +65,21 @@ body {
 
   }
 
+}
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 // overwrites

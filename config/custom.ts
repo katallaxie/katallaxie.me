@@ -95,7 +95,13 @@ export const CustomProdConfig: CustomConfig = {
       ['/'],
       {
         captureAfterTime: 2000,
-        ignoreJSErrors: false
+        ignoreJSErrors: false,
+        postProcessHtml: context => {
+          return context.html.replace(
+            /<div id=\"app\"\>/i,
+            '<div id="app" class="fade-in">'
+          )
+        }
       }
     ),
     new HtmlCriticalPlugin({
