@@ -13,6 +13,7 @@ export function vendor() {
     'typestyle',
     'vue-class-component',
     'vue-styled-components',
+    'vue-property-decorator',
     'vue-router',
     'bootstrap-vue',
     'vue',

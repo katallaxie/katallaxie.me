@@ -1,63 +1,154 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
+@import "../../lib/variables";
+@import "../../lib/colors";
 
-.overlay {
-  opacity: .94;
-  background: rgba(10,10,10,1);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -2;
-}
-
-.drawer {
+.container {
   position: fixed;
   top: 0;
-  right: 0;
-  left: 0;
   bottom: 0;
-  z-index: 9998;
+  left: calc(100% - 50px);
+  width: 100%;
+  height: 100%;
+  background-color: $bg-color;
+  transition: transform 600ms cubic-bezier(0.9,0,0.25,1);
+  z-index: 9999;
 
-  ul {
-    list-style: none;
-    margin: 0;
-    margin-top: 15%;
-    padding: 0;
-    width: auto;
+  &.open {
+    transform: translateX(calc( -100% + 50px));
 
-    li {
-      font-size: 2.333rem;
-      animation-name: fadeInLeft;
-      text-align: right;
+    .toggle {
+      color: $bg-color;
+
+      &:before {
+        height: 100%;
+      }
     }
 
-    li:nth-child(1) {
-      animation-duration: .3s;
+    .menu {
+
+      ul {
+
+        li {
+          animation-name: fadeInRight;
+          animation-delay: .2s;
+        }
+
+        li:nth-child(1) {
+          animation-duration: .3s;
+        }
+    
+        li:nth-child(2) {
+          animation-duration: 2 * .3s;
+        }
+    
+        li:nth-child(3) {
+          animation-duration: 3 * .3s;
+        }
+
+      }
+
     }
 
-    li:nth-child(2) {
-      animation-duration: 2 * .3s;
+    @include media-breakpoint-up(md) {
+      transform: translateX(calc( -100% + 100px));
     }
+    
+  }
 
-    li:nth-child(3) {
-      animation-duration: 3 * .3s;
-    }
-
-    a, a:visited {
-      text-decoration: none;
-      color: white;
-    }
+  @include media-breakpoint-up(md) {
+    left: calc(100% - 100px);
   }
 
 }
 
-@keyframes fadeInLeft {
+.toggle {
+  position: absolute;
+  top: 0;
+  display: block;
+  // transition: none !important;
+  width: 50px;
+  height: 100%;
+  background-color: $bg-color;
+  color: white;
+  transition: color 600ms cubic-bezier(0.9,0,0.25,1);
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:before {
+    backface-visibility: hidden;
+    background-color: white;
+    content: '';
+    display: block;
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: height 600ms cubic-bezier(0.9,0,0.25,1);
+    width: 100%;
+    will-change: height;
+  }
+
+  span {
+    display: block;
+    font-size: 1.033rem;
+    transform: rotate(90deg) translateX(2.333rem);
+
+    @include media-breakpoint-up(sm) {
+      font-size: 1.3333rem;
+    }
+
+    @include media-breakpoint-up(md) {
+      transform: rotate(90deg) translateX(4.333rem);
+    }
+
+    @include media-breakpoint-up(xl) {
+      font-size: 2.333rem;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 100px;
+  }
+}
+
+.menu {
+  position: absolute;
+  width: calc(100% - 100px);
+  margin-left: 100px;
+  margin-top: 1.7333rem;
+
+  a, a:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #d4afec;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    font-size: 1.7333rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    width: calc(100% - 150px);
+    margin-left: 150px;
+  }
+}
+
+@keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
   }
 
   to {

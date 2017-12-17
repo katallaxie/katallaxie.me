@@ -14,6 +14,7 @@ import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
 
 // optimization
 import * as BrotliPlugin from 'brotli-webpack-plugin'
+import * as ModuleConcatenationPlugin from 'webpack/lib/optimize/ModuleConcatenationPlugin'
 import * as CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin'
 import * as CompressionPlugin from 'compression-webpack-plugin'
 import * as NamedModulesPlugin from 'webpack/lib/NamedModulesPlugin'
@@ -177,6 +178,7 @@ export const DefaultProdConfig = (): DefaultConfig => {
         threshold: 10240,
         minRatio: 0.8
       }),
+      new ModuleConcatenationPlugin(),
       // new NoEmitOnErrorsPlugin(), // quality
       // This enables tree shaking of the vendor modules
       new CommonsChunkPlugin({
@@ -198,6 +200,7 @@ export const DefaultProdConfig = (): DefaultConfig => {
       new HtmlWebpackPlugin({
         template: './src/index.html',
         title: CustomHeadTags.title,
+        inject: 'body',
         minify: {
           minifyJS: true,
           removeComments: true,

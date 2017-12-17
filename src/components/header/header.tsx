@@ -13,11 +13,6 @@ interface IHeaderProps {
 
 @Component({
   props: { name: null, job: null, drawerOpen: null },
-  data() {
-    return {
-      openDrawer: false
-    }
-  }
 })
 export class Header extends Vue<IHeaderProps> {
 
@@ -28,8 +23,6 @@ export class Header extends Vue<IHeaderProps> {
   public render(h) {
     return (
       <StyledHeader fluid>
-        <Menu on-menu-open={this.onMenuOpen} />
-        <Drawer items={[]} openDrawer={this.$data.openDrawer} />
         <bRow>
           <bCol>
             <h3>{this.name}<br /><span>{this.job}</span></h3>
