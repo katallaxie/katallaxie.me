@@ -1,5 +1,5 @@
 import { style, media } from 'typestyle'
-import { percent, rem } from 'csx'
+import { percent, px, rem } from 'csx'
 import size from '../../style/sizes'
 
 export const wrap = style(
@@ -7,13 +7,14 @@ export const wrap = style(
     marginTop: rem(2.333),
     marginBottom: rem(2.333),
     marginLeft: rem(0.333),
-    marginRight: rem(0.333)
+    marginRight: px(35)
   },
   media(
     { minWidth: size.sm },
     {
       margin: '4.333rem auto 0',
-      maxWidth: percent(81)
+      maxWidth: percent(81),
+      marginRight: rem(0.333)
     }
   ),
   media(

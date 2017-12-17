@@ -52,7 +52,7 @@
     }
 
     @include media-breakpoint-up(md) {
-      transform: translateX(calc( -100vw + 50px));
+      transform: translateX(calc( -100vw + 100px));
     }
     
   }
