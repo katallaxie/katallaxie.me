@@ -16,7 +16,7 @@
   z-index: 9999;
 
   &.open {
-    transform: translateX(calc( -100% + 50px));
+    transform: translateX(calc( -100vw + 50px));
 
     .toggle {
       color: $bg-color;
@@ -52,7 +52,7 @@
     }
 
     @include media-breakpoint-up(md) {
-      transform: translateX(calc( -100% + 100px));
+      transform: translateX(calc( -100vw + 50px));
     }
     
   }
@@ -79,7 +79,7 @@
     text-decoration: none;
   }
 
-  &:before {
+  &::before {
     backface-visibility: hidden;
     background-color: white;
     content: '';

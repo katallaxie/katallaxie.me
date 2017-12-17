@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 import { wrap } from '../app/style'
 import bCol from 'bootstrap-vue/es/components/layout/col'
@@ -22,15 +22,19 @@ export interface IDrawerProps {
 export class Drawer extends Vue<IDrawerProps> {
   @Getter('drawer') public drawer
 
-  public onClickOpen(e: Event) {
+  public toggleDrawer(e: Event) {
     e.preventDefault()
     this.isOpen = !this.isOpen
+    this.$emit('toggle-drawer', this.isOpen)
+
+    // disable scrolling on body
+    document.body.style.overflow = this.isOpen ? 'hidden' : ''
   }
 
   public render(h) {
     return (
       <div class={[styles.container, this.isOpen ? styles.open : '']}>
-        <a class={styles.toggle} onClick={this.onClickOpen} href='#'>
+        <a class={styles.toggle} onClick={this.toggleDrawer} href='#'>
           <span>{this.isOpen ? 'Disconnect' : 'Connect'}</span>
         </a>
         <div class={styles.menu}>
