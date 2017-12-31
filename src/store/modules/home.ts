@@ -6,7 +6,7 @@ const init = {
   experience: [
     {
       company: 'Axel Springer <span>Senior Engineer</span>',
-      time: '2017&mdash;present'
+      time: '2016&mdash;present'
     },
     {
       company: 'Accenture <span>Tech Lead</span>',

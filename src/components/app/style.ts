@@ -7,14 +7,18 @@ export const wrap = style(
     marginTop: rem(2.333),
     marginBottom: rem(2.333),
     marginLeft: rem(0.333),
-    marginRight: px(35)
   },
   media(
     { minWidth: size.sm },
     {
       margin: '4.333rem auto 0',
       maxWidth: percent(81),
-      marginRight: rem(0.333)
+    }
+  ),
+  media(
+    { maxWidth: size.sm },
+    {
+      marginRight: px(35)
     }
   ),
   media(
