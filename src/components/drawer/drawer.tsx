@@ -1,9 +1,9 @@
 import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 import { wrap } from '../app/style'
-import bCol from 'bootstrap-vue/es/components/layout/col'
-import bRow from 'bootstrap-vue/es/components/layout/row'
-import bContainer from 'bootstrap-vue/es/components/layout/container'
+import Col from 'bootstrap-vue/es/components/layout/col'
+import Row from 'bootstrap-vue/es/components/layout/row'
+import Container from 'bootstrap-vue/es/components/layout/container'
 
 import styles from './drawer.scss'
 
@@ -38,13 +38,13 @@ export class Drawer extends Vue<IDrawerProps> {
           <span>{this.isOpen ? 'Disconnect' : 'Connect'}</span>
         </a>
         <div class={styles.menu}>
-          <bRow>
-            <bCol>
-              <ul>
-                {this.drawer.map(el => <li><h2><a href={el.href}>{el.title}</a></h2></li>)}
+          <Row align-v='center' class={styles.fullRow}>
+            <Col>
+              <ul class={styles.items}>
+                {this.drawer.map(el => <li class={styles.item}><h2><a href={el.href}>{el.title}</a></h2></li>)}
               </ul>
-            </bCol>
-          </bRow>
+            </Col>
+          </Row>
         </div>
       </div>
     )

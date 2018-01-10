@@ -31,7 +31,7 @@
       ul {
 
         li {
-          animation-name: fadeInRight;
+          animation-name: fadeInUp;
           animation-delay: .2s;
         }
 
@@ -118,9 +118,8 @@
 
 .menu {
   position: absolute;
-  width: calc(100% - 100px);
-  margin-left: 100px;
-  margin-top: 1.7333rem;
+  width: calc(100% - 50px);
+  margin-left: 50px;
 
   a, a:visited {
     color: white;
@@ -136,23 +135,41 @@
     margin: 0;
     padding: 0;
     width: auto;
-    font-size: 1.7333rem;
   }
 
   @include media-breakpoint-up(md) {
-    width: calc(100% - 150px);
-    margin-left: 150px;
+    width: calc(100% - 100px);
+    margin-left: 100px;
   }
 }
 
-@keyframes fadeInRight {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(0, 100%, 0);
   }
 
   to {
     opacity: 1;
     transform: none;
   }
+}
+
+.items {
+  // height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-size: calc(1vw + 1vh + .5vmin);
+}
+
+.item {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid white;
+  font-size: 1.777em;
 }
