@@ -1,12 +1,16 @@
 // initial state
 const init = {
   name: 'Sebastian Döll.',
-  job: 'Software Engineer at Axel Springer.',
+  job: 'Lead Engineer at Spring',
   teaser: 'Crafting software with great user experiences.',
   experience: [
     {
+      company: 'Spring <span>Lead Engineer</span>',
+      time: '2018&mdash;present'
+    },
+    {
       company: 'Axel Springer <span>Senior Engineer</span>',
-      time: '2016&mdash;present'
+      time: '2016&mdash;2018'
     },
     {
       company: 'Accenture <span>Tech Lead</span>',

@@ -7,7 +7,7 @@ import {
 import { CheckerPlugin } from 'awesome-typescript-loader'
 import { TsConfigPathsPlugin } from 'awesome-typescript-loader'
 import * as HtmlElementsWebpackPlugin from 'html-elements-webpack-plugin'
-import * as AutoDllPlugin from 'autodll-webpack-plugin'
+// import * as AutoDllPlugin from 'autodll-webpack-plugin'
 import * as CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
@@ -38,7 +38,7 @@ export const DefaultCopyFolders = [
 ]
 
 // dll's
-import { polyfills, vendor } from './dll'
+// import { polyfills, vendor } from './dll'
 
 export const loader: DefaultLoaders = {
   tsLintLoader: {
@@ -141,16 +141,16 @@ export const DefaultDevConfig = (): DefaultConfig => {
   return {
     rules: [loader.tsLintLoader, loader.vueLoader, loader.tsLoader],
     plugins: [
-      new AutoDllPlugin({
-        context: __dirname,
-        debug: true,
-        inject: false, // will inject the DLL bundles to index.html
-        filename: '[name].dll.js',
-        entry: {
-          polyfills: polyfills(),
-          vendor: vendor()
-        }
-      }),
+      // new AutoDllPlugin({
+      //   context: __dirname,
+      //   debug: true,
+      //   inject: false, // will inject the DLL bundles to index.html
+      //   filename: '[name].dll.js',
+      //   entry: {
+      //     polyfills: polyfills(),
+      //     vendor: vendor()
+      //   }
+      // }),
       new HtmlWebpackPlugin({
         inject: 'head',
         template: 'src/index.html',
