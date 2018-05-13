@@ -1,26 +1,23 @@
 import { Component, Vue } from 'vue-property-decorator'
-import { Home } from '../home'
 import { wrap } from './style'
 import { Header } from '../header'
-import { Getter } from 'vuex-class'
 import { Footer } from '../footer'
 import { Drawer } from '../drawer'
-
 import styles from './app.scss'
+import { Getter } from 'vuex-class'
 
 @Component
 export class App extends Vue {
   @Getter('name') public name
   @Getter('job') public job
-  @Getter('teaser') public teaser
 
   public render(h) {
     return (
       <div id='app'>
-        <Drawer />
         <div class={[wrap, styles.wrap]}>
+          <Drawer />
           <Header name={this.name} job={this.job} />
-          <Home />
+          <router-view />
           <Footer />
         </div>
       </div>

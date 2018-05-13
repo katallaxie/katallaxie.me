@@ -158,9 +158,7 @@ export const CustomHeadTags: HeadTags = {
 }
 
 // copy folders
-export const CustomCopyFolders = [
-
-]
+export const CustomCopyFolders = []
 
 // webpack-dev-server
 export const DevServerConfig = {

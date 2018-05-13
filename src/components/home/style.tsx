@@ -1,7 +1,51 @@
 import { style, media } from 'typestyle'
-import { rem, percent, rgba } from 'csx'
+import { rem, percent, px, rgba } from 'csx'
 import sizes from '../../style/sizes'
 import styled from 'vue-styled-components'
+import size from '../../style/sizes'
+
+export const wrap = style(
+  {
+    marginTop: rem(2.333),
+    marginBottom: rem(2.333),
+    marginLeft: rem(0.333),
+  },
+  media(
+    { minWidth: size.sm },
+    {
+      margin: '4.333rem auto 0',
+      maxWidth: percent(81),
+    }
+  ),
+  media(
+    { maxWidth: size.sm },
+    {
+      marginRight: px(35)
+    }
+  ),
+  media(
+    { minWidth: size.md },
+    {
+      margin: '6.333rem auto 0',
+      maxWidth: percent(79)
+    }
+  ),
+  media(
+    { minWidth: size.lg },
+    {
+      margin: '8.3333rem auto 0',
+      maxWidth: percent(77)
+    }
+  ),
+  media(
+    { minWidth: size.xl },
+    {
+      margin: '8.3333rem auto 0',
+      maxWidth: percent(75)
+    }
+  )
+)
+
 
 export const twentyPercent = style(
   {

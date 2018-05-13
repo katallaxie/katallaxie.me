@@ -1,7 +1,8 @@
 import WebFont from 'webfontloader'
 
 WebFont.load({
-  google: {
-    families: ['Roboto:400,700']
+  custom: {
+    families: ['Roboto'],
+    urls: ['/fonts/roboto.css']
   }
 })
