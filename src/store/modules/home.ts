@@ -1,15 +1,15 @@
 // initial state
 const init = {
   name: 'Sebastian Döll.',
-  job: 'Lead Engineer at Spring',
+  job: 'Engineering at DigitalOcean',
   teaser: 'Crafting software with great user experiences.',
   experience: [
     {
-      company: 'Spring <span>Lead Engineer</span>',
+      company: 'DigitalOcean <span>Engineering</span>',
       time: '2018&mdash;present'
     },
     {
-      company: 'Axel Springer <span>Senior Engineer</span>',
+      company: 'Axel Springer <span>Lead Engineer</span>',
       time: '2016&mdash;2018'
     },
     {
@@ -43,37 +43,10 @@ const init = {
       time: '2004&mdash;2010'
     }
   ],
-  coding: [
-    'Go',
-    'TypeScript',
-    'JavaScript',
-    'PHP',
-    'HTML & CSS',
-    'Ruby'
-  ],
-  framework: [
-    'React (Native)',
-    'Angular',
-    'Vue',
-    'jQuery',
-    'UIKit',
-    'AppKit'
-  ],
-  tech: [
-    'Wordpress',
-    'K/V + DO',
-    'Electron',
-    'GraphQL',
-    'REST'
-  ],
-  devOps: [
-    'Mesos',
-    'Marathon',
-    'Docker',
-    'Jenkins',
-    'Terraform',
-    'Jenkins'
-  ],
+  coding: ['Go', 'TypeScript', 'JavaScript', 'PHP', 'HTML & CSS', 'Ruby'],
+  framework: ['React (Native)', 'Angular', 'Vue', 'jQuery', 'UIKit', 'AppKit'],
+  tech: ['Wordpress', 'K/V + DO', 'Electron', 'GraphQL', 'REST'],
+  devOps: ['Mesos', 'Marathon', 'Docker', 'Jenkins', 'Terraform', 'Jenkins'],
   drawer: [
     {
       title: 'GitHub',
@@ -88,7 +61,7 @@ const init = {
       href: 'https://www.linkedin.com/in/katallaxie'
     }
   ]
-}
+};
 
 // getters
 const getters = {
@@ -102,21 +75,17 @@ const getters = {
   framework: state => state.framework,
   tech: state => state.tech,
   drawer: state => state.drawer
-}
+};
 
 // actions
-const actions = {
-
-}
+const actions = {};
 
 // mutations
-const mutations = {
-
-}
+const mutations = {};
 
 export default {
   state: init,
   getters,
   actions,
   mutations
-}
+};
