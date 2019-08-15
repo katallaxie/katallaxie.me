@@ -46,7 +46,7 @@ const init = {
   coding: ['Go', 'TypeScript', 'JavaScript', 'PHP', 'HTML & CSS', 'Ruby'],
   framework: ['React (Native)', 'Angular', 'Vue', 'jQuery', 'UIKit', 'AppKit'],
   tech: ['Wordpress', 'K/V + DO', 'Electron', 'GraphQL', 'REST'],
-  devOps: ['Mesos', 'Marathon', 'Docker', 'Jenkins', 'Terraform', 'Jenkins'],
+  devOps: ['Mesos', 'Marathon', 'Docker', 'Jenkins', 'Terraform'],
   drawer: [
     {
       title: 'GitHub',
