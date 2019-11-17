@@ -44,3 +44,6 @@ lighthouse.*
 # IDE #
 .idea/
 *.swp
+
+# Firebase
+.firebase

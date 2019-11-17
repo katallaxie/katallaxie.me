@@ -57,6 +57,7 @@
     "bootstrap-vue": "^1.0.2",
     "core-js": "^2.5.1",
     "fontfaceobserver": "^2.0.13",
+    "source-map": "^0.7.3",
     "vue": "^2.5.2",
     "vue-class-component": "^6.1.0",
     "vue-router": "^3.0.1",

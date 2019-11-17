@@ -190,14 +190,14 @@ export const CustomHeadTags: HeadTags = {
     { name: 'theme-color', content: '#00bcd4' },
     {
       name: 'description',
-      content: 'Sebastian Döll is a Software Engineer @ DigitalOcean'
+      content: 'Sebastian Döll is a Solutions Architect @ AWS'
     },
     { name: 'twitter:site', content: '@katallaxie' },
     { name: 'twitter:content', content: '@katallaxie' },
     { name: 'og:site_name', content: 'Sebastian Döll' },
     {
       name: 'og:description',
-      content: 'Sebastian Döll is an Software Engineer @ DigitalOcean'
+      content: 'Sebastian Döll is an Solutions Architect @ AWS'
     },
     { name: 'og:url', content: 'http://katallaxie.me' },
     { name: 'og:title', content: 'Sebastian Döll' }

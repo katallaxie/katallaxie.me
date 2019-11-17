@@ -1,12 +1,16 @@
 // initial state
 const init = {
   name: 'Sebastian Döll.',
-  job: 'Engineering at DigitalOcean',
+  job: 'Solutions Architect at AWS',
   teaser: 'Crafting software with great user experiences.',
   experience: [
     {
-      company: 'DigitalOcean <span>Engineering</span>',
-      time: '2018&mdash;present'
+      company: 'AWS <span>Solutions Achitect</span>',
+      time: '2019&mdash;present'
+    },
+    {
+      company: 'DigitalOcean <span>Senior Software Engineer</span>',
+      time: '2018&mdash;2019'
     },
     {
       company: 'Axel Springer <span>Lead Engineer</span>',
@@ -43,10 +47,10 @@ const init = {
       time: '2004&mdash;2010'
     }
   ],
-  coding: ['Go', 'TypeScript', 'JavaScript', 'PHP', 'HTML & CSS', 'Ruby'],
-  framework: ['React (Native)', 'Angular', 'Vue', 'jQuery', 'UIKit', 'AppKit'],
-  tech: ['Wordpress', 'K/V + DO', 'Electron', 'GraphQL', 'REST'],
-  devOps: ['Mesos', 'Marathon', 'Docker', 'Jenkins', 'Terraform'],
+  coding: ['Go', 'TypeScript', 'Dart', 'Kotlin', 'Swift'],
+  framework: ['Flutter', 'React', 'Angular', 'Vue'],
+  tech: ['Kafka', 'Service Mesh', 'GraphQL', 'MongodDB', 'PostgreSQL'],
+  devOps: ['Mesos', 'Docker', 'K8s', 'Terraform'],
   drawer: [
     {
       title: 'GitHub',
