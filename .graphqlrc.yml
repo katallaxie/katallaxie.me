@@ -1,0 +1,25 @@
+# GraphCMS API
+schema: https://api-eu-central-1.graphcms.com/v2/ckk2iqjmrrv0e01xs8shscgad/master
+overwrite: true
+documents: ./src/graphql/**/*.graphql
+
+# Format files
+
+extensions:
+  codegen:
+    hooks:
+      afterAllFileWrite:
+        - eslint --fix
+    generates:
+      ./schema.graphql:
+        plugins:
+          - schema-ast
+      src/generated-types.tsx:
+        plugins:
+          - typescript
+          - typescript-operations
+          - typescript-react-apollo
+        config:
+          withHOC: false
+          withComponent: true
+          withHooks: true
