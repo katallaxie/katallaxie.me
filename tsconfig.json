@@ -1,45 +1,74 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "noEmit": false,
-    "noEmitHelpers": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "pretty": true,
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strictNullChecks": false,
-    "target": "es5",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
     "jsx": "preserve",
     "lib": [
       "dom",
-      "es5",
-      "es6"
+      "dom.iterable",
+      "es2017"
     ],
-    "types": [
-      "hammerjs",
-      "node",
-      "source-map",
-      "uglify-js",
-      "jasmine",
-      "jest",
-      "vue"
-    ]
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": false,
+    "target": "ES2019",
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@theme/*": [
+        "./src/theme/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@middlewares/*": [
+        "./src/middlewares/*"
+      ],
+      "@common/*": [
+        "./src/common/*"
+      ],
+      "@state/*": [
+        "./src/state/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@hocs/*": [
+        "./src/hocs/*"
+      ],
+      "@type/*": [
+        "./src/types/*"
+      ],
+    }
   },
   "exclude": [
+    ".github",
+    ".next",
+    "_site",
+    "coverage",
+    "cypress",
     "node_modules",
-    "public",
-    "src/**/*.spec.ts",
-    "src/**/*.spec.tsx",
-    "src/**/*.e2e.ts"
+    "public"
   ],
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": {
-    "rewriteTsconfig": false
-  }
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+, "src/types/nextjs/MultiversalAppBootstrapPageProps.ts"  ]
 }
