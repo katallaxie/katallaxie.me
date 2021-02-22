@@ -145,15 +145,6 @@ module.exports = withBundleAnalyzer(
       SENTRY_DSN: process.env.SENTRY_DSN
     },
     poweredByHeader: false,
-    productionBrowserSourceMaps: true,
-
-    i18n: {
-      // These are all the locales you want to support in
-      // your application
-      locales: ['en', 'de'],
-      // This is the default locale you want to be used when visiting
-      // a non-locale prefixed path e.g. `/hello`
-      defaultLocale: 'en'
-    }
+    productionBrowserSourceMaps: true
   })
 )

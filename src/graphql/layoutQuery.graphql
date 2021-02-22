@@ -1,0 +1,38 @@
+query Layout($slug: String = "home") {
+  pages(where: { isNavigation: true }, orderBy: slug_ASC) {
+    id
+    title
+    slug
+  }
+
+  page(where: { slug: $slug }, stage: PUBLISHED ) {
+    id
+    title
+    slug
+    content
+    form {
+      id
+      fields {
+			__typename
+       ... on FormInput {
+          name
+          type
+          label
+          rules
+          placeholder
+        	required
+        }
+        ... on FormSelect {
+          name
+          label
+          rules
+          options {
+            value
+            option
+          }
+          required
+        }
+      }
+    }
+  }
+}
