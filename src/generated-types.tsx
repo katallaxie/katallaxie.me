@@ -6204,6 +6204,7 @@ export enum _FilterKind {
 export enum _MutationInputFieldKind {
   Scalar = 'scalar',
   RichText = 'richText',
+  RichTextWithEmbeds = 'richTextWithEmbeds',
   Enum = 'enum',
   Relation = 'relation',
   Union = 'union',
@@ -6265,42 +6266,8 @@ export type LayoutQueryVariables = Exact<{
 }>
 
 export type LayoutQuery = { __typename?: 'Query' } & {
-  pages: Array<{ __typename?: 'Page' } & Pick<Page, 'id' | 'title' | 'slug'>>
   page?: Maybe<
-    { __typename?: 'Page' } & Pick<
-      Page,
-      'id' | 'title' | 'slug' | 'content'
-    > & {
-        form?: Maybe<
-          { __typename?: 'Form' } & Pick<Form, 'id'> & {
-              fields: Array<
-                | { __typename: 'FormCheckbox' }
-                | ({ __typename: 'FormInput' } & Pick<
-                    FormInput,
-                    | 'name'
-                    | 'type'
-                    | 'label'
-                    | 'rules'
-                    | 'placeholder'
-                    | 'required'
-                  >)
-                | { __typename: 'FormOption' }
-                | ({ __typename: 'FormSelect' } & Pick<
-                    FormSelect,
-                    'name' | 'label' | 'rules' | 'required'
-                  > & {
-                      options: Array<
-                        { __typename?: 'FormOption' } & Pick<
-                          FormOption,
-                          'value' | 'option'
-                        >
-                      >
-                    })
-                | { __typename: 'FormTextarea' }
-              >
-            }
-        >
-      }
+    { __typename?: 'Page' } & Pick<Page, 'id' | 'title' | 'slug' | 'content'>
   >
 }
 
@@ -6376,40 +6343,11 @@ export type CreateSubmissionMutationOptions = Apollo.BaseMutationOptions<
 >
 export const LayoutDocument = gql`
   query Layout($slug: String = "home") {
-    pages(where: { isNavigation: true }, orderBy: slug_ASC) {
-      id
-      title
-      slug
-    }
     page(where: { slug: $slug }, stage: PUBLISHED) {
       id
       title
       slug
       content
-      form {
-        id
-        fields {
-          __typename
-          ... on FormInput {
-            name
-            type
-            label
-            rules
-            placeholder
-            required
-          }
-          ... on FormSelect {
-            name
-            label
-            rules
-            options {
-              value
-              option
-            }
-            required
-          }
-        }
-      }
     }
   }
 `

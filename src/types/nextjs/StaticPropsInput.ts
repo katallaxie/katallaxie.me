@@ -8,7 +8,6 @@ import { PreviewData } from './PreviewData'
  * @see node_modules/next/types/index.d.ts
  */
 export type StaticPropsInput<E extends {} = {}> = {
-  locale?: string
   params?: CommonServerSideParams<E>
   preview: boolean
   previewData: PreviewData

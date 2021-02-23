@@ -13,6 +13,4 @@ export type CommonServerSideParams<
   E extends ParsedUrlQuery = ParsedUrlQuery
 > = {
   slug?: string
-  albumId?: string // Used by album-[albumId]-with-ssg-and-fallback page
-  locale?: string // The first path of the url is the "locale"
 } & E

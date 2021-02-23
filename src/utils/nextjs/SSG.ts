@@ -14,7 +14,6 @@ import { SSGPageProps } from '@type/page/SSGPageProps'
 import { initializeApollo } from '@utils/apollo'
 import { StaticPath } from '@type/nextjs//StaticPath'
 import { StaticPathsOutput } from '@type/nextjs/StaticPathsOutput'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import renderToString from 'next-mdx-remote/render-to-string'
 import {
   MdxComponents as components,
@@ -163,12 +162,7 @@ export const getExamplesCommonStaticProps: GetStaticProps<
   const queryOptions = {
     displayName: 'LAYOUT_QUERY',
     query: LayoutDocument,
-    variables,
-    context: {
-      headers: {
-        'gcms-locales': props.locale
-      }
-    }
+    variables
   }
 
   const { errors, data } = await apolloClient.query(queryOptions)
@@ -191,14 +185,7 @@ export const getExamplesCommonStaticProps: GetStaticProps<
       isStaticRendering: true,
       preview,
       previewData,
-      mdxSource,
-      ...(await serverSideTranslations(
-        props.locale,
-        ['common', 'footer', 'chat', 'consent'],
-        {
-          localePath: path.resolve('./public/locales')
-        }
-      ))
+      mdxSource
     }
     // revalidate: false,
   }

@@ -13,17 +13,11 @@ const LayoutContext = React.createContext<LayoutQueryResult | null>(null)
 
 export const LayoutProvider = ({
   children,
-  locale,
   slug
 }: LayoutProviderProps): JSX.Element => {
   const queryOptions = {
     variables: {
       slug
-    },
-    context: {
-      headers: {
-        'gcms-locales': locale
-      }
     }
   }
 

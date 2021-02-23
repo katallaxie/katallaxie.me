@@ -20,6 +20,5 @@ export type MultiversalPageProps<E extends {} = {}> = {
   mdxSource?: MdxRemote.Source
   locale?: string
   slug?: string
-  serializedDataset: string
   statusCode?: number // Provided by Next.js framework, sometimes
 } & E
