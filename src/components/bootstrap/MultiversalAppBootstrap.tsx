@@ -18,9 +18,6 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import { MdxProvider } from '@state/mdx'
 import { init } from '@utils/sentry'
 
-// Tailwind CSS
-import 'tailwindcss/tailwind.css'
-
 export type Props =
   | MultiversalAppBootstrapProps<SSGPageProps>
   | MultiversalAppBootstrapProps<SSRPageProps>

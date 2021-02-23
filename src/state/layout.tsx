@@ -5,7 +5,6 @@ import { LayoutDocument, LayoutQuery } from '../generated-types'
 export type LayoutQueryResult = LayoutQuery
 export interface LayoutProviderProps {
   children: React.ReactNode
-  locale?: string
   slug?: string
 }
 

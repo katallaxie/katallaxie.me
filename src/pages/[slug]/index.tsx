@@ -37,13 +37,7 @@ export const getStaticPaths = getCommonStaticPaths
 const Page: NextPage<Props> = ({ mdxSource }): JSX.Element => {
   const content = mdxSource ? hydrate(mdxSource, { components }) : null
 
-  return (
-    <DefaultLayout>
-      <Flex wrap="wrap" padding="1.5rem" color="gray.900">
-        <div className="wrapper">{content}</div>
-      </Flex>
-    </DefaultLayout>
-  )
+  return <DefaultLayout>{content}</DefaultLayout>
 }
 
 export default Page

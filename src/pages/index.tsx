@@ -8,8 +8,6 @@ import { SSGPageProps } from '@type/page/SSGPageProps'
 import { OnlyBrowserPageProps } from '@type/page/OnlyBrowserPageProps'
 import { getCommonStaticProps } from '@utils/nextjs/SSG'
 import useLayoutContext from '@hooks/useLayout'
-import { MdxRenderer } from '@components/layout/MdxRenderer'
-import withConsent from '@hocs/withConsent'
 
 type Props = SSGPageProps<Partial<OnlyBrowserPageProps>>
 
@@ -23,11 +21,10 @@ const Home: NextPage<Props> = (): JSX.Element => {
 
   return (
     <DefaultLayout>
-      <Flex wrap="wrap" padding="1.5rem" color="gray.900">
-        <MdxRenderer layout={layout} />
-      </Flex>
+      Content
+      {/* <MdxRenderer layout={layout} /> */}
     </DefaultLayout>
   )
 }
 
-export default withConsent()(Home)
+export default Home

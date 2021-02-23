@@ -1,9 +1,9 @@
 import React from 'react'
-import { Container } from '@chakra-ui/react'
 import Header from './Header'
 import Footer from './Footer'
 import Head from './Head'
 import useLayoutContext from '@hooks/useLayout'
+import Container from './Container'
 
 type DefaultLayoutProps = {
   children: React.ReactNode
@@ -15,14 +15,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps): JSX.Element => {
   return (
     <>
       <Head {...{ seoTitle: layout?.page.title }} />
-      <Header />
-      <Container
-        maxW={['640px', '768px', '1024px', '1280px']}
-        paddingTop={{ base: '3rem', md: '4rem', xl: '6rem' }}
-      >
-        {children}
-      </Container>
-      <Footer />
+      <Container>{children}</Container>
     </>
   )
 }

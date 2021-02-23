@@ -6,6 +6,13 @@ import { SSGPageProps } from '@type/page/SSGPageProps'
 import { SSRPageProps } from '@type/page/SSRPageProps'
 
 /**
+ * Import Tailwind.css
+ *
+ * @see https://github.com/vercel/next.js/blob/canary/examples/with-tailwindcss
+ */
+import '../../styles/globals.css'
+
+/**
  * WDYR (why-did-you-render) helps locate unnecessary re-renders and fix them
  * Applied in development environment, on the frontend only
  *
