@@ -15,6 +15,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps): JSX.Element => {
   return (
     <>
       <Head {...{ seoTitle: layout?.page.title }} />
+      <Header />
       <Container>{children}</Container>
     </>
   )

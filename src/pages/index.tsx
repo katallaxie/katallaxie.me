@@ -6,6 +6,7 @@ import DefaultLayout from '@components/layout/DefaultLayout'
 import { SSGPageProps } from '@type/page/SSGPageProps'
 import { OnlyBrowserPageProps } from '@type/page/OnlyBrowserPageProps'
 import { getCommonStaticProps } from '@utils/nextjs/SSG'
+import MdxRenderer from '@components/layout/MdxRenderer'
 import useLayoutContext from '@hooks/useLayout'
 
 type Props = SSGPageProps<Partial<OnlyBrowserPageProps>>
@@ -20,8 +21,7 @@ const Home: NextPage<Props> = (): JSX.Element => {
 
   return (
     <DefaultLayout>
-      Content
-      {/* <MdxRenderer layout={layout} /> */}
+      <MdxRenderer layout={layout} />
     </DefaultLayout>
   )
 }
