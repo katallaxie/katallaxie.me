@@ -46,20 +46,21 @@ class AppDocument extends Document<DocumentRenderProps> {
         {/* <Html lang={lang}> */}
         <Head />
         <body
-        // className={classnames(
-        //   // XXX Those variables are added to grant more flexibility if ever needed. They're not used at the moment
-        //   'nrn', // All styles are bound to this, if you remove/rename, it'll break all CSS in src/components/appBootstrap/MultiversalGlobalStyles.tsx
-        //   `${process.env.NEXT_PUBLIC_APP_NAME}`, // From package.json:name
+          className="bg-white text-black dark:bg-black dark:text-white"
+          // className={classnames(
+          //   // XXX Those variables are added to grant more flexibility if ever needed. They're not used at the moment
+          //   'nrn', // All styles are bound to this, if you remove/rename, it'll break all CSS in src/components/appBootstrap/MultiversalGlobalStyles.tsx
+          //   `${process.env.NEXT_PUBLIC_APP_NAME}`, // From package.json:name
 
-        //   // Localisation-based styles are very useful (e.g: resize text based on locale or language)
-        //   `locale-${locale}`,
-        //   `lang-${lang}`,
+          //   // Localisation-based styles are very useful (e.g: resize text based on locale or language)
+          //   `locale-${locale}`,
+          //   `lang-${lang}`,
 
-        //   // For customer/stage/version based styles, could be handy in rare cases
-        //   `${process.env.NEXT_PUBLIC_CUSTOMER_REF}`,
-        //   `stage-${process.env.NEXT_PUBLIC_APP_STAGE}`,
-        //   `v${process.env.NEXT_PUBLIC_APP_VERSION_RELEASE}`
-        // )}
+          //   // For customer/stage/version based styles, could be handy in rare cases
+          //   `${process.env.NEXT_PUBLIC_CUSTOMER_REF}`,
+          //   `stage-${process.env.NEXT_PUBLIC_APP_STAGE}`,
+          //   `v${process.env.NEXT_PUBLIC_APP_VERSION_RELEASE}`
+          // )}
         >
           <Main />
           <NextScript />

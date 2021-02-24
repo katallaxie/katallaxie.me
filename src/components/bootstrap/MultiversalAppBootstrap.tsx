@@ -40,9 +40,9 @@ const MultiversalAppBootstrap = (props: Props): JSX.Element => {
         <MdxProvider source={pageProps.mdxSource}>
           <GlobalContextProvider>
             <ThemeProvider
+              attribute="class"
               defaultTheme="dark"
               enableSystem={false}
-              themes={['dark']}
             >
               <Head>
                 <meta
