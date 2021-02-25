@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './Header'
-import Footer from './Footer'
 import Head from './Head'
 import useLayoutContext from '@hooks/useLayout'
 import Container from './Container'
@@ -17,6 +16,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps): JSX.Element => {
       <Head {...{ seoTitle: layout?.page.title }} />
       <Header />
       <Container>{children}</Container>
+      <div id="modal-root"></div>
     </>
   )
 }
