@@ -61,6 +61,12 @@ module.exports = withBundleAnalyzer(
       //   })
       // )
 
+      if (!options.isServer) {
+        config.node = {
+          fs: 'empty'
+        }
+      }
+
       // // When all the Sentry configuration env variables are available/configured
       // // The Sentry webpack plugin gets pushed to the webpack plugins to build
       // // and upload the source maps to sentry.

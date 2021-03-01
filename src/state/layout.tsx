@@ -1,6 +1,14 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { LayoutDocument, LayoutQuery } from '../generated-types'
+import type { TComposeFunction } from '@utils/compose'
+import type { MultiversalPageProps } from '@type/page/MultiversalPageProps'
+import { initializeApollo } from '@utils/apollo'
+import renderToString from 'next-mdx-remote/render-to-string'
+import {
+  MdxComponents as components,
+  MdxProvider as provider
+} from '@components/layout/MdxRenderer'
 
 export type LayoutQueryResult = LayoutQuery
 export interface LayoutProviderProps {
@@ -28,3 +36,38 @@ export const LayoutProvider = ({
 }
 export const LayoutConsumer = LayoutContext.Consumer
 export default LayoutContext
+
+export const getLayoutStaticProps: TComposeFunction<MultiversalPageProps> = async ({
+  params
+}) => {
+  const apolloClient = initializeApollo()
+  const variables = {
+    slug: params?.slug
+  }
+
+  const queryOptions = {
+    displayName: 'LAYOUT_QUERY',
+    query: LayoutDocument,
+    variables
+  }
+
+  const { errors, data } = await apolloClient.query(queryOptions)
+
+  const mdxSource = await renderToString(data?.page?.content, {
+    components
+  })
+
+  if (errors) {
+    console.error(errors)
+    throw new Error('Errors were detected in GraphQL query.')
+  }
+
+  return {
+    props: {
+      apolloState: apolloClient.cache.extract(),
+      isReadyToRender: true,
+      isStaticRendering: true,
+      mdxSource
+    }
+  }
+}
