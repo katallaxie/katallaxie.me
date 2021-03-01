@@ -10,12 +10,10 @@ import ServerPageBootstrap, {
   ServerPageBootstrapProps
 } from '@components/bootstrap/ServerPageBootstrap'
 import { ThemeProvider } from 'next-themes'
-import { LayoutProvider } from '@state/layout'
 import { MultiversalAppBootstrapProps } from '@type/nextjs/MultiversalAppBootstrapProps'
 import { SSGPageProps } from '@type/page/SSGPageProps'
 import { SSRPageProps } from '@type/page/SSRPageProps'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { MdxProvider } from '@state/mdx'
 import { init } from '@utils/sentry'
 
 export type Props =
@@ -36,33 +34,29 @@ const MultiversalAppBootstrap = (props: Props): JSX.Element => {
 
   return (
     <ApolloProvider client={client}>
-      <LayoutProvider slug={router.query['slug'] as string}>
-        <MdxProvider source={pageProps.mdxSource}>
-          <GlobalContextProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem={false}
-            >
-              <Head>
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1"
-                />
-              </Head>
-              {isBrowser() ? (
-                <BrowserPageBootstrap
-                  {...(bootstrapProps as BrowserPageBootstrapProps)}
-                />
-              ) : (
-                <ServerPageBootstrap
-                  {...(bootstrapProps as ServerPageBootstrapProps)}
-                />
-              )}
-            </ThemeProvider>
-          </GlobalContextProvider>
-        </MdxProvider>
-      </LayoutProvider>
+      <GlobalContextProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+          </Head>
+          {isBrowser() ? (
+            <BrowserPageBootstrap
+              {...(bootstrapProps as BrowserPageBootstrapProps)}
+            />
+          ) : (
+            <ServerPageBootstrap
+              {...(bootstrapProps as ServerPageBootstrapProps)}
+            />
+          )}
+        </ThemeProvider>
+      </GlobalContextProvider>
     </ApolloProvider>
   )
 }

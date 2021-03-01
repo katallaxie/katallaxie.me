@@ -14,9 +14,9 @@ import { MultiversalPageProps } from './MultiversalPageProps'
  */
 export type SSGPageProps<E extends {} = {}> = {
   // Props that are specific to SSG
-  isStaticRendering: boolean
-  preview: boolean
-  previewData: PreviewData
+  isStaticRendering?: boolean
+  preview?: boolean
+  previewData?: PreviewData
 } & MultiversalPageProps & // Generic props that are provided immediately, no matter what
   Partial<MultiversalAppBootstrapPageProps> & // Pages served by SSG eventually benefit from props injected by the MultiversalAppBootstrap component
   E

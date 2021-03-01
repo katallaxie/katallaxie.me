@@ -1,8 +1,23 @@
 query Layout($slug: String = "home") {
-  page(where: { slug: $slug }, stage: PUBLISHED ) {
+  page(where: {slug: $slug}, stage: PUBLISHED) {
     id
     title
     slug
     content
+    refs {
+      __typename
+      ...on Page {
+        createdAt
+        publishedAt
+        pageSlug: slug
+        teaser
+      }
+      ... on Post {
+        title
+        excerpt
+        createdAt
+        publishedAt
+      }
+    }
   }
 }

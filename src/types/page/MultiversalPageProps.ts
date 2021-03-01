@@ -11,7 +11,7 @@ import { MdxRemote } from 'next-mdx-remote/types'
  * Client-side page props are listed in SSGPageProps
  */
 export type MultiversalPageProps<E extends {} = {}> = {
-  apolloState: NormalizedCacheObject
+  apolloState?: NormalizedCacheObject
   // bestCountryCodes: string[]
   // customerRef: string
   error?: Error // Only defined if there was an error

@@ -1,5 +1,5 @@
 # GraphCMS API
-schema: https://api-eu-central-1.graphcms.com/v2/ckk2iqjmrrv0e01xs8shscgad/master
+schema: https://api-eu-central-1.graphcms.com/v2/cklhyxovyxk3l01z6gg5a9dme/master
 overwrite: true
 documents: ./src/graphql/**/*.graphql
 
