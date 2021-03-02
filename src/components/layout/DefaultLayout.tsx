@@ -3,16 +3,20 @@ import Header from './Header'
 import Head from './Head'
 import useLayoutContext from '@hooks/useLayout'
 import Container from './Container'
+import PostList from './PostList'
+import PostListItem from './PostListItem'
+import PageList from './PageList'
+import PageListItem from './PageListItem'
 
 type DefaultLayoutProps = {
   children: React.ReactNode
 }
 
-function guardFactory<T, K extends keyof T, V extends string & T[K]>(
+const guardFactory = <T, K extends keyof T, V extends string & T[K]>(
   k: K,
   v: V
-): (o: T) => o is Extract<T, Record<K, V>> {
-  return function (o: T): o is Extract<T, Record<K, V>> {
+): ((o: T) => o is Extract<T, Record<K, V>>) => {
+  return (o: T): o is Extract<T, Record<K, V>> => {
     return o[k] === v
   }
 }
@@ -26,16 +30,23 @@ const DefaultLayout = ({ children }: DefaultLayoutProps): JSX.Element => {
     <>
       <Head {...{ seoTitle: page?.title }} />
       <Header />
-      {/* <Container>{children}</Container> */}
       <Container>
         <div className="w-full">
           <div className="md:flex items-stretch w-full md:flex-wrap min-h-screen">
             <div className="flex-none md:w-5/12 lg:w-4/12">
-              {pages.map((page, i) => (
-                <p key={i}>{page.teaser}</p>
-              ))}
+              <PageList>
+                {pages.map((page, i) => (
+                  <PageListItem key={i} page={page} />
+                ))}
+              </PageList>
             </div>
-            <div className="flex-1">Content</div>
+            <div className="flex-1">
+              <PostList>
+                {posts.map((post, i) => (
+                  <PostListItem key={i} post={post} />
+                ))}
+              </PostList>
+            </div>
             <div className="absolute bottom-0">Footer</div>
           </div>
         </div>
