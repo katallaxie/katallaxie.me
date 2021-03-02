@@ -9,15 +9,7 @@ import PageList from './PageList'
 import PageListItem from './PageListItem'
 import MenuList from './MenuList'
 import MenuListItem from './MenuListItem'
-
-const guardFactory = <T, K extends keyof T, V extends string & T[K]>(
-  k: K,
-  v: V
-): ((o: T) => o is Extract<T, Record<K, V>>) => {
-  return (o: T): o is Extract<T, Record<K, V>> => {
-    return o[k] === v
-  }
-}
+import { guardFactory } from '@utils/graphql'
 
 const DefaultLayout = (): JSX.Element => {
   const { page } = useLayoutContext()
@@ -41,14 +33,14 @@ const DefaultLayout = (): JSX.Element => {
       <Container>
         <div className="w-full">
           <div className="md:flex items-stretch w-full md:flex-wrap min-h-screen">
-            <div className="flex-none md:w-5/12 lg:w-4/12">
+            <div className="flex-none md:w-5/12 md:pr-12 md:py-12">
               <PageList>
                 {pages.map((page, i) => (
                   <PageListItem key={i} page={page} />
                 ))}
               </PageList>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 md:border-l md:border-gray-800 md:pl-12 md:py-12">
               <PostList>
                 {posts.map((post, i) => (
                   <PostListItem key={i} post={post} />

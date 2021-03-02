@@ -9,7 +9,7 @@ export const MenuList = ({
   ...props
 }: MenuListProps): JSX.Element => {
   return (
-    <div {...props}>
+    <div className="py-24 hidden lg:block" {...props}>
       <h3>Say Hi.</h3>
       <ul>{children}</ul>
     </div>
