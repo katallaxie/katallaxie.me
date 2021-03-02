@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Header from './Header'
 import Head from './Head'
 import useLayoutContext from '@hooks/useLayout'
@@ -7,10 +7,8 @@ import PostList from './PostList'
 import PostListItem from './PostListItem'
 import PageList from './PageList'
 import PageListItem from './PageListItem'
-
-type DefaultLayoutProps = {
-  children: React.ReactNode
-}
+import MenuList from './MenuList'
+import MenuListItem from './MenuListItem'
 
 const guardFactory = <T, K extends keyof T, V extends string & T[K]>(
   k: K,
@@ -21,10 +19,20 @@ const guardFactory = <T, K extends keyof T, V extends string & T[K]>(
   }
 }
 
-const DefaultLayout = ({ children }: DefaultLayoutProps): JSX.Element => {
+const DefaultLayout = (): JSX.Element => {
   const { page } = useLayoutContext()
-  const pages = page?.refs.filter(guardFactory('__typename', 'Page'))
-  const posts = page?.refs.filter(guardFactory('__typename', 'Post'))
+  const pages = useMemo(
+    () => page?.refs.filter(guardFactory('__typename', 'Page')),
+    [page?.refs]
+  )
+  const posts = useMemo(
+    () => page?.refs.filter(guardFactory('__typename', 'Post')),
+    [page?.refs]
+  )
+  const menuItem = useMemo(
+    () => page?.pageMenu?.menu.filter(guardFactory('__typename', 'Link')),
+    [page?.refs]
+  )
 
   return (
     <>
@@ -47,7 +55,13 @@ const DefaultLayout = ({ children }: DefaultLayoutProps): JSX.Element => {
                 ))}
               </PostList>
             </div>
-            <div className="absolute bottom-0">Footer</div>
+            <div className="absolute bottom-0">
+              <MenuList>
+                {menuItem.map((item, key) => (
+                  <MenuListItem menuItem={item} key={key} />
+                ))}
+              </MenuList>
+            </div>
           </div>
         </div>
       </Container>

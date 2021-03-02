@@ -1168,6 +1168,7 @@ export type Menu = Node & {
   publishedAt?: Maybe<Scalars['DateTime']>
   title?: Maybe<Scalars['String']>
   menu: Array<MenuMenu>
+  pageMenu?: Maybe<Page>
   /** List of Menu versions */
   history: Array<Version>
 }
@@ -1184,6 +1185,10 @@ export type MenuMenuArgs = {
   before?: Maybe<Scalars['String']>
   first?: Maybe<Scalars['Int']>
   last?: Maybe<Scalars['Int']>
+  locales?: Maybe<Array<Locale>>
+}
+
+export type MenuPageMenuArgs = {
   locales?: Maybe<Array<Locale>>
 }
 
@@ -1215,6 +1220,7 @@ export type MenuCreateInput = {
   updatedAt?: Maybe<Scalars['DateTime']>
   title?: Maybe<Scalars['String']>
   menu?: Maybe<MenuMenuCreateManyInlineInput>
+  pageMenu?: Maybe<PageCreateOneInlineInput>
 }
 
 export type MenuCreateManyInlineInput = {
@@ -1333,6 +1339,7 @@ export type MenuManyWhereInput = {
   title_ends_with?: Maybe<Scalars['String']>
   /** All values not ending with the given string */
   title_not_ends_with?: Maybe<Scalars['String']>
+  pageMenu?: Maybe<PageWhereInput>
 }
 
 export type MenuMenu = Link
@@ -1431,6 +1438,7 @@ export enum MenuOrderByInput {
 export type MenuUpdateInput = {
   title?: Maybe<Scalars['String']>
   menu?: Maybe<MenuMenuUpdateManyInlineInput>
+  pageMenu?: Maybe<PageUpdateOneInlineInput>
 }
 
 export type MenuUpdateManyInlineInput = {
@@ -1591,6 +1599,7 @@ export type MenuWhereInput = {
   title_ends_with?: Maybe<Scalars['String']>
   /** All values not ending with the given string */
   title_not_ends_with?: Maybe<Scalars['String']>
+  pageMenu?: Maybe<PageWhereInput>
 }
 
 /** References Menu record uniquely */
@@ -2289,6 +2298,7 @@ export type Page = Node & {
   teaser?: Maybe<Scalars['String']>
   refs: Array<PageRefs>
   pageRefs?: Maybe<Page>
+  menu?: Maybe<Menu>
   /** List of Page versions */
   history: Array<Version>
 }
@@ -2309,6 +2319,10 @@ export type PageRefsArgs = {
 }
 
 export type PagePageRefsArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type PageMenuArgs = {
   locales?: Maybe<Array<Locale>>
 }
 
@@ -2344,6 +2358,7 @@ export type PageCreateInput = {
   teaser?: Maybe<Scalars['String']>
   refs?: Maybe<PageRefsCreateManyInlineInput>
   pageRefs?: Maybe<PageCreateOneInlineInput>
+  menu?: Maybe<MenuCreateOneInlineInput>
 }
 
 export type PageCreateManyInlineInput = {
@@ -2535,6 +2550,7 @@ export type PageManyWhereInput = {
   /** All values not ending with the given string */
   teaser_not_ends_with?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageWhereInput>
+  menu?: Maybe<MenuWhereInput>
 }
 
 export enum PageOrderByInput {
@@ -2651,6 +2667,7 @@ export type PageUpdateInput = {
   teaser?: Maybe<Scalars['String']>
   refs?: Maybe<PageRefsUpdateManyInlineInput>
   pageRefs?: Maybe<PageUpdateOneInlineInput>
+  menu?: Maybe<MenuUpdateOneInlineInput>
 }
 
 export type PageUpdateManyInlineInput = {
@@ -2870,6 +2887,7 @@ export type PageWhereInput = {
   /** All values not ending with the given string */
   teaser_not_ends_with?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageWhereInput>
+  menu?: Maybe<MenuWhereInput>
 }
 
 /** References Page record uniquely */
@@ -3771,6 +3789,11 @@ export type LayoutQuery = { __typename?: 'Query' } & {
               'title' | 'excerpt' | 'createdAt' | 'publishedAt'
             >)
         >
+        pageMenu?: Maybe<
+          { __typename?: 'Menu' } & {
+            menu: Array<{ __typename?: 'Link' } & Pick<Link, 'title' | 'href'>>
+          }
+        >
       }
   >
 }
@@ -3795,6 +3818,14 @@ export const LayoutDocument = gql`
           excerpt
           createdAt
           publishedAt
+        }
+      }
+      pageMenu: menu {
+        menu {
+          ... on Link {
+            title
+            href
+          }
         }
       }
     }

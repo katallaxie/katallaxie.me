@@ -1736,6 +1736,17 @@ type Menu implements Node {
     """
     locales: [Locale!]
   ): [MenuMenu!]!
+  pageMenu(
+    """
+    Allows to optionally override locale filtering behaviour in the query's subtree.
+    
+    Note that `pageMenu` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+    """
+    locales: [Locale!]
+  ): Page
 
   """List of Menu versions"""
   history(
@@ -1776,6 +1787,7 @@ input MenuCreateInput {
   updatedAt: DateTime
   title: String
   menu: MenuMenuCreateManyInlineInput
+  pageMenu: PageCreateOneInlineInput
 }
 
 """"""
@@ -1940,6 +1952,7 @@ input MenuManyWhereInput {
 
   """All values not ending with the given string"""
   title_not_ends_with: String
+  pageMenu: PageWhereInput
 }
 
 """"""
@@ -2068,6 +2081,7 @@ enum MenuOrderByInput {
 input MenuUpdateInput {
   title: String
   menu: MenuMenuUpdateManyInlineInput
+  pageMenu: PageUpdateOneInlineInput
 }
 
 """"""
@@ -2294,6 +2308,7 @@ input MenuWhereInput {
 
   """All values not ending with the given string"""
   title_not_ends_with: String
+  pageMenu: PageWhereInput
 }
 
 """References Menu record uniquely"""
@@ -3070,6 +3085,17 @@ type Page implements Node {
     """
     locales: [Locale!]
   ): Page
+  menu(
+    """
+    Allows to optionally override locale filtering behaviour in the query's subtree.
+    
+    Note that `menu` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+    """
+    locales: [Locale!]
+  ): Menu
 
   """List of Page versions"""
   history(
@@ -3114,6 +3140,7 @@ input PageCreateInput {
   teaser: String
   refs: PageRefsCreateManyInlineInput
   pageRefs: PageCreateOneInlineInput
+  menu: MenuCreateOneInlineInput
 }
 
 """"""
@@ -3381,6 +3408,7 @@ input PageManyWhereInput {
   """All values not ending with the given string"""
   teaser_not_ends_with: String
   pageRefs: PageWhereInput
+  menu: MenuWhereInput
 }
 
 """"""
@@ -3527,6 +3555,7 @@ input PageUpdateInput {
   teaser: String
   refs: PageRefsUpdateManyInlineInput
   pageRefs: PageUpdateOneInlineInput
+  menu: MenuUpdateOneInlineInput
 }
 
 """"""
@@ -3839,6 +3868,7 @@ input PageWhereInput {
   """All values not ending with the given string"""
   teaser_not_ends_with: String
   pageRefs: PageWhereInput
+  menu: MenuWhereInput
 }
 
 """References Page record uniquely"""

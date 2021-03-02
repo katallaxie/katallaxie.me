@@ -19,5 +19,13 @@ query Layout($slug: String = "home") {
         publishedAt
       }
     }
+    pageMenu: menu {
+      menu {
+        ... on Link {
+          title
+          href
+        }
+      }
+    }
   }
 }
