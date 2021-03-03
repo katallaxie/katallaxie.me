@@ -18,6 +18,11 @@ query Layout($slug: String = "home") {
         createdAt
         publishedAt
       }
+      ... on Link {
+        linkTitle: title
+        href
+        alt
+      }
     }
     pageMenu: menu {
       menu {

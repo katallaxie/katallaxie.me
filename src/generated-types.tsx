@@ -695,6 +695,7 @@ export type Link = Node & {
   title: Scalars['String']
   href: Scalars['String']
   alt?: Maybe<Scalars['String']>
+  pageRefs?: Maybe<Page>
   /** List of Link versions */
   history: Array<Version>
 }
@@ -706,6 +707,10 @@ export type LinkDocumentInStagesArgs = {
 }
 
 export type LinkMenuArgs = {
+  locales?: Maybe<Array<Locale>>
+}
+
+export type LinkPageRefsArgs = {
   locales?: Maybe<Array<Locale>>
 }
 
@@ -739,6 +744,7 @@ export type LinkCreateInput = {
   title: Scalars['String']
   href: Scalars['String']
   alt?: Maybe<Scalars['String']>
+  pageRefs?: Maybe<PageCreateOneInlineInput>
 }
 
 export type LinkCreateManyInlineInput = {
@@ -896,6 +902,7 @@ export type LinkManyWhereInput = {
   alt_ends_with?: Maybe<Scalars['String']>
   /** All values not ending with the given string */
   alt_not_ends_with?: Maybe<Scalars['String']>
+  pageRefs?: Maybe<PageWhereInput>
 }
 
 export enum LinkOrderByInput {
@@ -920,6 +927,7 @@ export type LinkUpdateInput = {
   title?: Maybe<Scalars['String']>
   href?: Maybe<Scalars['String']>
   alt?: Maybe<Scalars['String']>
+  pageRefs?: Maybe<PageUpdateOneInlineInput>
 }
 
 export type LinkUpdateManyInlineInput = {
@@ -1120,6 +1128,7 @@ export type LinkWhereInput = {
   alt_ends_with?: Maybe<Scalars['String']>
   /** All values not ending with the given string */
   alt_not_ends_with?: Maybe<Scalars['String']>
+  pageRefs?: Maybe<PageWhereInput>
 }
 
 /** References Link record uniquely */
@@ -2572,16 +2581,18 @@ export enum PageOrderByInput {
   TeaserDesc = 'teaser_DESC'
 }
 
-export type PageRefs = Page | Post
+export type PageRefs = Link | Page | Post
 
 export type PageRefsConnectInput = {
   Page?: Maybe<PageConnectInput>
   Post?: Maybe<PostConnectInput>
+  Link?: Maybe<LinkConnectInput>
 }
 
 export type PageRefsCreateInput = {
   Page?: Maybe<PageCreateInput>
   Post?: Maybe<PostCreateInput>
+  Link?: Maybe<LinkCreateInput>
 }
 
 export type PageRefsCreateManyInlineInput = {
@@ -2601,6 +2612,7 @@ export type PageRefsCreateOneInlineInput = {
 export type PageRefsUpdateInput = {
   Page?: Maybe<PageUpdateInput>
   Post?: Maybe<PostUpdateInput>
+  Link?: Maybe<LinkUpdateInput>
 }
 
 export type PageRefsUpdateManyInlineInput = {
@@ -2623,6 +2635,7 @@ export type PageRefsUpdateManyInlineInput = {
 export type PageRefsUpdateManyWithNestedWhereInput = {
   Page?: Maybe<PageUpdateManyWithNestedWhereInput>
   Post?: Maybe<PostUpdateManyWithNestedWhereInput>
+  Link?: Maybe<LinkUpdateManyWithNestedWhereInput>
 }
 
 export type PageRefsUpdateOneInlineInput = {
@@ -2643,21 +2656,25 @@ export type PageRefsUpdateOneInlineInput = {
 export type PageRefsUpdateWithNestedWhereUniqueInput = {
   Page?: Maybe<PageUpdateWithNestedWhereUniqueInput>
   Post?: Maybe<PostUpdateWithNestedWhereUniqueInput>
+  Link?: Maybe<LinkUpdateWithNestedWhereUniqueInput>
 }
 
 export type PageRefsUpsertWithNestedWhereUniqueInput = {
   Page?: Maybe<PageUpsertWithNestedWhereUniqueInput>
   Post?: Maybe<PostUpsertWithNestedWhereUniqueInput>
+  Link?: Maybe<LinkUpsertWithNestedWhereUniqueInput>
 }
 
 export type PageRefsWhereInput = {
   Page?: Maybe<PageWhereInput>
   Post?: Maybe<PostWhereInput>
+  Link?: Maybe<LinkWhereInput>
 }
 
 export type PageRefsWhereUniqueInput = {
   Page?: Maybe<PageWhereUniqueInput>
   Post?: Maybe<PostWhereUniqueInput>
+  Link?: Maybe<LinkWhereUniqueInput>
 }
 
 export type PageUpdateInput = {
@@ -3780,6 +3797,9 @@ export type LayoutQuery = { __typename?: 'Query' } & {
       'id' | 'title' | 'slug' | 'content'
     > & {
         refs: Array<
+          | ({ __typename: 'Link' } & Pick<Link, 'href' | 'alt'> & {
+                linkTitle: Link['title']
+              })
           | ({ __typename: 'Page' } & Pick<
               Page,
               'createdAt' | 'publishedAt' | 'teaser'
@@ -3818,6 +3838,11 @@ export const LayoutDocument = gql`
           excerpt
           createdAt
           publishedAt
+        }
+        ... on Link {
+          linkTitle: title
+          href
+          alt
         }
       }
       pageMenu: menu {

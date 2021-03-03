@@ -9,6 +9,8 @@ import PageList from './PageList'
 import PageListItem from './PageListItem'
 import MenuList from './MenuList'
 import MenuListItem from './MenuListItem'
+import ProjectList from './ProjectList'
+import ProjectListItem from './ProjectListItem'
 import Section from './Section'
 import { guardFactory } from '@utils/graphql'
 
@@ -22,6 +24,12 @@ const DefaultLayout = (): JSX.Element => {
     () => page?.refs.filter(guardFactory('__typename', 'Post')),
     [page?.refs]
   )
+
+  const links = useMemo(
+    () => page?.refs.filter(guardFactory('__typename', 'Link')),
+    [page?.refs]
+  )
+
   const menuItem = useMemo(
     () => page?.pageMenu?.menu.filter(guardFactory('__typename', 'Link')),
     [page?.refs]
@@ -49,6 +57,11 @@ const DefaultLayout = (): JSX.Element => {
                 ))}
               </PostList>
               <Section>Projects.</Section>
+              <ProjectList>
+                {links.map((link, i) => (
+                  <ProjectListItem key={i} link={link} />
+                ))}
+              </ProjectList>
             </div>
             <div className="absolute bottom-0">
               <MenuList>

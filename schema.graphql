@@ -1084,6 +1084,17 @@ type Link implements Node {
   title: String!
   href: String!
   alt: String
+  pageRefs(
+    """
+    Allows to optionally override locale filtering behaviour in the query's subtree.
+    
+    Note that `pageRefs` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+    """
+    locales: [Locale!]
+  ): Page
 
   """List of Link versions"""
   history(
@@ -1126,6 +1137,7 @@ input LinkCreateInput {
   title: String!
   href: String!
   alt: String
+  pageRefs: PageCreateOneInlineInput
 }
 
 """"""
@@ -1347,6 +1359,7 @@ input LinkManyWhereInput {
 
   """All values not ending with the given string"""
   alt_not_ends_with: String
+  pageRefs: PageWhereInput
 }
 
 """"""
@@ -1373,6 +1386,7 @@ input LinkUpdateInput {
   title: String
   href: String
   alt: String
+  pageRefs: PageUpdateOneInlineInput
 }
 
 """"""
@@ -1657,6 +1671,7 @@ input LinkWhereInput {
 
   """All values not ending with the given string"""
   alt_not_ends_with: String
+  pageRefs: PageWhereInput
 }
 
 """References Link record uniquely"""
@@ -3432,18 +3447,20 @@ enum PageOrderByInput {
 }
 
 """"""
-union PageRefs = Page | Post
+union PageRefs = Link | Page | Post
 
 """"""
 input PageRefsConnectInput {
   Page: PageConnectInput
   Post: PostConnectInput
+  Link: LinkConnectInput
 }
 
 """"""
 input PageRefsCreateInput {
   Page: PageCreateInput
   Post: PostCreateInput
+  Link: LinkCreateInput
 }
 
 """"""
@@ -3468,6 +3485,7 @@ input PageRefsCreateOneInlineInput {
 input PageRefsUpdateInput {
   Page: PageUpdateInput
   Post: PostUpdateInput
+  Link: LinkUpdateInput
 }
 
 """"""
@@ -3500,6 +3518,7 @@ input PageRefsUpdateManyInlineInput {
 input PageRefsUpdateManyWithNestedWhereInput {
   Page: PageUpdateManyWithNestedWhereInput
   Post: PostUpdateManyWithNestedWhereInput
+  Link: LinkUpdateManyWithNestedWhereInput
 }
 
 """"""
@@ -3527,24 +3546,28 @@ input PageRefsUpdateOneInlineInput {
 input PageRefsUpdateWithNestedWhereUniqueInput {
   Page: PageUpdateWithNestedWhereUniqueInput
   Post: PostUpdateWithNestedWhereUniqueInput
+  Link: LinkUpdateWithNestedWhereUniqueInput
 }
 
 """"""
 input PageRefsUpsertWithNestedWhereUniqueInput {
   Page: PageUpsertWithNestedWhereUniqueInput
   Post: PostUpsertWithNestedWhereUniqueInput
+  Link: LinkUpsertWithNestedWhereUniqueInput
 }
 
 """"""
 input PageRefsWhereInput {
   Page: PageWhereInput
   Post: PostWhereInput
+  Link: LinkWhereInput
 }
 
 """"""
 input PageRefsWhereUniqueInput {
   Page: PageWhereUniqueInput
   Post: PostWhereUniqueInput
+  Link: LinkWhereUniqueInput
 }
 
 """"""
