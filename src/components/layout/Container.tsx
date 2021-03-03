@@ -25,7 +25,7 @@ const Container = ({
       'lg:px-24',
       'xl:px-24',
       'right-0',
-      'max-w-screen-xl'
+      'max-w-screen-2xl'
     ],
     [className]
   )
