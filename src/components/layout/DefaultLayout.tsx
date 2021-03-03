@@ -9,6 +9,7 @@ import PageList from './PageList'
 import PageListItem from './PageListItem'
 import MenuList from './MenuList'
 import MenuListItem from './MenuListItem'
+import Section from './Section'
 import { guardFactory } from '@utils/graphql'
 
 const DefaultLayout = (): JSX.Element => {
@@ -41,11 +42,13 @@ const DefaultLayout = (): JSX.Element => {
               </PageList>
             </div>
             <div className="flex-1 md:border-l md:border-gray-800 md:pl-12 md:py-12">
+              <Section>Writing.</Section>
               <PostList>
                 {posts.map((post, i) => (
                   <PostListItem key={i} post={post} />
                 ))}
               </PostList>
+              <Section>Projects.</Section>
             </div>
             <div className="absolute bottom-0">
               <MenuList>
