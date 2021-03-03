@@ -5,7 +5,7 @@ import Container from './Container'
 
 const Header = (): JSX.Element => {
   return (
-    <Container>
+    <Container className="fixed">
       <Link href="/">
         <a className="h-6 w-6 lg:h-8 lg:w-8 bg-white rounded-full"></a>
       </Link>

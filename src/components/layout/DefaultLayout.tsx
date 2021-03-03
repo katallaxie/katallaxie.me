@@ -34,7 +34,7 @@ const DefaultLayout = (): JSX.Element => {
       <Container>
         <div className="w-full">
           <div className="md:flex items-stretch w-full md:flex-wrap min-h-screen">
-            <div className="flex-none md:w-5/12 md:pr-12 md:py-12">
+            <div className="flex-none md:w-5/12 md:pr-12 md:py-48">
               <PageList>
                 {pages.map((page, i) => (
                   <PageListItem key={i} page={page} />
