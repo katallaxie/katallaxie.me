@@ -54,7 +54,7 @@ const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
               </PageList>
             </div>
             <div
-              className="hidde md:block fixed block md:border-l md:border-gray-800 inset-y-0"
+              className="hidde md:block md:ml-6 fixed block md:border-l md:border-gray-800 inset-y-0"
               style={{ left: '41.666667%' }}
             ></div>
             <div className="flex-1 md:pl-12 md:py-12">

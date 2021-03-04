@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   future: {
@@ -20,7 +21,11 @@ module.exports = {
       red: colors.rose,
       yellow: colors.amber
     },
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans]
+      }
+    }
   },
   variants: {
     extend: {}

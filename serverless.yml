@@ -1,9 +1,7 @@
 name: Demo
 
 nextApp:
-  component: "@sls-next/serverless-component@1.19.0-alpha.31"
+  component: "@sls-next/serverless-component@1.19.0-alpha.33"
   inputs:
     memory: 1024
-    domain: katallaxie.me
-    build:
-      postBuildCommands: ['node serverless-post-build.js']
+    domain: ["playground", "andersnormal.us"]

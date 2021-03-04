@@ -67,6 +67,12 @@ module.exports = withBundleAnalyzer(
         }
       }
 
+      // add svgr
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack']
+      })
+
       // // When all the Sentry configuration env variables are available/configured
       // // The Sentry webpack plugin gets pushed to the webpack plugins to build
       // // and upload the source maps to sentry.
@@ -152,5 +158,6 @@ module.exports = withBundleAnalyzer(
     },
     poweredByHeader: false,
     productionBrowserSourceMaps: true
-  })
+  }),
+  { enabled: process.env.ANALYZE === 'true' }
 )
