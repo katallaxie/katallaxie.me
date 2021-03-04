@@ -7,23 +7,18 @@ import { SSGPageProps } from '@type/page/SSGPageProps'
 import { useRouter } from 'next/router'
 import compose from '@utils/compose'
 import DefaultLayout from '@components/layout/DefaultLayout'
-import MdxRenderer from '@components/layout/MdxRenderer'
-import useLayoutContext from '@hooks/useLayout'
 
 type Props = SSGPageProps<Partial<OnlyBrowserPageProps>>
 
 export const getStaticProps = compose(getLayoutStaticProps)
 
 const Home: NextPage<Props> = ({ mdxSource }): JSX.Element => {
-  const layout = useLayoutContext()
   const { query } = useRouter()
 
   return (
     <LayoutProvider slug={query.slug as string}>
       <MdxProvider source={mdxSource}>
-        <DefaultLayout>
-          <MdxRenderer layout={layout} />
-        </DefaultLayout>
+        <DefaultLayout />
       </MdxProvider>
     </LayoutProvider>
   )

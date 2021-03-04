@@ -14,7 +14,11 @@ import ProjectListItem from './ProjectListItem'
 import Section from './Section'
 import { guardFactory } from '@utils/graphql'
 
-const DefaultLayout = (): JSX.Element => {
+interface DefaultLayoutProps {
+  children?: React.ReactNode
+}
+
+const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
   const { page } = useLayoutContext()
   const pages = useMemo(
     () => page?.refs.filter(guardFactory('__typename', 'Page')),
@@ -49,7 +53,11 @@ const DefaultLayout = (): JSX.Element => {
                 ))}
               </PageList>
             </div>
-            <div className="flex-1 md:border-l md:border-gray-800 md:pl-12 md:py-12">
+            <div
+              className="hidde md:block fixed block md:border-l md:border-gray-800 inset-y-0"
+              style={{ left: '41.666667%' }}
+            ></div>
+            <div className="flex-1 md:pl-12 md:py-12">
               <Section>Writing.</Section>
               <PostList>
                 {posts.map((post, i) => (
@@ -63,7 +71,7 @@ const DefaultLayout = (): JSX.Element => {
                 ))}
               </ProjectList>
             </div>
-            <div className="absolute bottom-0">
+            <div className="fixed bottom-0">
               <MenuList>
                 {menuItem.map((item, key) => (
                   <MenuListItem menuItem={item} key={key} />

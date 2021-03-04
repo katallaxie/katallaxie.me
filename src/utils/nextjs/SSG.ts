@@ -33,15 +33,15 @@ import {
  *
  * @see https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
  */
-export const getCommonStaticPaths: GetStaticPaths<CommonServerSideParams> = async (
-  context: GetStaticPathsContext
-): Promise<StaticPathsOutput> => {
-  // TODO Make your own implementation.
-  // XXX Having this as separate function helps making your own pages without affecting existing examples under "pages/[locale]/examples".
-  //  For instance, you may want to replace the GraphQL query by your own API query, while keeping the existing example pages working.
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  return getExamplesCommonStaticPaths(context)
-}
+// export const getCommonStaticPaths: GetStaticPaths<CommonServerSideParams> = async (
+//   context: GetStaticPathsContext
+// ): Promise<StaticPathsOutput> => {
+//   // TODO Make your own implementation.
+//   // XXX Having this as separate function helps making your own pages without affecting existing examples under "pages/[locale]/examples".
+//   //  For instance, you may want to replace the GraphQL query by your own API query, while keeping the existing example pages working.
+//   // eslint-disable-next-line @typescript-eslint/no-use-before-define
+//   return getExamplesCommonStaticPaths(context)
+// }
 
 /**
  * XXX This method is meant for people creating their own project based on NRN.
@@ -60,42 +60,42 @@ export const getCommonStaticPaths: GetStaticPaths<CommonServerSideParams> = asyn
  *
  * @see https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation
  */
-export const getExamplesCommonStaticPaths: GetStaticPaths<CommonServerSideParams> = async (
-  context: GetStaticPathsContext
-): Promise<StaticPathsOutput> => {
-  const { defaultLocale } = context
-  const apolloClient = initializeApollo()
-  const variables = {}
-  const queryOptions = {
-    displayName: 'LAYOUT_QUERY',
-    query: LayoutDocument,
-    variables,
-    context: {
-      headers: {
-        'gcms-locales': defaultLocale
-      }
-    }
-  }
+// export const getExamplesCommonStaticPaths: GetStaticPaths<CommonServerSideParams> = async (
+//   context: GetStaticPathsContext
+// ): Promise<StaticPathsOutput> => {
+//   const { defaultLocale } = context
+//   const apolloClient = initializeApollo()
+//   const variables = {}
+//   const queryOptions = {
+//     displayName: 'LAYOUT_QUERY',
+//     query: LayoutDocument,
+//     variables,
+//     context: {
+//       headers: {
+//         'gcms-locales': defaultLocale
+//       }
+//     }
+//   }
 
-  const { data, errors } = await apolloClient.query(queryOptions)
+//   const { data, errors } = await apolloClient.query(queryOptions)
 
-  if (errors) {
-    console.error(errors)
-    throw new Error('Errors were detected in GraphQL query.')
-  }
+//   if (errors) {
+//     console.error(errors)
+//     throw new Error('Errors were detected in GraphQL query.')
+//   }
 
-  const query: LayoutQuery = data
-  const paths: StaticPath[] = query.pages.map(path => ({
-    params: {
-      slug: path.slug
-    }
-  }))
+//   const query: LayoutQuery = data
+//   const paths: StaticPath[] = query.pages.map(path => ({
+//     params: {
+//       slug: path.slug
+//     }
+//   }))
 
-  return {
-    fallback: true,
-    paths
-  }
-}
+//   return {
+//     fallback: true,
+//     paths
+//   }
+// }
 
 /**
  * Only executed on the server side at build time.

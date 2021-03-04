@@ -11,6 +11,7 @@ export const dateStyle = clsx([
   'text-4xl',
   'font-normal',
   'text-gray-500',
+  'py-4',
   'italic'
 ])
 
