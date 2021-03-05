@@ -13,6 +13,9 @@ import ProjectList from './ProjectList'
 import ProjectListItem from './ProjectListItem'
 import Section from './Section'
 import { guardFactory } from '@utils/graphql'
+import DefaultLayoutWrapper from './DefaultLayoutWrapper'
+import DefaultLayoutContext from './DefaultLayoutContext'
+import DefaultLayoutContent from './DefaultLayoutContent'
 
 interface DefaultLayoutProps {
   children?: React.ReactNode
@@ -44,7 +47,12 @@ const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
       <Head {...{ seoTitle: page?.title }} />
       <Header />
       <Container>
-        <div className="w-full">
+        <DefaultLayoutWrapper>
+          <DefaultLayoutContext>Left</DefaultLayoutContext>
+          <DefaultLayoutContent>Right</DefaultLayoutContent>
+        </DefaultLayoutWrapper>
+
+        {/* <div className="w-full">
           <div className="md:flex items-stretch w-full md:flex-wrap min-h-screen">
             <div className="flex-none md:w-5/12 md:pr-12 md:py-48">
               <PageList>
@@ -79,7 +87,7 @@ const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
               </MenuList>
             </div>
           </div>
-        </div>
+        </div> */}
       </Container>
       <div id="modal-root"></div>
     </>

@@ -14,18 +14,14 @@ const Container = ({
   const styles = clsx(
     [
       'container',
-      'items-center',
-      'justify-between',
-      'flex mx-auto',
       'left-0',
-      'py-12',
-      'lg:py-24',
-      'px-6',
-      'md:px-12',
       'lg:px-24',
-      'xl:px-24',
+      'max-w-screen-2xl',
+      'md:px-12',
+      'mx-auto',
+      'px-6',
       'right-0',
-      'max-w-screen-2xl'
+      'xl:px-24'
     ],
     [className]
   )
