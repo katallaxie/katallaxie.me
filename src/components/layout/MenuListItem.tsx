@@ -1,5 +1,5 @@
 import React from 'react'
-import PageLink from 'next/link'
+import PageLink from './PageLink'
 import { Link } from 'src/generated-types'
 import clsx from 'clsx'
 
@@ -12,11 +12,10 @@ export interface MenuListItemProps {
 const listItemStyle = clsx([
   'text-xl',
   'lg:text-2xl',
-  'py-1',
+  'py-2',
   'text-gray-500',
   'font-bold'
 ])
-const linkStyle = clsx(['hover:text-white'])
 
 export const MenuListItem = ({
   link,
@@ -24,9 +23,7 @@ export const MenuListItem = ({
 }: MenuListItemProps): JSX.Element => {
   return (
     <li className={listItemStyle} {...props}>
-      <PageLink href={link.href}>
-        <a className={linkStyle}>{link.title}</a>
-      </PageLink>
+      <PageLink href={link.href} text={link.title} />
     </li>
   )
 }

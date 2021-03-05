@@ -6,11 +6,11 @@ type DefaultLayouContextProps = {
 }
 
 const contextStyle = clsx([
-  'flex',
-  'flex-col',
+  'flex-none',
   'md:w-5/12',
   'lg:pr-12',
-  'lg:py-48'
+  'lg:py-24',
+  'xl:py-36'
 ])
 
 const DefaultLayoutContext = ({

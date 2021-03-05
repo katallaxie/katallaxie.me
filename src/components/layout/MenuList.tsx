@@ -8,7 +8,7 @@ export interface MenuListProps {
 
 export const MenuList = ({ links, ...props }: MenuListProps): JSX.Element => {
   return (
-    <div className="py-24 hidden lg:block" {...props}>
+    <div className="hidden lg:block" {...props}>
       <ul>
         {links.map((link, i) => (
           <MenuItem key={i} link={link} />
