@@ -5,12 +5,8 @@ import useLayoutContext from '@hooks/useLayout'
 import Container from './Container'
 import PostList from './PostList'
 import PageList from './PageList'
-import PageListItem from './PageListItem'
 import MenuList from './MenuList'
-import MenuListItem from './MenuListItem'
 import ProjectList from './ProjectList'
-import ProjectListItem from './ProjectListItem'
-import Section from './Section'
 import { guardFactory } from '@utils/graphql'
 import DefaultLayoutWrapper from './DefaultLayoutWrapper'
 import DefaultLayoutContext from './DefaultLayoutContext'
@@ -50,6 +46,7 @@ const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
         <DefaultLayoutWrapper>
           <DefaultLayoutContext>
             <PageList pages={pages} />
+            <MenuList links={menuItem} />
           </DefaultLayoutContext>
           <DefaultLayoutContent>
             <PostList posts={posts} />

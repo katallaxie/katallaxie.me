@@ -1,19 +1,19 @@
 import React from 'react'
-import clsx from 'clsx'
+import type { MenuListItem } from './MenuListItem'
+import MenuItem from './MenuListItem'
+
 export interface MenuListProps {
-  children?: React.ReactNode
+  links?: MenuListItem[]
 }
 
-const listItemStyle = clsx(['text-2xl', 'font-bold', 'py-1'])
-
-export const MenuList = ({
-  children,
-  ...props
-}: MenuListProps): JSX.Element => {
+export const MenuList = ({ links, ...props }: MenuListProps): JSX.Element => {
   return (
     <div className="py-24 hidden lg:block" {...props}>
-      <h3 className={listItemStyle}>Say Hi.</h3>
-      <ul>{children}</ul>
+      <ul>
+        {links.map((link, i) => (
+          <MenuItem key={i} link={link} />
+        ))}
+      </ul>
     </div>
   )
 }
