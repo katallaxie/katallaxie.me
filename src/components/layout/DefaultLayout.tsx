@@ -11,6 +11,7 @@ import { guardFactory } from '@utils/graphql'
 import DefaultLayoutWrapper from './DefaultLayoutWrapper'
 import DefaultLayoutContext from './DefaultLayoutContext'
 import DefaultLayoutContent from './DefaultLayoutContent'
+import Footer from './Footer'
 
 interface DefaultLayoutProps {
   children?: React.ReactNode
@@ -51,6 +52,7 @@ const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
           <DefaultLayoutContent>
             <PostList posts={posts} />
             <ProjectList projects={links} />
+            <Footer />
           </DefaultLayoutContent>
         </DefaultLayoutWrapper>
       </Container>
