@@ -1,14 +1,24 @@
 import React from 'react'
+import type { ProjectListItem } from './ProjectListItem'
+import Project from './ProjectListItem'
+import SectionTitle from './Section'
 
 export interface ProjectListProps {
-  children?: React.ReactNode
+  projects?: ProjectListItem[]
 }
 
 export const ProjectList = ({
-  children,
+  projects,
   ...props
 }: ProjectListProps): JSX.Element => {
-  return <div {...props}>{children}</div>
+  return (
+    <div {...props}>
+      <SectionTitle>Projects.</SectionTitle>
+      {projects.map((link, i) => (
+        <Project key={i} link={link} />
+      ))}
+    </div>
+  )
 }
 
 export default ProjectList

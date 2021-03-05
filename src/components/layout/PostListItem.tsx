@@ -2,8 +2,13 @@ import React from 'react'
 import { Post } from 'src/generated-types'
 import clsx from 'clsx'
 
+export type PostListItem = Pick<
+  Post,
+  'title' | 'excerpt' | 'createdAt' | 'publishedAt'
+>
+
 export interface PostListItemProps {
-  post?: Pick<Post, 'title' | 'excerpt' | 'createdAt' | 'publishedAt'>
+  post?: PostListItem
 }
 
 export const textStyle = clsx(['text-4xl', 'font-normal'])

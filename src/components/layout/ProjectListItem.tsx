@@ -3,10 +3,11 @@ import { Link } from 'src/generated-types'
 import PageLink from 'next/link'
 import clsx from 'clsx'
 
+export type ProjectListItem = Pick<Link, 'href' | 'alt'> & {
+  linkTitle: Link['title']
+}
 export interface ProjectListItemProps {
-  link?: Pick<Link, 'href' | 'alt'> & {
-    linkTitle: Link['title']
-  }
+  link?: ProjectListItem
 }
 
 export const textStyle = clsx(['text-4xl', 'font-normal'])

@@ -2,10 +2,14 @@ import React from 'react'
 import { Page } from 'src/generated-types'
 import clsx from 'clsx'
 import PageLink from './PageLink'
+
+export type PageListItem = Pick<
+  Page,
+  'createdAt' | 'publishedAt' | 'teaser'
+> & { pageSlug: Page['slug'] }
+
 export interface PageListItemProps {
-  page?: Pick<Page, 'createdAt' | 'publishedAt' | 'teaser'> & {
-    pageSlug: Page['slug']
-  }
+  page?: PageListItem
 }
 
 const textStyle = clsx(['text-xl', 'lg:text-2xl'])

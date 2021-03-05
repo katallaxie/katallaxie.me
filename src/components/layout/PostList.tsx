@@ -1,14 +1,21 @@
 import React from 'react'
+import type { PostListItem } from './PostListItem'
+import Post from './PostListItem'
+import SectionTitle from './Section'
 
 export interface PostListProps {
-  children?: React.ReactNode
+  posts?: PostListItem[]
 }
 
-export const PostListItem = ({
-  children,
-  ...props
-}: PostListProps): JSX.Element => {
-  return <div {...props}>{children}</div>
+export const PostList = ({ posts, ...props }: PostListProps): JSX.Element => {
+  return (
+    <div {...props}>
+      <SectionTitle>Writing.</SectionTitle>
+      {posts.map((post, i) => (
+        <Post key={i} post={post} />
+      ))}
+    </div>
+  )
 }
 
-export default PostListItem
+export default PostList
