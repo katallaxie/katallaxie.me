@@ -20,7 +20,7 @@ export interface HeadProps {
  *
  * https://github.com/vercel/next.js#populating-head
  */
-const Head: React.FunctionComponent<HeadProps> = (props): JSX.Element => {
+const Head = (props: HeadProps): JSX.Element => {
   const defaultDescription = ''
   const defaultMetaURL = ''
   const defaultMetaImage = ''
@@ -47,10 +47,6 @@ const Head: React.FunctionComponent<HeadProps> = (props): JSX.Element => {
       google: {
         families: ['Roboto:300,400,700']
       }
-      // custom: {
-      //   families: [NRN_DEFAULT_FONT],
-      //   urls: ['/static/fonts/NeuzeitGrotesk/font.css']
-      // }
     })
   }
 

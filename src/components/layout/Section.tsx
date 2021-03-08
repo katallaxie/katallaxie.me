@@ -6,7 +6,9 @@ export interface SectionProps {
 }
 
 export const textStyle = clsx([
-  'text-4xl',
+  'text-2xl',
+  'md:text-3xl',
+  'lg:text-4xl',
   'font-normal',
   'text-gray-500',
   'py-12'

@@ -6,7 +6,7 @@ export interface PageListProps {
   pages?: PageListItem[]
 }
 
-const listStyle = clsx(['pt-28', 'pb-24'])
+const listStyle = clsx(['pt-28', 'pb-4', 'md:pb-16', 'lg:pb-24'])
 
 export const PageList = ({ pages, ...props }: PageListProps): JSX.Element => {
   return (
