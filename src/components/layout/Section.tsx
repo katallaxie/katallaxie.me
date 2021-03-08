@@ -11,7 +11,8 @@ export const textStyle = clsx([
   'lg:text-4xl',
   'font-normal',
   'text-gray-500',
-  'py-12'
+  'py-8',
+  'md:py-12'
 ])
 
 export const Section = ({ children }: SectionProps): JSX.Element => {

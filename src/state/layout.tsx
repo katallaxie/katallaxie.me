@@ -7,12 +7,12 @@ import { initializeApollo } from '@utils/apollo'
 import renderToString from 'next-mdx-remote/render-to-string'
 import {
   MdxComponents as components,
-  MdxProvider as provider
+  MdxWrappedProvider
 } from '@components/layout/MdxRenderer'
 
 export type LayoutQueryResult = LayoutQuery
 export interface LayoutProviderProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   slug?: string
 }
 
@@ -54,7 +54,8 @@ export const getLayoutStaticProps: TComposeFunction<MultiversalPageProps> = asyn
   const { errors, data } = await apolloClient.query(queryOptions)
 
   const mdxSource = await renderToString(data?.page?.content, {
-    components
+    components,
+    provider: { component: MdxWrappedProvider, props: { client: apolloClient } }
   })
 
   if (errors) {

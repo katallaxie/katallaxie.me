@@ -19,6 +19,7 @@ interface DefaultLayoutProps {
 
 const DefaultLayout = ({}: DefaultLayoutProps): JSX.Element => {
   const { page } = useLayoutContext()
+
   const pages = useMemo(
     () => page?.refs.filter(guardFactory('__typename', 'Page')),
     [page?.refs]
