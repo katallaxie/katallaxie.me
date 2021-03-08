@@ -7,7 +7,8 @@ type DefaultLayouContextProps = {
 
 const contextStyle = clsx([
   'flex-none',
-  'md:w-5/12',
+  'md:w-8/12',
+  'lg:w-5/12',
   'lg:pr-12',
   'lg:py-24',
   'xl:py-36'

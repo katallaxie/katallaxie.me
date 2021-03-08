@@ -9,7 +9,7 @@ export interface PageLinkProps {
 }
 
 export const PageLink = forwardRef<HTMLAnchorElement, PageLinkProps>(
-  ({ className, href, text, ...props }, ref) => {
+  ({ className, href, text = 'Read More', ...props }, ref) => {
     const linkStyle = clsx(
       ['block', 'text-gray-500', 'text-xl', 'lg:text-2xl', 'hover:text-white'],
       className

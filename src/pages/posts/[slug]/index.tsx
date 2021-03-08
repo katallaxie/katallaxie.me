@@ -11,16 +11,15 @@ import MdxRenderer from '@components/layout/MdxRenderer'
 type Props = SSGPageProps<Partial<OnlyBrowserPageProps>>
 
 export const getStaticProps = compose(getLayoutStaticProps)
-export const getStaticPaths = () => ({ paths: ['/about'], fallback: false })
+export const getStaticPaths = () => ({
+  paths: ['/posts/test'],
+  fallback: false
+})
 
-const Home: NextPage<Props> = ({ mdxSource, apolloState }): JSX.Element => {
+const Post: NextPage<Props> = ({ mdxSource, apolloState }): JSX.Element => {
   const { query } = useRouter()
 
-  return (
-    <MdxProvider source={mdxSource}>
-      <MdxRenderer slug={query?.slug as string} apolloState={apolloState} />
-    </MdxProvider>
-  )
+  return <div>Test</div>
 }
 
-export default Home
+export default Post

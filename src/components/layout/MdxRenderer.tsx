@@ -6,6 +6,7 @@ import { MdxRemote } from 'next-mdx-remote/types'
 import { LayoutProvider } from '@state/layout'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
+import HomeLayout from '@components/layout/HomeLayout'
 import DefaultLayout from '@components/layout/DefaultLayout'
 import Link from 'next/link'
 
@@ -23,20 +24,18 @@ export interface MdxRendererProps {
 export const MdxWrappedProvider = ({
   slug,
   client,
-  children,
   ...props
 }: MdxRendererProps): React.ReactNode => {
   return (
     <ApolloProvider client={client}>
-      <LayoutProvider slug={slug} {...props}>
-        {children}
-      </LayoutProvider>
+      <LayoutProvider slug={slug} {...props} />
     </ApolloProvider>
   )
 }
 export const MdxProvider = { component: MdxWrappedProvider, props: {} }
 
 export const MdxComponents: MdxRenderComponents = {
+  HomeLayout,
   DefaultLayout,
   Link
 }
