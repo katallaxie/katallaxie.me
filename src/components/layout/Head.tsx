@@ -1,18 +1,15 @@
 // import { isBrowser } from '@unly/utils'
 import NextHead from 'next/head'
 import React from 'react'
+import { Head as Context } from '@state/head'
+import useHeadContext from '@hooks/useHead'
 
 // import { NRN_DEFAULT_FONT, NRN_DEFAULT_SERVICE_LABEL } from '../../constants'
 // import { I18nLocale } from '../../types/i18n/I18nLocale'
 // import { SUPPORTED_LOCALES } from '../../utils/i18n/i18n'
 
 export interface HeadProps {
-  seoTitle?: string
-  seoDescription?: string
-  seoUrl?: string
-  seoImage?: string
-  favicon?: string
-  additionalContent?: React.ReactElement
+  head?: Context
 }
 
 /**
@@ -20,20 +17,8 @@ export interface HeadProps {
  *
  * https://github.com/vercel/next.js#populating-head
  */
-const Head = (props: HeadProps): JSX.Element => {
-  const defaultDescription = ''
-  const defaultMetaURL = ''
-  const defaultMetaImage = ''
-  const defaultFavicon = ''
-
-  const {
-    seoTitle,
-    seoDescription = defaultDescription,
-    seoImage = defaultMetaImage,
-    seoUrl = defaultMetaURL,
-    favicon = defaultFavicon,
-    additionalContent = null
-  } = props
+const Head = (): JSX.Element => {
+  const head = useHeadContext()
 
   if (process.browser) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -53,13 +38,13 @@ const Head = (props: HeadProps): JSX.Element => {
   return (
     <NextHead>
       <meta charSet="UTF-8" />
-      <title>{seoTitle}</title>
-      <meta name="description" content={seoDescription} />
+      <title>{head?.seoTitle}</title>
+      <meta name="description" content={head?.seoDescription} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       {/*<link rel="icon" sizes="192x192" href="/touch-icon.png" />*/}
       {/*<link rel="apple-touch-icon" href="/touch-icon.png" />*/}
       {/*<link rel="mask-icon" href="/favicon-mask.svg" color="#49B882" />*/}
-      <link rel="icon" href={favicon} />
+      <link rel="icon" href={head?.favicon} />
 
       {/* Perf optimisation (preload normal and bold fonts because they're the most used) - See https://web.dev/uses-rel-preload*/}
       {/* TODO See if it's actually a good thing, seems to conflict with WebFontLoader - See https://github.com/GoogleChrome/lighthouse/issues/10892 */}
@@ -112,13 +97,13 @@ const Head = (props: HeadProps): JSX.Element => {
         )
       })} */}
 
-      <meta property="og:url" content={seoUrl} />
-      <meta property="og:title" content={seoTitle} />
-      <meta property="og:description" content={seoDescription} />
-      <meta name="twitter:site" content={seoUrl} />
+      <meta property="og:url" content={head?.seoUrl} />
+      <meta property="og:title" content={head?.seoUrl} />
+      <meta property="og:description" content={head?.seoDescription} />
+      <meta name="twitter:site" content={head?.seoUrl} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image" content={seoImage} />
-      <meta property="og:image" content={seoImage} />
+      <meta name="twitter:image" content={head?.seoImage} />
+      <meta property="og:image" content={head?.seoImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
 
@@ -130,8 +115,6 @@ const Head = (props: HeadProps): JSX.Element => {
       */}
       {/*<script async={true} src="https://storage.googleapis.com/the-funding-place/assets/libs/outdated-browser-rework/outdated-browser-rework.min.js" />*/}
       {/*<link rel="stylesheet" href="https://storage.googleapis.com/the-funding-place/assets/libs/outdated-browser-rework/outdated-browser-rework.css" />*/}
-
-      {additionalContent && additionalContent}
     </NextHead>
   )
 }

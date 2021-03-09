@@ -6,6 +6,7 @@ import React from 'react'
 import renderToString from 'next-mdx-remote/render-to-string'
 import type { MultiversalPageProps } from '@type/page/MultiversalPageProps'
 import type { TComposeFunction } from '@utils/compose'
+import { MultiversalPageHeadProps } from './head'
 
 export type LayoutQueryResult = LayoutQuery
 export interface LayoutProviderProps {
@@ -34,9 +35,9 @@ export const LayoutProvider = ({
 export const LayoutConsumer = LayoutContext.Consumer
 export default LayoutContext
 
-export const getLayoutStaticProps: TComposeFunction<MultiversalPageProps> = async ({
-  params
-}) => {
+export const getLayoutStaticProps: TComposeFunction<
+  MultiversalPageProps<MultiversalPageHeadProps>
+> = async ({ params }) => {
   const apolloClient = initializeApollo()
   const variables = {
     slug: params?.slug
@@ -65,7 +66,10 @@ export const getLayoutStaticProps: TComposeFunction<MultiversalPageProps> = asyn
       apolloState: apolloClient.cache.extract(),
       isReadyToRender: true,
       isStaticRendering: true,
-      mdxSource
+      mdxSource,
+      head: {
+        seoTitle: data?.page?.title
+      }
     }
   }
 }
