@@ -4,6 +4,7 @@ query Layout($slug: String = "home") {
     title
     slug
     content
+    teaser
     refs {
       __typename
       ...on Page {

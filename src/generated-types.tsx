@@ -11,6 +11,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
   { [SubKey in K]: Maybe<T[SubKey]> }
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+const defaultOptions = {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -3794,7 +3795,7 @@ export type LayoutQuery = { __typename?: 'Query' } & {
   page?: Maybe<
     { __typename?: 'Page' } & Pick<
       Page,
-      'id' | 'title' | 'slug' | 'content'
+      'id' | 'title' | 'slug' | 'content' | 'teaser'
     > & {
         refs: Array<
           | ({ __typename: 'Link' } & Pick<Link, 'href' | 'alt'> & {
@@ -3825,6 +3826,7 @@ export const LayoutDocument = gql`
       title
       slug
       content
+      teaser
       refs {
         __typename
         ... on Page {
@@ -3890,17 +3892,19 @@ export const LayoutComponent = (props: LayoutComponentProps) => (
 export function useLayoutQuery(
   baseOptions?: Apollo.QueryHookOptions<LayoutQuery, LayoutQueryVariables>
 ) {
+  const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<LayoutQuery, LayoutQueryVariables>(
     LayoutDocument,
-    baseOptions
+    options
   )
 }
 export function useLayoutLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<LayoutQuery, LayoutQueryVariables>
 ) {
+  const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<LayoutQuery, LayoutQueryVariables>(
     LayoutDocument,
-    baseOptions
+    options
   )
 }
 export type LayoutQueryHookResult = ReturnType<typeof useLayoutQuery>

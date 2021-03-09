@@ -13,6 +13,7 @@ import { ThemeProvider } from 'next-themes'
 import { MultiversalAppBootstrapProps } from '@type/nextjs/MultiversalAppBootstrapProps'
 import { SSGPageProps } from '@type/page/SSGPageProps'
 import { SSRPageProps } from '@type/page/SSRPageProps'
+import { ApolloProvider } from '@apollo/react-hooks'
 import { init } from '@utils/sentry'
 
 export type Props =
@@ -21,7 +22,7 @@ export type Props =
 
 const MultiversalAppBootstrap = (props: Props): JSX.Element => {
   const { pageProps, router } = props
-
+  const client = useApollo(pageProps.apolloState)
   const bootstrapProps = {
     ...props,
     router,
@@ -31,22 +32,31 @@ const MultiversalAppBootstrap = (props: Props): JSX.Element => {
   init()
 
   return (
-    <GlobalContextProvider>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
-        {isBrowser() ? (
-          <BrowserPageBootstrap
-            {...(bootstrapProps as BrowserPageBootstrapProps)}
-          />
-        ) : (
-          <ServerPageBootstrap
-            {...(bootstrapProps as ServerPageBootstrapProps)}
-          />
-        )}
-      </ThemeProvider>
-    </GlobalContextProvider>
+    <ApolloProvider client={client}>
+      <GlobalContextProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+          </Head>
+          {isBrowser() ? (
+            <BrowserPageBootstrap
+              {...(bootstrapProps as BrowserPageBootstrapProps)}
+            />
+          ) : (
+            <ServerPageBootstrap
+              {...(bootstrapProps as ServerPageBootstrapProps)}
+            />
+          )}
+        </ThemeProvider>
+      </GlobalContextProvider>
+    </ApolloProvider>
   )
 }
 

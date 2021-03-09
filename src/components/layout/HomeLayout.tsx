@@ -1,6 +1,5 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import Header from './Header'
-import Head from './Head'
 import useLayoutContext from '@hooks/useLayout'
 import Container from './Container'
 import PostList from './PostList'
@@ -20,29 +19,15 @@ interface HomeLayoutProps {
 const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
   const { page } = useLayoutContext()
 
-  const pages = useMemo(
-    () => page?.refs.filter(guardFactory('__typename', 'Page')),
-    [page?.refs]
-  )
-
-  const posts = useMemo(
-    () => page?.refs.filter(guardFactory('__typename', 'Post')),
-    [page?.refs]
-  )
-
-  const links = useMemo(
-    () => page?.refs.filter(guardFactory('__typename', 'Link')),
-    [page?.refs]
-  )
-
-  const menuItem = useMemo(
-    () => page?.pageMenu?.menu.filter(guardFactory('__typename', 'Link')),
-    [page?.refs]
+  const pages = page?.refs.filter(guardFactory('__typename', 'Page'))
+  const posts = page?.refs.filter(guardFactory('__typename', 'Post'))
+  const links = page?.refs.filter(guardFactory('__typename', 'Link'))
+  const menuItem = page?.pageMenu?.menu.filter(
+    guardFactory('__typename', 'Link')
   )
 
   return (
     <>
-      <Head {...{ seoTitle: page?.title }} />
       <Header />
       <Container>
         <HomeLayoutWrapper>

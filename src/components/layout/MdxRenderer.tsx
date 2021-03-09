@@ -9,6 +9,10 @@ import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import HomeLayout from '@components/layout/HomeLayout'
 import DefaultLayout from '@components/layout/DefaultLayout'
 import Link from 'next/link'
+import Footer from './Footer'
+import Paragraph from './Paragraph'
+import Teaser from './Teaser'
+import Emphasize from './Emphasize'
 
 export type MdxRenderComponents = MdxRemote.Components
 
@@ -21,37 +25,29 @@ export interface MdxRendererProps {
   apolloState?: NormalizedCacheObject
 }
 
-export const MdxWrappedProvider = ({
-  slug,
-  client,
-  ...props
-}: MdxRendererProps): React.ReactNode => {
-  return (
-    <ApolloProvider client={client}>
-      <LayoutProvider slug={slug} {...props} />
-    </ApolloProvider>
-  )
+export const MdxWrappedProvider = (props): React.ReactNode => {
+  return <LayoutProvider {...props} />
 }
 export const MdxProvider = { component: MdxWrappedProvider, props: {} }
 
 export const MdxComponents: MdxRenderComponents = {
   HomeLayout,
   DefaultLayout,
-  Link
+  Footer,
+  Link,
+  Teaser,
+  Paragraph,
+  Emphasize
 }
 
 export const MdxRenderer = ({
-  components = MdxComponents,
-  slug,
-  apolloState
+  components = MdxComponents
 }: MdxRendererProps): JSX.Element => {
   const mdx = useMdxContext()
-  const client = useApollo(apolloState)
 
   const content = mdx
     ? hydrate(mdx, {
-        components,
-        provider: { component: MdxWrappedProvider, props: { slug, client } }
+        components
       })
     : null
 

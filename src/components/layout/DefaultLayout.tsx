@@ -1,8 +1,11 @@
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
-import Head from './Head'
 import useLayoutContext from '@hooks/useLayout'
+import Container from './Container'
+import Teaser from './Teaser'
+import Wrap from './DefaultLayoutWrap'
+import Content from './DefaultLayoutContent'
 
 type DefaultLayoutProps = {
   children?: React.ReactNode
@@ -16,10 +19,14 @@ const DefaultLayout = ({
 
   return (
     <>
-      <Head {...{ seoTitle: layout?.page.title }} />
       <Header />
-      <div>{children}</div>
-      <Footer />
+      <Container {...props}>
+        <Wrap>
+          <Teaser>{layout?.page?.teaser}</Teaser>
+          <Content>{children}</Content>
+        </Wrap>
+        <Footer />
+      </Container>
     </>
   )
 }
