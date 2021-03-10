@@ -1,16 +1,12 @@
 import React from 'react'
 import clsx from 'clsx'
 
-type ContainerProps = {
+type MainProps = {
   children?: React.ReactNode
   className?: string
 }
 
-const Container = ({
-  children,
-  className,
-  ...props
-}: ContainerProps): JSX.Element => {
+const Main = ({ children, className, ...props }: MainProps): JSX.Element => {
   const styles = clsx(
     [
       'container',
@@ -33,4 +29,4 @@ const Container = ({
   )
 }
 
-export default Container
+export default Main

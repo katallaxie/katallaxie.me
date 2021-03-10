@@ -2,7 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 
 type DefaultLayouWrapProps = {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const wrapStyle = clsx([
@@ -18,9 +18,9 @@ const DefaultLayoutWrap = ({
   ...props
 }: DefaultLayouWrapProps): JSX.Element => {
   return (
-    <main className={wrapStyle} {...props}>
+    <div className={wrapStyle} {...props}>
       {children}
-    </main>
+    </div>
   )
 }
 

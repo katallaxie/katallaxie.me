@@ -13,7 +13,7 @@ type Props = SSGPageProps<
   Partial<OnlyBrowserPageProps> & Partial<MultiversalPageHeadProps>
 >
 
-export const getStaticProps = compose(getLayoutStaticProps, get)
+export const getStaticProps = compose(getLayoutStaticProps)
 
 const Home: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
   return (
