@@ -1,10 +1,8 @@
 import React from 'react'
 import useMdxContext from '@hooks/useMdx'
-import { useApollo } from '@utils/apollo'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import { LayoutProvider } from '@state/layout'
-import { ApolloProvider } from '@apollo/react-hooks'
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import HomeLayout from '@components/layout/HomeLayout'
 import DefaultLayout from '@components/layout/DefaultLayout'
@@ -13,6 +11,7 @@ import Footer from './Footer'
 import Paragraph from './Paragraph'
 import Teaser from './Teaser'
 import Emphasize from './Emphasize'
+import Wrap from './DefaultLayoutWrap'
 
 export type MdxRenderComponents = MdxRemote.Components
 
@@ -33,6 +32,7 @@ export const MdxProvider = { component: MdxWrappedProvider, props: {} }
 export const MdxComponents: MdxRenderComponents = {
   HomeLayout,
   DefaultLayout,
+  Wrap,
   Footer,
   Link,
   Teaser,
