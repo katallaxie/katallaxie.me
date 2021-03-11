@@ -1,7 +1,7 @@
 import React from 'react'
 import type { PostListItem } from './PostListItem'
 import Post from './PostListItem'
-import SectionTitle from './Section'
+import SectionTitle from './HomeLayoutSectionTitle'
 
 export interface PostListProps {
   posts?: PostListItem[]

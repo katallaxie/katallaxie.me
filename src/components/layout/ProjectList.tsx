@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ProjectListItem } from './ProjectListItem'
 import Project from './ProjectListItem'
-import SectionTitle from './Section'
+import SectionTitle from './HomeLayoutSectionTitle'
 
 export interface ProjectListProps {
   projects?: ProjectListItem[]

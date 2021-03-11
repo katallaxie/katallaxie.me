@@ -10,7 +10,7 @@ export const Paragraph = ({
   children,
   className
 }: ParagraphProps): JSX.Element => {
-  const style = clsx(['text-3xl', 'py-4', 'lg:py-6'], [className])
+  const style = clsx(['text-3xl', 'py-4', 'lg:py-6', 'z-10'], [className])
 
   return <p className={style}>{children}</p>
 }

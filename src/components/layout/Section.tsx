@@ -3,20 +3,16 @@ import clsx from 'clsx'
 
 export interface SectionProps {
   children?: React.ReactNode
+  className?: string
 }
 
-export const textStyle = clsx([
-  'text-2xl',
-  'md:text-3xl',
-  'lg:text-4xl',
-  'font-normal',
-  'text-gray-500',
-  'py-8',
-  'md:py-12'
-])
+export const Section = ({ children, className }: SectionProps): JSX.Element => {
+  const style = clsx(
+    ['xl:col-start-6', 'col-span-full', 'lg:col-span-8', 'z-10'],
+    [className]
+  )
 
-export const Section = ({ children }: SectionProps): JSX.Element => {
-  return <h1 className={textStyle}>{children}</h1>
+  return <div className={style}>{children}</div>
 }
 
 export default Section

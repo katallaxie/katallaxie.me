@@ -12,6 +12,10 @@ import Paragraph from './Paragraph'
 import Teaser from './Teaser'
 import Emphasize from './Emphasize'
 import Wrap from './DefaultLayoutWrap'
+import UnorderedList from './UnorderedList'
+import UnorderedListItem from './UnorderedListItem'
+import UnorderedListHeading from './UnorderedListHeading'
+import Section from './Section'
 
 export type MdxRenderComponents = MdxRemote.Components
 
@@ -36,8 +40,12 @@ export const MdxComponents: MdxRenderComponents = {
   Footer,
   Link,
   Teaser,
+  Section,
   Paragraph,
-  Emphasize
+  Emphasize,
+  UnorderedList,
+  UnorderedListItem,
+  UnorderedListHeading
 }
 
 export const MdxRenderer = ({
