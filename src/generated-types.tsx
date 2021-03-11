@@ -3787,11 +3787,11 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined'
 }
 
-export type LayoutQueryVariables = Exact<{
+export type PageQueryVariables = Exact<{
   slug?: Maybe<Scalars['String']>
 }>
 
-export type LayoutQuery = { __typename?: 'Query' } & {
+export type PageQuery = { __typename?: 'Query' } & {
   page?: Maybe<
     { __typename?: 'Page' } & Pick<
       Page,
@@ -3819,8 +3819,8 @@ export type LayoutQuery = { __typename?: 'Query' } & {
   >
 }
 
-export const LayoutDocument = gql`
-  query Layout($slug: String = "home") {
+export const PageDocument = gql`
+  query Page($slug: String = "home") {
     page(where: { slug: $slug }, stage: PUBLISHED) {
       id
       title
@@ -3858,58 +3858,49 @@ export const LayoutDocument = gql`
     }
   }
 `
-export type LayoutComponentProps = Omit<
-  ApolloReactComponents.QueryComponentOptions<
-    LayoutQuery,
-    LayoutQueryVariables
-  >,
+export type PageComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<PageQuery, PageQueryVariables>,
   'query'
 >
 
-export const LayoutComponent = (props: LayoutComponentProps) => (
-  <ApolloReactComponents.Query<LayoutQuery, LayoutQueryVariables>
-    query={LayoutDocument}
+export const PageComponent = (props: PageComponentProps) => (
+  <ApolloReactComponents.Query<PageQuery, PageQueryVariables>
+    query={PageDocument}
     {...props}
   />
 )
 
 /**
- * __useLayoutQuery__
+ * __usePageQuery__
  *
- * To run a query within a React component, call `useLayoutQuery` and pass it any options that fit your needs.
- * When your component renders, `useLayoutQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `usePageQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useLayoutQuery({
+ * const { data, loading, error } = usePageQuery({
  *   variables: {
  *      slug: // value for 'slug'
  *   },
  * });
  */
-export function useLayoutQuery(
-  baseOptions?: Apollo.QueryHookOptions<LayoutQuery, LayoutQueryVariables>
+export function usePageQuery(
+  baseOptions?: Apollo.QueryHookOptions<PageQuery, PageQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<LayoutQuery, LayoutQueryVariables>(
-    LayoutDocument,
+  return Apollo.useQuery<PageQuery, PageQueryVariables>(PageDocument, options)
+}
+export function usePageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PageQuery, PageQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<PageQuery, PageQueryVariables>(
+    PageDocument,
     options
   )
 }
-export function useLayoutLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<LayoutQuery, LayoutQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<LayoutQuery, LayoutQueryVariables>(
-    LayoutDocument,
-    options
-  )
-}
-export type LayoutQueryHookResult = ReturnType<typeof useLayoutQuery>
-export type LayoutLazyQueryHookResult = ReturnType<typeof useLayoutLazyQuery>
-export type LayoutQueryResult = Apollo.QueryResult<
-  LayoutQuery,
-  LayoutQueryVariables
->
+export type PageQueryHookResult = ReturnType<typeof usePageQuery>
+export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>
+export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>

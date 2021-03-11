@@ -1,5 +1,5 @@
 import React from 'react'
-import { getLayoutStaticProps, LayoutProvider } from '@state/layout'
+import { getPageStaticProps, PageProvider } from '@state/page'
 import { MdxProvider } from '@state/mdx'
 import { NextPage } from 'next'
 import { OnlyBrowserPageProps } from '@type/page/OnlyBrowserPageProps'
@@ -14,21 +14,21 @@ type Props = SSGPageProps<
   Partial<OnlyBrowserPageProps> & Partial<MultiversalPageHeadProps>
 >
 
-export const getStaticProps = compose(getLayoutStaticProps)
+export const getStaticProps = compose(getPageStaticProps)
 export const getStaticPaths = () => ({ paths: ['/about'], fallback: false })
 
 const Home: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
   const { query } = useRouter()
 
   return (
-    <LayoutProvider slug={query.slug as string}>
+    <PageProvider slug={query.slug as string}>
       <HeadProvider data={head}>
         <Head />
         <MdxProvider source={mdxSource}>
           <MdxRenderer />
         </MdxProvider>
       </HeadProvider>
-    </LayoutProvider>
+    </PageProvider>
   )
 }
 

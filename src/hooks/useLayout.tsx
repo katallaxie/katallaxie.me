@@ -1,8 +1,7 @@
 import React from 'react'
-import LayoutContext, { LayoutQueryResult } from '@state/layout'
+import LayoutContext, { PageQueryResult } from '@state/page'
 
-const useLayoutContext = (): LayoutQueryResult => {
-  return React.useContext(LayoutContext)
-}
+const usePageContext = (): PageQueryResult =>
+  React.useContext<PageQueryResult | null>(LayoutContext)
 
-export default useLayoutContext
+export default usePageContext

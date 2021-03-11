@@ -1,41 +1,39 @@
+import { DefaultComponents as components } from '@components/layout/MdxRenderer'
 import { initializeApollo } from '@utils/apollo'
-import { LayoutDocument, LayoutQuery } from '../generated-types'
-import { MdxComponents as components } from '@components/layout/MdxRenderer'
+import { PageDocument, PageQuery } from '../generated-types'
+import { MultiversalPageHeadProps } from './head'
 import { useQuery } from '@apollo/react-hooks'
 import React from 'react'
 import renderToString from 'next-mdx-remote/render-to-string'
 import type { MultiversalPageProps } from '@type/page/MultiversalPageProps'
 import type { TComposeFunction } from '@utils/compose'
-import { MultiversalPageHeadProps } from './head'
 
-export type LayoutQueryResult = LayoutQuery
-export interface LayoutProviderProps {
+export type PageQueryResult = PageQuery
+export interface PageProviderProps {
   children?: React.ReactNode
   slug?: string
 }
 
-const LayoutContext = React.createContext<LayoutQueryResult | null>(null)
+const PageContext = React.createContext<PageQueryResult | null>(null)
 
-export const LayoutProvider = ({
+export const PageProvider = ({
   children,
   slug
-}: LayoutProviderProps): JSX.Element => {
+}: PageProviderProps): JSX.Element => {
   const queryOptions = {
     variables: {
       slug
     }
   }
 
-  const { data } = useQuery(LayoutDocument, queryOptions)
+  const { data } = useQuery(PageDocument, queryOptions)
 
-  return (
-    <LayoutContext.Provider value={data}>{children}</LayoutContext.Provider>
-  )
+  return <PageContext.Provider value={data}>{children}</PageContext.Provider>
 }
-export const LayoutConsumer = LayoutContext.Consumer
-export default LayoutContext
+export const PageConsumer = PageContext.Consumer
+export default PageContext
 
-export const getLayoutStaticProps: TComposeFunction<
+export const getPageStaticProps: TComposeFunction<
   MultiversalPageProps<MultiversalPageHeadProps>
 > = async ({ params }) => {
   const apolloClient = initializeApollo()
@@ -44,8 +42,8 @@ export const getLayoutStaticProps: TComposeFunction<
   }
 
   const queryOptions = {
-    displayName: 'LAYOUT_QUERY',
-    query: LayoutDocument,
+    displayName: 'PAGE_QUERY',
+    query: PageDocument,
     variables
   }
 
@@ -53,7 +51,7 @@ export const getLayoutStaticProps: TComposeFunction<
 
   const mdxSource = await renderToString(data?.page?.content, {
     components,
-    provider: { component: LayoutContext.Provider, props: { value: data } }
+    provider: { component: PageContext.Provider, props: { value: data } }
   })
 
   if (errors) {

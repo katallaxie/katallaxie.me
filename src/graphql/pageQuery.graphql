@@ -1,4 +1,4 @@
-query Layout($slug: String = "home") {
+query Page($slug: String = "home") {
   page(where: {slug: $slug}, stage: PUBLISHED) {
     id
     title

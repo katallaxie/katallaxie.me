@@ -2,7 +2,7 @@ import React from 'react'
 import useMdxContext from '@hooks/useMdx'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
-import { LayoutProvider } from '@state/layout'
+import { PageProvider } from '@state/page'
 import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import HomeLayout from '@components/layout/HomeLayout'
 import DefaultLayout from '@components/layout/DefaultLayout'
@@ -29,11 +29,11 @@ export interface MdxRendererProps {
 }
 
 export const MdxWrappedProvider = (props): React.ReactNode => {
-  return <LayoutProvider {...props} />
+  return <PageProvider {...props} />
 }
 export const MdxProvider = { component: MdxWrappedProvider, props: {} }
 
-export const MdxComponents: MdxRenderComponents = {
+export const DefaultComponents: MdxRenderComponents = {
   HomeLayout,
   DefaultLayout,
   Wrap,
@@ -49,7 +49,7 @@ export const MdxComponents: MdxRenderComponents = {
 }
 
 export const MdxRenderer = ({
-  components = MdxComponents
+  components = DefaultComponents
 }: MdxRendererProps): JSX.Element => {
   const mdx = useMdxContext()
 

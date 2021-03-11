@@ -1,5 +1,5 @@
 import React from 'react'
-import { getLayoutStaticProps } from '@state/layout'
+import { getPageStaticProps } from '@state/page'
 import { NextPage } from 'next'
 import { OnlyBrowserPageProps } from '@type/page/OnlyBrowserPageProps'
 import { SSGPageProps } from '@type/page/SSGPageProps'
@@ -8,7 +8,7 @@ import compose from '@utils/compose'
 
 type Props = SSGPageProps<Partial<OnlyBrowserPageProps>>
 
-export const getStaticProps = compose(getLayoutStaticProps)
+export const getStaticProps = compose(getPageStaticProps)
 export const getStaticPaths = () => ({
   paths: ['/posts/test'],
   fallback: false
