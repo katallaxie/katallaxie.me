@@ -2,8 +2,6 @@ import React from 'react'
 import useMdxContext from '@hooks/useMdx'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
-import { PageProvider } from '@state/page'
-import { NormalizedCacheObject } from 'apollo-cache-inmemory'
 import HomeLayout from '@components/layout/HomeLayout'
 import DefaultLayout from '@components/layout/DefaultLayout'
 import Link from 'next/link'
@@ -19,20 +17,6 @@ import Section from './Section'
 
 export type MdxRenderComponents = MdxRemote.Components
 
-export interface MdxRendererProps {
-  client?: any
-  children?: React.ReactNode
-  components?: MdxRemote.Components
-  provider?: MdxRemote.Provider
-  slug?: string
-  apolloState?: NormalizedCacheObject
-}
-
-export const MdxWrappedProvider = (props): React.ReactNode => {
-  return <PageProvider {...props} />
-}
-export const MdxProvider = { component: MdxWrappedProvider, props: {} }
-
 export const DefaultComponents: MdxRenderComponents = {
   HomeLayout,
   DefaultLayout,
@@ -46,6 +30,10 @@ export const DefaultComponents: MdxRenderComponents = {
   UnorderedList,
   UnorderedListItem,
   UnorderedListHeading
+}
+
+export interface MdxRendererProps {
+  components?: MdxRemote.Components
 }
 
 export const MdxRenderer = ({
