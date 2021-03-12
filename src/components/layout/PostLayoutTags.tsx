@@ -7,11 +7,11 @@ export interface LayoutTagsProps {
   tags?: LayoutTag[]
 }
 
-export const tagsStyle = clsx([])
+export const tagsStyle = clsx(['col-span-full', 'flex'])
 
 export const LayoutTags = ({ tags }: LayoutTagsProps): JSX.Element => {
   return (
-    <ul>
+    <ul className={tagsStyle}>
       {tags?.map((tag, i) => (
         <Tag tag={tag} key={i} />
       ))}

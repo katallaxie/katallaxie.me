@@ -5,7 +5,7 @@ export interface PostLayoutDateProps {
   children?: React.ReactNode
 }
 
-export const dateStyle = clsx([])
+export const dateStyle = clsx(['col-span-full'])
 
 export const PostLayoutDate = ({
   children
@@ -17,7 +17,7 @@ export const PostLayoutDate = ({
     day: 'numeric'
   }).format(date)
 
-  return <h3>{formatDate}</h3>
+  return <h3 className={dateStyle}>{formatDate}</h3>
 }
 
 export default PostLayoutDate
