@@ -6,9 +6,9 @@ export interface HeadingProps {
   className?: string
 }
 
-const h1 = props => <h1 {...props} />
-const h2 = props => <h2 {...props} />
-const h3 = props => <h3 {...props} />
+const h1 = props => <h1 {...props} className={clsx(['text-5xl', 'py-8'])} />
+const h2 = props => <h2 {...props} className={clsx(['text-4xl', 'py-8'])} />
+const h3 = props => <h3 {...props} className={clsx(['text-3xl', 'py-8'])} />
 const h4 = props => <h4 {...props} />
 const h5 = props => <h5 {...props} />
 
@@ -17,7 +17,7 @@ export const Heading = (
 ): React.ForwardRefExoticComponent<React.RefAttributes<HTMLHeadingElement>> => {
   const cmp = forwardRef<HTMLHeadingElement>(
     ({ children, className, ...props }: HeadingProps, ref) => {
-      const styles = clsx(['text-2xl'], [className])
+      const styles = clsx([className])
 
       return (
         <Component ref={ref} className={styles} {...props}>

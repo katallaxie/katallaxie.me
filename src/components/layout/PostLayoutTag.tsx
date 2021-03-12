@@ -11,11 +11,11 @@ export interface LayoutTagProps {
 export const tagStyle = clsx([
   'rounded-xl',
   'text-xl',
-  'border-gray-900',
-  'text-gray-400',
-  'border-2',
+  // 'border-gray-900',
+  'text-gray-500',
+  // 'border-2',
   'py-1',
-  'px-3',
+  // 'px-3',
   'mr-2'
 ])
 

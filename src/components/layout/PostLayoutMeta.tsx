@@ -19,10 +19,8 @@ export const headerStyle = clsx([
   'lg:pb-22',
   'lg:pt-32',
   'lg:text-4xl',
-  'md:pb-18',
   'md:pt-22',
   'md:text-3xl',
-  'pb-16',
   'pt-20',
   'text-2xl',
   'xl:col-span-8',
@@ -32,11 +30,11 @@ export const headerStyle = clsx([
 
 export const Meta = ({ title, createdAt, tags }: MetaProps): JSX.Element => {
   return (
-    <Wrap>
+    <>
       <h1 className={headerStyle}>{title}</h1>
       <Date>{createdAt}</Date>
       <Tags tags={tags} />
-    </Wrap>
+    </>
   )
 }
 

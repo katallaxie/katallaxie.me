@@ -1,5 +1,6 @@
 import Content from './PostLayoutContent'
 import Footer from './Footer'
+import Wrap from './PostLayoutWrap'
 import Header from './Header'
 import Main from './Main'
 import React from 'react'
@@ -17,12 +18,14 @@ const PostLayout = ({ children, ...props }: PostLayoutProps): JSX.Element => {
     <>
       <Header />
       <Main {...props}>
-        <Meta
-          createdAt={post?.createdAt}
-          tags={post?.tags}
-          title={post?.title}
-        />
-        <Content>{children}</Content>
+        <Wrap>
+          <Meta
+            createdAt={post?.createdAt}
+            tags={post?.tags}
+            title={post?.title}
+          />
+          <Content>{children}</Content>
+        </Wrap>
       </Main>
     </>
   )

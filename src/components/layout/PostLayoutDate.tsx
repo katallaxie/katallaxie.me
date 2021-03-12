@@ -5,7 +5,7 @@ export interface PostLayoutDateProps {
   children?: React.ReactNode
 }
 
-export const dateStyle = clsx(['col-span-full'])
+export const dateStyle = clsx(['col-span-full', 'text-3xl', 'text-gray-500'])
 
 export const PostLayoutDate = ({
   children
