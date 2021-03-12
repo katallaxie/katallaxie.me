@@ -32,6 +32,8 @@ export const DefaultComponents: MdxRenderComponents = {
   UnorderedListHeading
 }
 
+export const MdxComponents: MdxRenderComponents = {}
+
 export interface MdxRendererProps {
   components?: MdxRemote.Components
 }

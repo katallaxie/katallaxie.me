@@ -1,0 +1,8 @@
+query Post($slug: String) {
+  post(where: { slug: $slug }, stage: PUBLISHED ) {
+    id
+    title
+    slug
+    content
+  }
+}

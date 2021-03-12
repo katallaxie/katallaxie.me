@@ -17,7 +17,9 @@ export const HomeLink = forwardRef<HTMLAnchorElement>(({ ...props }, ref) => {
   )
 })
 
-HomeLink.displayName = 'HomeLink'
+if (process.env.NODE_ENV === 'development') {
+  HomeLink.displayName = 'HomeLink'
+}
 
 const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
   const styles = clsx(

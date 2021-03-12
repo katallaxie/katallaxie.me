@@ -3931,7 +3931,6 @@ type Post implements Node {
   """The time the document was published. Null on documents in draft stage."""
   publishedAt: DateTime
   title: String
-  slug: String
   content: String
   excerpt: String
   pageRefs(
@@ -3945,6 +3944,7 @@ type Post implements Node {
     """
     locales: [Locale!]
   ): Page
+  slug: String
 
   """List of Post versions"""
   history(
@@ -3984,10 +3984,10 @@ input PostCreateInput {
   createdAt: DateTime
   updatedAt: DateTime
   title: String
-  slug: String
   content: String
   excerpt: String
   pageRefs: PageCreateOneInlineInput
+  slug: String
 }
 
 """"""
@@ -4152,34 +4152,6 @@ input PostManyWhereInput {
 
   """All values not ending with the given string"""
   title_not_ends_with: String
-  slug: String
-
-  """All values that are not equal to given value."""
-  slug_not: String
-
-  """All values that are contained in given list."""
-  slug_in: [String!]
-
-  """All values that are not contained in given list."""
-  slug_not_in: [String!]
-
-  """All values containing the given string."""
-  slug_contains: String
-
-  """All values not containing the given string."""
-  slug_not_contains: String
-
-  """All values starting with the given string."""
-  slug_starts_with: String
-
-  """All values not starting with the given string."""
-  slug_not_starts_with: String
-
-  """All values ending with the given string."""
-  slug_ends_with: String
-
-  """All values not ending with the given string"""
-  slug_not_ends_with: String
   content: String
 
   """All values that are not equal to given value."""
@@ -4237,6 +4209,34 @@ input PostManyWhereInput {
   """All values not ending with the given string"""
   excerpt_not_ends_with: String
   pageRefs: PageWhereInput
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string"""
+  slug_not_ends_with: String
 }
 
 """"""
@@ -4251,21 +4251,21 @@ enum PostOrderByInput {
   publishedAt_DESC
   title_ASC
   title_DESC
-  slug_ASC
-  slug_DESC
   content_ASC
   content_DESC
   excerpt_ASC
   excerpt_DESC
+  slug_ASC
+  slug_DESC
 }
 
 """"""
 input PostUpdateInput {
   title: String
-  slug: String
   content: String
   excerpt: String
   pageRefs: PageUpdateOneInlineInput
+  slug: String
 }
 
 """"""
@@ -4297,7 +4297,6 @@ input PostUpdateManyInlineInput {
 """"""
 input PostUpdateManyInput {
   title: String
-  slug: String
   content: String
   excerpt: String
 }
@@ -4494,34 +4493,6 @@ input PostWhereInput {
 
   """All values not ending with the given string"""
   title_not_ends_with: String
-  slug: String
-
-  """All values that are not equal to given value."""
-  slug_not: String
-
-  """All values that are contained in given list."""
-  slug_in: [String!]
-
-  """All values that are not contained in given list."""
-  slug_not_in: [String!]
-
-  """All values containing the given string."""
-  slug_contains: String
-
-  """All values not containing the given string."""
-  slug_not_contains: String
-
-  """All values starting with the given string."""
-  slug_starts_with: String
-
-  """All values not starting with the given string."""
-  slug_not_starts_with: String
-
-  """All values ending with the given string."""
-  slug_ends_with: String
-
-  """All values not ending with the given string"""
-  slug_not_ends_with: String
   content: String
 
   """All values that are not equal to given value."""
@@ -4579,11 +4550,40 @@ input PostWhereInput {
   """All values not ending with the given string"""
   excerpt_not_ends_with: String
   pageRefs: PageWhereInput
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string"""
+  slug_not_ends_with: String
 }
 
 """References Post record uniquely"""
 input PostWhereUniqueInput {
   id: ID
+  slug: String
 }
 
 """"""

@@ -25,6 +25,8 @@ export const PageLink = forwardRef<HTMLAnchorElement, PageLinkProps>(
   }
 )
 
-PageLink.displayName = 'PageLink'
+if (process.env.NODE_ENV === 'development') {
+  PageLink.displayName = 'PageLink'
+}
 
 export default PageLink

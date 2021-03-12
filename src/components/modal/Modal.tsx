@@ -18,7 +18,9 @@ const Modal = React.memo(
   }
 )
 
-Modal.displayName = 'Modal'
+if (process.env.NODE_ENV === 'development') {
+  Modal.displayName = 'Modal'
+}
 
 interface RenderModalProps {
   children: React.ReactNode

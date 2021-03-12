@@ -2929,10 +2929,10 @@ export type Post = Node & {
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>
   title?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
   excerpt?: Maybe<Scalars['String']>
   pageRefs?: Maybe<Page>
+  slug?: Maybe<Scalars['String']>
   /** List of Post versions */
   history: Array<Version>
 }
@@ -2974,10 +2974,10 @@ export type PostCreateInput = {
   createdAt?: Maybe<Scalars['DateTime']>
   updatedAt?: Maybe<Scalars['DateTime']>
   title?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
   excerpt?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageCreateOneInlineInput>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type PostCreateManyInlineInput = {
@@ -3096,25 +3096,6 @@ export type PostManyWhereInput = {
   title_ends_with?: Maybe<Scalars['String']>
   /** All values not ending with the given string */
   title_not_ends_with?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
-  /** All values that are not equal to given value. */
-  slug_not?: Maybe<Scalars['String']>
-  /** All values that are contained in given list. */
-  slug_in?: Maybe<Array<Scalars['String']>>
-  /** All values that are not contained in given list. */
-  slug_not_in?: Maybe<Array<Scalars['String']>>
-  /** All values containing the given string. */
-  slug_contains?: Maybe<Scalars['String']>
-  /** All values not containing the given string. */
-  slug_not_contains?: Maybe<Scalars['String']>
-  /** All values starting with the given string. */
-  slug_starts_with?: Maybe<Scalars['String']>
-  /** All values not starting with the given string. */
-  slug_not_starts_with?: Maybe<Scalars['String']>
-  /** All values ending with the given string. */
-  slug_ends_with?: Maybe<Scalars['String']>
-  /** All values not ending with the given string */
-  slug_not_ends_with?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
   /** All values that are not equal to given value. */
   content_not?: Maybe<Scalars['String']>
@@ -3154,6 +3135,25 @@ export type PostManyWhereInput = {
   /** All values not ending with the given string */
   excerpt_not_ends_with?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageWhereInput>
+  slug?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  slug_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  slug_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  slug_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  slug_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  slug_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  slug_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  slug_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  slug_not_ends_with?: Maybe<Scalars['String']>
 }
 
 export enum PostOrderByInput {
@@ -3167,20 +3167,20 @@ export enum PostOrderByInput {
   PublishedAtDesc = 'publishedAt_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
-  SlugAsc = 'slug_ASC',
-  SlugDesc = 'slug_DESC',
   ContentAsc = 'content_ASC',
   ContentDesc = 'content_DESC',
   ExcerptAsc = 'excerpt_ASC',
-  ExcerptDesc = 'excerpt_DESC'
+  ExcerptDesc = 'excerpt_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC'
 }
 
 export type PostUpdateInput = {
   title?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
   excerpt?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageUpdateOneInlineInput>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type PostUpdateManyInlineInput = {
@@ -3202,7 +3202,6 @@ export type PostUpdateManyInlineInput = {
 
 export type PostUpdateManyInput = {
   title?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
   excerpt?: Maybe<Scalars['String']>
 }
@@ -3343,25 +3342,6 @@ export type PostWhereInput = {
   title_ends_with?: Maybe<Scalars['String']>
   /** All values not ending with the given string */
   title_not_ends_with?: Maybe<Scalars['String']>
-  slug?: Maybe<Scalars['String']>
-  /** All values that are not equal to given value. */
-  slug_not?: Maybe<Scalars['String']>
-  /** All values that are contained in given list. */
-  slug_in?: Maybe<Array<Scalars['String']>>
-  /** All values that are not contained in given list. */
-  slug_not_in?: Maybe<Array<Scalars['String']>>
-  /** All values containing the given string. */
-  slug_contains?: Maybe<Scalars['String']>
-  /** All values not containing the given string. */
-  slug_not_contains?: Maybe<Scalars['String']>
-  /** All values starting with the given string. */
-  slug_starts_with?: Maybe<Scalars['String']>
-  /** All values not starting with the given string. */
-  slug_not_starts_with?: Maybe<Scalars['String']>
-  /** All values ending with the given string. */
-  slug_ends_with?: Maybe<Scalars['String']>
-  /** All values not ending with the given string */
-  slug_not_ends_with?: Maybe<Scalars['String']>
   content?: Maybe<Scalars['String']>
   /** All values that are not equal to given value. */
   content_not?: Maybe<Scalars['String']>
@@ -3401,11 +3381,31 @@ export type PostWhereInput = {
   /** All values not ending with the given string */
   excerpt_not_ends_with?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageWhereInput>
+  slug?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  slug_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  slug_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  slug_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  slug_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  slug_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  slug_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  slug_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  slug_not_ends_with?: Maybe<Scalars['String']>
 }
 
 /** References Post record uniquely */
 export type PostWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
+  slug?: Maybe<Scalars['String']>
 }
 
 export type PublishLocaleInput = {
@@ -3819,6 +3819,16 @@ export type PageQuery = { __typename?: 'Query' } & {
   >
 }
 
+export type PostQueryVariables = Exact<{
+  slug?: Maybe<Scalars['String']>
+}>
+
+export type PostQuery = { __typename?: 'Query' } & {
+  post?: Maybe<
+    { __typename?: 'Post' } & Pick<Post, 'id' | 'title' | 'slug' | 'content'>
+  >
+}
+
 export const PageDocument = gql`
   query Page($slug: String = "home") {
     page(where: { slug: $slug }, stage: PUBLISHED) {
@@ -3904,3 +3914,59 @@ export function usePageLazyQuery(
 export type PageQueryHookResult = ReturnType<typeof usePageQuery>
 export type PageLazyQueryHookResult = ReturnType<typeof usePageLazyQuery>
 export type PageQueryResult = Apollo.QueryResult<PageQuery, PageQueryVariables>
+export const PostDocument = gql`
+  query Post($slug: String) {
+    post(where: { slug: $slug }, stage: PUBLISHED) {
+      id
+      title
+      slug
+      content
+    }
+  }
+`
+export type PostComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<PostQuery, PostQueryVariables>,
+  'query'
+>
+
+export const PostComponent = (props: PostComponentProps) => (
+  <ApolloReactComponents.Query<PostQuery, PostQueryVariables>
+    query={PostDocument}
+    {...props}
+  />
+)
+
+/**
+ * __usePostQuery__
+ *
+ * To run a query within a React component, call `usePostQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function usePostQuery(
+  baseOptions?: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, options)
+}
+export function usePostLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(
+    PostDocument,
+    options
+  )
+}
+export type PostQueryHookResult = ReturnType<typeof usePostQuery>
+export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>
+export type PostQueryResult = Apollo.QueryResult<PostQuery, PostQueryVariables>
