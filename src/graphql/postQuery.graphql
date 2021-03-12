@@ -4,5 +4,10 @@ query Post($slug: String) {
     title
     slug
     content
+    createdAt
+    updatedAt
+    tags {
+      slug
+    }
   }
 }

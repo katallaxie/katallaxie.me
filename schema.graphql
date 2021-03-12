@@ -3027,6 +3027,135 @@ type Mutation {
     """Stages to unpublish documents from"""
     from: [Stage!]! = [PUBLISHED]
   ): BatchPayload! @deprecated(reason: "Please use the new paginated many mutation (unpublishManyPostsConnection)")
+
+  """Create one tag"""
+  createTag(data: TagCreateInput!): Tag
+
+  """Update one tag"""
+  updateTag(where: TagWhereUniqueInput!, data: TagUpdateInput!): Tag
+
+  """Delete one tag from _all_ existing stages. Returns deleted document."""
+  deleteTag(
+    """Document to delete"""
+    where: TagWhereUniqueInput!
+  ): Tag
+
+  """Upsert one tag"""
+  upsertTag(where: TagWhereUniqueInput!, upsert: TagUpsertInput!): Tag
+
+  """Publish one tag"""
+  publishTag(
+    """Document to publish"""
+    where: TagWhereUniqueInput!
+
+    """Publishing target stage"""
+    to: [Stage!]! = [PUBLISHED]
+  ): Tag
+
+  """
+  Unpublish one tag from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only.
+  """
+  unpublishTag(
+    """Document to unpublish"""
+    where: TagWhereUniqueInput!
+
+    """Stages to unpublish document from"""
+    from: [Stage!]! = [PUBLISHED]
+  ): Tag
+
+  """Update many Tag documents"""
+  updateManyTagsConnection(
+    """Documents to apply update on"""
+    where: TagManyWhereInput
+
+    """Updates to document content"""
+    data: TagUpdateManyInput!
+    skip: Int
+    first: Int
+    last: Int
+    before: ID
+    after: ID
+  ): TagConnection!
+
+  """Delete many Tag documents, return deleted documents"""
+  deleteManyTagsConnection(
+    """Documents to delete"""
+    where: TagManyWhereInput
+    skip: Int
+    first: Int
+    last: Int
+    before: ID
+    after: ID
+  ): TagConnection!
+
+  """Publish many Tag documents"""
+  publishManyTagsConnection(
+    """Identifies documents in each stage to be published"""
+    where: TagManyWhereInput
+
+    """Stage to find matching documents in"""
+    from: Stage = DRAFT
+
+    """Stages to publish documents to"""
+    to: [Stage!]! = [PUBLISHED]
+    skip: Int
+    first: Int
+    last: Int
+    before: ID
+    after: ID
+  ): TagConnection!
+
+  """
+  Find many Tag documents that match criteria in specified stage and unpublish from target stages
+  """
+  unpublishManyTagsConnection(
+    """Identifies documents in draft stage"""
+    where: TagManyWhereInput
+
+    """Stage to find matching documents in"""
+    stage: Stage = DRAFT
+
+    """Stages to unpublish documents from"""
+    from: [Stage!]! = [PUBLISHED]
+    skip: Int
+    first: Int
+    last: Int
+    before: ID
+    after: ID
+  ): TagConnection!
+
+  """Update many tags"""
+  updateManyTags(
+    """Documents to apply update on"""
+    where: TagManyWhereInput
+
+    """Updates to document content"""
+    data: TagUpdateManyInput!
+  ): BatchPayload! @deprecated(reason: "Please use the new paginated many mutation (updateManyTagsConnection)")
+
+  """Delete many Tag documents"""
+  deleteManyTags(
+    """Documents to delete"""
+    where: TagManyWhereInput
+  ): BatchPayload! @deprecated(reason: "Please use the new paginated many mutation (deleteManyTagsConnection)")
+
+  """Publish many Tag documents"""
+  publishManyTags(
+    """Identifies documents in each stage to be published"""
+    where: TagManyWhereInput
+
+    """Stages to publish documents to"""
+    to: [Stage!]! = [PUBLISHED]
+  ): BatchPayload! @deprecated(reason: "Please use the new paginated many mutation (publishManyTagsConnection)")
+
+  """Unpublish many Tag documents"""
+  unpublishManyTags(
+    """Identifies documents in each stage"""
+    where: TagManyWhereInput
+
+    """Stages to unpublish documents from"""
+    from: [Stage!]! = [PUBLISHED]
+  ): BatchPayload! @deprecated(reason: "Please use the new paginated many mutation (unpublishManyTagsConnection)")
 }
 
 """An object with an ID"""
@@ -3945,6 +4074,25 @@ type Post implements Node {
     locales: [Locale!]
   ): Page
   slug: String
+  tags(
+    where: TagWhereInput
+    orderBy: TagOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+
+    """
+    Allows to optionally override locale filtering behaviour in the query's subtree.
+    
+    Note that `tags` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+    """
+    locales: [Locale!]
+  ): [Tag!]!
 
   """List of Post versions"""
   history(
@@ -3988,6 +4136,7 @@ input PostCreateInput {
   excerpt: String
   pageRefs: PageCreateOneInlineInput
   slug: String
+  tags: TagCreateManyInlineInput
 }
 
 """"""
@@ -4237,6 +4386,9 @@ input PostManyWhereInput {
 
   """All values not ending with the given string"""
   slug_not_ends_with: String
+  tags_every: TagWhereInput
+  tags_some: TagWhereInput
+  tags_none: TagWhereInput
 }
 
 """"""
@@ -4266,6 +4418,7 @@ input PostUpdateInput {
   excerpt: String
   pageRefs: PageUpdateOneInlineInput
   slug: String
+  tags: TagUpdateManyInlineInput
 }
 
 """"""
@@ -4578,6 +4731,9 @@ input PostWhereInput {
 
   """All values not ending with the given string"""
   slug_not_ends_with: String
+  tags_every: TagWhereInput
+  tags_some: TagWhereInput
+  tags_none: TagWhereInput
 }
 
 """References Post record uniquely"""
@@ -4928,6 +5084,69 @@ type Query {
 
   """Retrieve document version"""
   postVersion(where: VersionWhereInput!): DocumentVersion
+
+  """Retrieve multiple tags"""
+  tags(
+    where: TagWhereInput
+    orderBy: TagOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+    stage: Stage! = PUBLISHED
+
+    """
+    Defines which locales should be returned.
+    
+    Note that `Tag` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+    """
+    locales: [Locale!]! = [en]
+  ): [Tag!]!
+
+  """Retrieve a single tag"""
+  tag(
+    where: TagWhereUniqueInput!
+    stage: Stage! = PUBLISHED
+
+    """
+    Defines which locales should be returned.
+    
+    Note that `Tag` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+    """
+    locales: [Locale!]! = [en]
+  ): Tag
+
+  """Retrieve multiple tags using the Relay connection interface"""
+  tagsConnection(
+    where: TagWhereInput
+    orderBy: TagOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+    stage: Stage! = PUBLISHED
+
+    """
+    Defines which locales should be returned.
+    
+    Note that `Tag` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+    """
+    locales: [Locale!]! = [en]
+  ): TagConnection!
+
+  """Retrieve document version"""
+  tagVersion(where: VersionWhereInput!): DocumentVersion
 }
 
 """
@@ -4990,6 +5209,508 @@ enum SystemDateTimeFieldVariation {
   BASE
   LOCALIZATION
   COMBINED
+}
+
+""""""
+type Tag implements Node {
+  """System stage field"""
+  stage: Stage!
+
+  """Get the document in other stages"""
+  documentInStages(
+    """Potential stages that should be returned"""
+    stages: [Stage!]! = [PUBLISHED, DRAFT]
+
+    """Decides if the current stage should be included or not"""
+    includeCurrent: Boolean! = false
+
+    """
+    Decides if the documents should match the parent documents locale or should use the fallback order defined in the tree
+    """
+    inheritLocale: Boolean! = false
+  ): [Tag!]!
+
+  """The unique identifier"""
+  id: ID!
+
+  """The time the document was created"""
+  createdAt: DateTime!
+
+  """The time the document was updated"""
+  updatedAt: DateTime!
+
+  """The time the document was published. Null on documents in draft stage."""
+  publishedAt: DateTime
+  slug: String
+  postTags(
+    """
+    Allows to optionally override locale filtering behaviour in the query's subtree.
+    
+    Note that `postTags` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+    For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+    
+    This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+    """
+    locales: [Locale!]
+  ): Post
+
+  """List of Tag versions"""
+  history(
+    limit: Int! = 10
+    skip: Int! = 0
+
+    """
+    This is optional and can be used to fetch the document version history for a specific stage instead of the current one
+    """
+    stageOverride: Stage
+  ): [Version!]!
+}
+
+""""""
+input TagConnectInput {
+  """Document to connect"""
+  where: TagWhereUniqueInput!
+
+  """
+  Allow to specify document position in list of connected documents, will default to appending at end of list
+  """
+  position: ConnectPositionInput
+}
+
+"""A connection to a list of items."""
+type TagConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TagEdge!]!
+  aggregate: Aggregate!
+}
+
+""""""
+input TagCreateInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  slug: String
+  postTags: PostCreateOneInlineInput
+}
+
+""""""
+input TagCreateManyInlineInput {
+  """Create and connect multiple existing Tag documents"""
+  create: [TagCreateInput!]
+
+  """Connect multiple existing Tag documents"""
+  connect: [TagWhereUniqueInput!]
+}
+
+""""""
+input TagCreateOneInlineInput {
+  """Create and connect one Tag document"""
+  create: TagCreateInput
+
+  """Connect one existing Tag document"""
+  connect: TagWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type TagEdge {
+  """The item at the end of the edge."""
+  node: Tag!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+"""Identifies documents"""
+input TagManyWhereInput {
+  """Contains search across all appropriate fields."""
+  _search: String
+
+  """Logical AND on all given filters."""
+  AND: [TagWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TagWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TagWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string"""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  publishedAt: DateTime
+
+  """All values that are not equal to given value."""
+  publishedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  publishedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  publishedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  publishedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  publishedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  publishedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  publishedAt_gte: DateTime
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string"""
+  slug_not_ends_with: String
+  postTags: PostWhereInput
+}
+
+""""""
+enum TagOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  publishedAt_ASC
+  publishedAt_DESC
+  slug_ASC
+  slug_DESC
+}
+
+""""""
+input TagUpdateInput {
+  slug: String
+  postTags: PostUpdateOneInlineInput
+}
+
+""""""
+input TagUpdateManyInlineInput {
+  """Create and connect multiple Tag documents"""
+  create: [TagCreateInput!]
+
+  """Connect multiple existing Tag documents"""
+  connect: [TagConnectInput!]
+
+  """
+  Override currently-connected documents with multiple existing Tag documents
+  """
+  set: [TagWhereUniqueInput!]
+
+  """Update multiple Tag documents"""
+  update: [TagUpdateWithNestedWhereUniqueInput!]
+
+  """Upsert multiple Tag documents"""
+  upsert: [TagUpsertWithNestedWhereUniqueInput!]
+
+  """Disconnect multiple Tag documents"""
+  disconnect: [TagWhereUniqueInput!]
+
+  """Delete multiple Tag documents"""
+  delete: [TagWhereUniqueInput!]
+}
+
+""""""
+input TagUpdateManyInput {
+  """No fields in updateMany data input"""
+  _: String
+}
+
+""""""
+input TagUpdateManyWithNestedWhereInput {
+  """Document search"""
+  where: TagWhereInput!
+
+  """Update many input"""
+  data: TagUpdateManyInput!
+}
+
+""""""
+input TagUpdateOneInlineInput {
+  """Create and connect one Tag document"""
+  create: TagCreateInput
+
+  """Update single Tag document"""
+  update: TagUpdateWithNestedWhereUniqueInput
+
+  """Upsert single Tag document"""
+  upsert: TagUpsertWithNestedWhereUniqueInput
+
+  """Connect existing Tag document"""
+  connect: TagWhereUniqueInput
+
+  """Disconnect currently connected Tag document"""
+  disconnect: Boolean
+
+  """Delete currently connected Tag document"""
+  delete: Boolean
+}
+
+""""""
+input TagUpdateWithNestedWhereUniqueInput {
+  """Unique document search"""
+  where: TagWhereUniqueInput!
+
+  """Document to update"""
+  data: TagUpdateInput!
+}
+
+""""""
+input TagUpsertInput {
+  """Create document if it didn't exist"""
+  create: TagCreateInput!
+
+  """Update document if it exists"""
+  update: TagUpdateInput!
+}
+
+""""""
+input TagUpsertWithNestedWhereUniqueInput {
+  """Unique document search"""
+  where: TagWhereUniqueInput!
+
+  """Upsert data"""
+  data: TagUpsertInput!
+}
+
+"""Identifies documents"""
+input TagWhereInput {
+  """Contains search across all appropriate fields."""
+  _search: String
+
+  """Logical AND on all given filters."""
+  AND: [TagWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TagWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TagWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string"""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  publishedAt: DateTime
+
+  """All values that are not equal to given value."""
+  publishedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  publishedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  publishedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  publishedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  publishedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  publishedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  publishedAt_gte: DateTime
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string"""
+  slug_not_ends_with: String
+  postTags: PostWhereInput
+}
+
+"""References Tag record uniquely"""
+input TagWhereUniqueInput {
+  id: ID
+  slug: String
 }
 
 """"""
