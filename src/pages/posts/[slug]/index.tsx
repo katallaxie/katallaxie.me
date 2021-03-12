@@ -1,15 +1,15 @@
-import React from 'react'
 import { getPostStaticProps, PostProvider } from '@state/post'
-import { NextPage } from 'next'
-import { useRouter } from 'next/router'
+import { HeadProvider, MultiversalPageHeadProps } from '@state/head'
+import { MdxComponents as components } from '@components/mdx/Components'
 import { MdxProvider } from '@state/mdx'
-import MdxRenderer from '@components/layout/MdxRenderer'
+import { NextPage } from 'next'
 import { OnlyBrowserPageProps } from '@type/page/OnlyBrowserPageProps'
 import { SSGPageProps } from '@type/page/SSGPageProps'
-import { HeadProvider, MultiversalPageHeadProps } from '@state/head'
-import Head from '@components/layout/Head'
+import { useRouter } from 'next/router'
 import compose from '@utils/compose'
-import { MdxComponents as components } from '@components/mdx/Components'
+import Head from '@components/layout/Head'
+import MdxRenderer from '@components/layout/MdxRenderer'
+import React from 'react'
 
 type Props = SSGPageProps<
   Partial<OnlyBrowserPageProps> & Partial<MultiversalPageHeadProps>
