@@ -4361,7 +4361,7 @@ export type PageQuery = { __typename?: 'Query' } & {
             > & { pageSlug: Page['slug'] })
           | ({ __typename: 'Post' } & Pick<
               Post,
-              'title' | 'excerpt' | 'createdAt' | 'publishedAt'
+              'title' | 'excerpt' | 'createdAt' | 'publishedAt' | 'slug'
             >)
         >
         pageMenu?: Maybe<
@@ -4407,6 +4407,7 @@ export const PageDocument = gql`
           excerpt
           createdAt
           publishedAt
+          slug
         }
         ... on Link {
           linkTitle: title

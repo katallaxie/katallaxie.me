@@ -16,7 +16,10 @@ type Props = SSGPageProps<
 >
 export const getStaticProps = compose(getPostStaticProps)
 export const getStaticPaths = () => ({
-  paths: ['/posts/deploy-aws-cloudformation-stacks-with-github-actions'],
+  paths: [
+    '/posts/deploy-aws-cloudformation-stacks-with-github-actions',
+    '/posts/the-power-of-typescript-for-graphql-union-type'
+  ],
   fallback: false
 })
 

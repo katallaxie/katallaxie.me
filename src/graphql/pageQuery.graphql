@@ -18,6 +18,7 @@ query Page($slug: String = "home") {
         excerpt
         createdAt
         publishedAt
+        slug
       }
       ... on Link {
         linkTitle: title

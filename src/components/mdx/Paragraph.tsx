@@ -9,13 +9,7 @@ export interface ParagraphProps {
 export const Paragraph = forwardRef<HTMLParagraphElement>(
   ({ children, className, ...props }: ParagraphProps, ref) => {
     const styles = clsx(
-      [
-        'text-xl',
-        'leading-normal',
-        'text-justify',
-        'col-start-1',
-        'col-span-8'
-      ],
+      ['text-xl', 'leading-normal', 'col-start-1', 'col-span-8', 'py-6'],
       [className]
     )
 

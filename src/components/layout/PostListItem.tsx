@@ -1,10 +1,11 @@
 import React from 'react'
 import { Post } from 'src/generated-types'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 export type PostListItem = Pick<
   Post,
-  'title' | 'excerpt' | 'createdAt' | 'publishedAt'
+  'title' | 'excerpt' | 'createdAt' | 'publishedAt' | 'slug'
 >
 
 export interface PostListItemProps {
@@ -40,7 +41,11 @@ export const PostListItem = ({
 
   return (
     <div {...props}>
-      <h2 className={textStyle}>{post.title}</h2>
+      <Link href={`/posts/${post?.slug}`} {...props}>
+        <a>
+          <h2 className={textStyle}>{post.title}</h2>
+        </a>
+      </Link>
       <p className={dateStyle}>{formatDate}</p>
     </div>
   )
