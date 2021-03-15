@@ -1,5 +1,27 @@
 import React from 'react'
 import { useModal } from '@components/modal/Modal'
+import clsx from 'clsx'
+
+export const buttonStyle = clsx([
+  'lg:hidden',
+  'rounded-full',
+  'bg-white',
+  'text-black',
+  'px-4',
+  'py-1'
+])
+
+export const modalStyle = clsx([
+  'fixed',
+  'flex',
+  'justify-center',
+  'items-center',
+  'bg-black',
+  'top-0',
+  'bottom-0',
+  'right-0',
+  'left-0'
+])
 
 export const SayHi = (): JSX.Element => {
   const [show, close, Modal] = useModal()
@@ -7,18 +29,18 @@ export const SayHi = (): JSX.Element => {
   const handleClose = () => close()
 
   return (
-    <div>
-      <button className="text-lg md:text-xl lg:text-2xl" onClick={handleOpen}>
+    <>
+      <button className={buttonStyle} onClick={handleOpen}>
         Say Hi.
       </button>
       <Modal>
-        <div className="fixed flex justify-center items-center top-0 bottom-0 right-0 left-0">
+        <div className={modalStyle}>
           <div>
             <button onClick={handleClose}>Close</button>
           </div>
         </div>
       </Modal>
-    </div>
+    </>
   )
 }
 

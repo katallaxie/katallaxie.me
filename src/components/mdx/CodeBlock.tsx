@@ -14,8 +14,6 @@ export const CodeBlock = ({
 }: CodeProps): JSX.Element => {
   const language = className.replace(/language-/, '')
 
-  console.log(language)
-
   return (
     <SyntaxHighlighter language={language} style={irBlack} {...props}>
       {children}

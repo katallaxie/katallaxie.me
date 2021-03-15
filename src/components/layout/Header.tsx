@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import Link from 'next/link'
 import Logo from '../../svg/Logo.svg'
 import clsx from 'clsx'
+import SayHi from './SayHi'
 
 export interface HeaderProps {
   className?: string
@@ -40,9 +41,14 @@ const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
     [className]
   )
 
+  const wrap = clsx(['flex', 'w-full', 'justify-between', 'items-center'])
+
   return (
     <header className={styles} {...props}>
-      <HomeLink />
+      <div className={wrap}>
+        <HomeLink />
+        <SayHi />
+      </div>
     </header>
   )
 }
