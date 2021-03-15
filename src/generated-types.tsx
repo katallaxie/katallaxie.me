@@ -4341,6 +4341,18 @@ export enum _SystemDateTimeFieldVariation {
   Combined = 'combined'
 }
 
+export type ListPagesQueryVariables = Exact<{ [key: string]: never }>
+
+export type ListPagesQuery = { __typename?: 'Query' } & {
+  pages: Array<{ __typename?: 'Page' } & Pick<Page, 'slug'>>
+}
+
+export type ListPostsQueryVariables = Exact<{ [key: string]: never }>
+
+export type ListPostsQuery = { __typename?: 'Query' } & {
+  posts: Array<{ __typename?: 'Post' } & Pick<Post, 'slug'>>
+}
+
 export type PageQueryVariables = Exact<{
   slug?: Maybe<Scalars['String']>
 }>
@@ -4386,6 +4398,138 @@ export type PostQuery = { __typename?: 'Query' } & {
   >
 }
 
+export const ListPagesDocument = gql`
+  query ListPages {
+    pages {
+      slug
+    }
+  }
+`
+export type ListPagesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ListPagesQuery,
+    ListPagesQueryVariables
+  >,
+  'query'
+>
+
+export const ListPagesComponent = (props: ListPagesComponentProps) => (
+  <ApolloReactComponents.Query<ListPagesQuery, ListPagesQueryVariables>
+    query={ListPagesDocument}
+    {...props}
+  />
+)
+
+/**
+ * __useListPagesQuery__
+ *
+ * To run a query within a React component, call `useListPagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useListPagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useListPagesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useListPagesQuery(
+  baseOptions?: Apollo.QueryHookOptions<ListPagesQuery, ListPagesQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ListPagesQuery, ListPagesQueryVariables>(
+    ListPagesDocument,
+    options
+  )
+}
+export function useListPagesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ListPagesQuery,
+    ListPagesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ListPagesQuery, ListPagesQueryVariables>(
+    ListPagesDocument,
+    options
+  )
+}
+export type ListPagesQueryHookResult = ReturnType<typeof useListPagesQuery>
+export type ListPagesLazyQueryHookResult = ReturnType<
+  typeof useListPagesLazyQuery
+>
+export type ListPagesQueryResult = Apollo.QueryResult<
+  ListPagesQuery,
+  ListPagesQueryVariables
+>
+export const ListPostsDocument = gql`
+  query ListPosts {
+    posts {
+      slug
+    }
+  }
+`
+export type ListPostsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    ListPostsQuery,
+    ListPostsQueryVariables
+  >,
+  'query'
+>
+
+export const ListPostsComponent = (props: ListPostsComponentProps) => (
+  <ApolloReactComponents.Query<ListPostsQuery, ListPostsQueryVariables>
+    query={ListPostsDocument}
+    {...props}
+  />
+)
+
+/**
+ * __useListPostsQuery__
+ *
+ * To run a query within a React component, call `useListPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useListPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useListPostsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useListPostsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ListPostsQuery, ListPostsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ListPostsQuery, ListPostsQueryVariables>(
+    ListPostsDocument,
+    options
+  )
+}
+export function useListPostsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ListPostsQuery,
+    ListPostsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ListPostsQuery, ListPostsQueryVariables>(
+    ListPostsDocument,
+    options
+  )
+}
+export type ListPostsQueryHookResult = ReturnType<typeof useListPostsQuery>
+export type ListPostsLazyQueryHookResult = ReturnType<
+  typeof useListPostsLazyQuery
+>
+export type ListPostsQueryResult = Apollo.QueryResult<
+  ListPostsQuery,
+  ListPostsQueryVariables
+>
 export const PageDocument = gql`
   query Page($slug: String = "home") {
     page(where: { slug: $slug }, stage: PUBLISHED) {

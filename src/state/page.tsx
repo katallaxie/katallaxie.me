@@ -49,15 +49,15 @@ export const getPageStaticProps: TComposeFunction<
 
   const { errors, data } = await apolloClient.query(queryOptions)
 
-  const mdxSource = await renderToString(data?.page?.content, {
-    components,
-    provider: { component: PageContext.Provider, props: { value: data } }
-  })
-
   if (errors) {
     console.error(errors)
     throw new Error('Errors were detected in GraphQL query.')
   }
+
+  const mdxSource = await renderToString(data?.page?.content, {
+    components,
+    provider: { component: PageContext.Provider, props: { value: data } }
+  })
 
   return {
     props: {

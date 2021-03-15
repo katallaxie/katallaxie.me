@@ -27,6 +27,7 @@ const PostLayout = ({ children, ...props }: PostLayoutProps): JSX.Element => {
           <Content>{children}</Content>
         </Wrap>
       </Main>
+      <Footer />
     </>
   )
 }
