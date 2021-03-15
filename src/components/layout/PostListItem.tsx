@@ -12,12 +12,15 @@ export interface PostListItemProps {
   post?: PostListItem
 }
 
+export const itemStyle = clsx(['py-6'])
+
 export const textStyle = clsx([
   'text-2xl',
   'md:text-3xl',
   'lg:text-4xl',
   'font-normal'
 ])
+
 export const dateStyle = clsx([
   'text-2xl',
   'md:text-3xl',
@@ -40,7 +43,7 @@ export const PostListItem = ({
   }).format(date)
 
   return (
-    <div {...props}>
+    <div className={itemStyle} {...props}>
       <Link href={`/posts/${post?.slug}`} {...props}>
         <a>
           <h2 className={textStyle}>{post.title}</h2>

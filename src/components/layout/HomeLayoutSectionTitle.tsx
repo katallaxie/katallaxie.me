@@ -19,7 +19,7 @@ export const HomeLayoutSectionTitle = ({
       'font-normal',
       'text-gray-500',
       'py-8',
-      'md:py-12'
+      'md:py-8'
     ],
     [className]
   )
