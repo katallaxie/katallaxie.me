@@ -36,7 +36,7 @@ export const useModal = () => {
     <>{show && <Modal close={close}>{children}</Modal>}</>
   )
 
-  return [open, close, RenderModal] as const
+  return [open, close, RenderModal, show] as const
 }
 
 export default Modal

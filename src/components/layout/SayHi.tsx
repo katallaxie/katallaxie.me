@@ -1,6 +1,9 @@
 import React from 'react'
 import { useModal } from '@components/modal/Modal'
 import clsx from 'clsx'
+import MotionBox from '@components/animate/MotionBox'
+import MotionUnorderedList from '@components/animate/MotionUnorderedList'
+import MotionListItem from '@components/animate/MotionListItem'
 
 export const buttonStyle = clsx([
   'lg:hidden',
@@ -24,9 +27,24 @@ export const modalStyle = clsx([
 ])
 
 export const SayHi = (): JSX.Element => {
-  const [show, close, Modal] = useModal()
+  const [show, close, Modal, isVisible] = useModal()
   const handleOpen = () => show()
   const handleClose = () => close()
+
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
+
+  const item = {
+    visible: { opacity: 1, x: 0 },
+    hidden: { opacity: 0, x: -100 }
+  }
+
+  const list = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
 
   return (
     <>
@@ -34,11 +52,34 @@ export const SayHi = (): JSX.Element => {
         Say Hi.
       </button>
       <Modal>
-        <div className={modalStyle}>
+        <MotionBox
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          className={modalStyle}
+        >
           <div>
+            <MotionUnorderedList
+              initial="hidden"
+              animate="visible"
+              variants={list}
+            >
+              <MotionListItem variants={item}>
+                <a href="">GithUb</a>
+              </MotionListItem>
+              <MotionListItem variants={item}>
+                <a href="">GithUb</a>
+              </MotionListItem>
+              <MotionListItem variants={item}>
+                <a href="">GithUb</a>
+              </MotionListItem>
+              <MotionListItem variants={item}>
+                <a href="">GithUb</a>
+              </MotionListItem>
+            </MotionUnorderedList>
             <button onClick={handleClose}>Close</button>
           </div>
-        </div>
+        </MotionBox>
       </Modal>
     </>
   )
