@@ -6,28 +6,32 @@ import Main from './Main'
 import React from 'react'
 import usePostContext from '@hooks/usePost'
 import Meta from './PostLayoutMeta'
+import { MenuProvider } from '@state/menu'
 
 type PostLayoutProps = {
   children?: React.ReactNode
 }
 
 const PostLayout = ({ children, ...props }: PostLayoutProps): JSX.Element => {
-  const { post } = usePostContext()
+  const { post, menu } = usePostContext()
 
   return (
     <>
-      <Header />
-      <Main {...props}>
-        <Wrap>
-          <Meta
-            createdAt={post?.createdAt}
-            tags={post?.tags}
-            title={post?.title}
-          />
-          <Content>{children}</Content>
-        </Wrap>
-      </Main>
-      <Footer />
+      <MenuProvider data={menu?.menu}>
+        <Header />
+        <Main {...props}>
+          <Wrap>
+            <Meta
+              createdAt={post?.createdAt}
+              tags={post?.tags}
+              title={post?.title}
+            />
+            <Content>{children}</Content>
+          </Wrap>
+        </Main>
+        <Footer />
+      </MenuProvider>
+      <div id="modal-root"></div>
     </>
   )
 }
