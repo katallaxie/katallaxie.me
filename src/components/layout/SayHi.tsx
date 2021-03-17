@@ -91,7 +91,7 @@ export const SayHi = (): JSX.Element => {
               variants={list}
               className={menuListStyle}
             >
-              {menu.map((menuItem, i) => (
+              {menu?.map((menuItem, i) => (
                 <MotionListItem
                   key={i}
                   variants={item}

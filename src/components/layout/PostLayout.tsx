@@ -28,8 +28,8 @@ const PostLayout = ({ children, ...props }: PostLayoutProps): JSX.Element => {
             />
             <Content>{children}</Content>
           </Wrap>
+          <Footer />
         </Main>
-        <Footer />
       </MenuProvider>
       <div id="modal-root"></div>
     </>
