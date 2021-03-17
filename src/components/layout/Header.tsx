@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Logo from '../../svg/Logo.svg'
 import clsx from 'clsx'
 import SayHi from './SayHi'
+import MotionBox from '@components/animate/MotionBox'
 
 export interface HeaderProps {
   className?: string
@@ -43,11 +44,18 @@ const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 
   const wrap = clsx(['flex', 'w-full', 'justify-between', 'items-center'])
 
+  const variants = {
+    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: 0, scale: 0 }
+  }
+
   return (
     <header className={styles} {...props}>
       <div className={wrap}>
         <HomeLink />
-        <SayHi />
+        <MotionBox initial="hidden" animate="visible" variants={variants}>
+          <SayHi />
+        </MotionBox>
       </div>
     </header>
   )

@@ -4396,6 +4396,11 @@ export type PostQuery = { __typename?: 'Query' } & {
       'id' | 'title' | 'slug' | 'content' | 'createdAt' | 'updatedAt'
     > & { tags: Array<{ __typename?: 'Tag' } & Pick<Tag, 'slug'>> }
   >
+  menu?: Maybe<
+    { __typename?: 'Menu' } & {
+      menu: Array<{ __typename?: 'Link' } & Pick<Link, 'title' | 'href'>>
+    }
+  >
 }
 
 export const ListPagesDocument = gql`
@@ -4627,6 +4632,14 @@ export const PostDocument = gql`
       updatedAt
       tags {
         slug
+      }
+    }
+    menu(where: { title: "contact" }) {
+      menu {
+        ... on Link {
+          title
+          href
+        }
       }
     }
   }

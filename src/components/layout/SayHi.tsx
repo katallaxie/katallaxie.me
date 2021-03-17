@@ -4,6 +4,8 @@ import clsx from 'clsx'
 import MotionBox from '@components/animate/MotionBox'
 import MotionUnorderedList from '@components/animate/MotionUnorderedList'
 import MotionListItem from '@components/animate/MotionListItem'
+import ActionButton from '@components/elements/ActionButton'
+import { useMenuContext } from '@state/menu'
 
 export const buttonStyle = clsx([
   'lg:hidden',
@@ -18,6 +20,7 @@ export const modalStyle = clsx([
   'fixed',
   'flex',
   'justify-center',
+  'flex-col',
   'items-center',
   'bg-black',
   'top-0',
@@ -26,10 +29,22 @@ export const modalStyle = clsx([
   'left-0'
 ])
 
+export const menuListStyle = clsx('text-center')
+export const menuItemStyle = clsx(['text-4xl', 'p-4'])
+export const actionButtonStyle = clsx([
+  'text-2xl',
+  'p-4',
+  'border-t-2',
+  'hover:bg-white',
+  'hover:text-black',
+  'w-full'
+])
+
 export const SayHi = (): JSX.Element => {
-  const [show, close, Modal, isVisible] = useModal()
+  const [show, close, Modal] = useModal()
   const handleOpen = () => show()
   const handleClose = () => close()
+  const menu = useMenuContext()
 
   const variants = {
     visible: { opacity: 1 },
@@ -37,13 +52,24 @@ export const SayHi = (): JSX.Element => {
   }
 
   const item = {
-    visible: { opacity: 1, x: 0 },
-    hidden: { opacity: 0, x: -100 }
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -100 }
   }
 
   const list = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 }
+    visible: {
+      opacity: 1,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.1
+      }
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: 'afterChildren'
+      }
+    }
   }
 
   return (
@@ -58,27 +84,28 @@ export const SayHi = (): JSX.Element => {
           variants={variants}
           className={modalStyle}
         >
-          <div>
+          <div className="flex items-center h-full">
             <MotionUnorderedList
               initial="hidden"
               animate="visible"
               variants={list}
+              className={menuListStyle}
             >
-              <MotionListItem variants={item}>
-                <a href="">GithUb</a>
-              </MotionListItem>
-              <MotionListItem variants={item}>
-                <a href="">GithUb</a>
-              </MotionListItem>
-              <MotionListItem variants={item}>
-                <a href="">GithUb</a>
-              </MotionListItem>
-              <MotionListItem variants={item}>
-                <a href="">GithUb</a>
-              </MotionListItem>
+              {menu.map((menuItem, i) => (
+                <MotionListItem
+                  key={i}
+                  variants={item}
+                  className={menuItemStyle}
+                >
+                  <a href={menuItem.href}>{menuItem.title}</a>
+                </MotionListItem>
+              ))}
             </MotionUnorderedList>
-            <button onClick={handleClose}>Close</button>
           </div>
+          <ActionButton
+            onClick={handleClose}
+            className={actionButtonStyle}
+          ></ActionButton>
         </MotionBox>
       </Modal>
     </>

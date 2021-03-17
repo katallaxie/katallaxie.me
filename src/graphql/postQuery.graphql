@@ -10,4 +10,12 @@ query Post($slug: String) {
       slug
     }
   }
+  menu(where: {title: "contact"}) {
+    menu {
+      ...on Link {
+        title
+        href
+      }
+    }
+  }
 }

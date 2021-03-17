@@ -11,6 +11,7 @@ import HomeLayoutWrapper from './HomeLayoutWrapper'
 import HomeLayoutContext from './HomeLayoutContext'
 import HomeLayoutContent from './HomeLayoutContent'
 import Footer from './Footer'
+import { MenuProvider } from '@state/menu'
 
 interface HomeLayoutProps {
   children?: React.ReactNode
@@ -28,20 +29,22 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
 
   return (
     <>
-      <Header />
-      <Container>
-        <HomeLayoutWrapper>
-          <HomeLayoutContext>
-            <PageList pages={pages} />
-            <MenuList links={menuItem} />
-          </HomeLayoutContext>
-          <HomeLayoutContent>
-            <PostList posts={posts} />
-            <ProjectList projects={links} />
-            <Footer />
-          </HomeLayoutContent>
-        </HomeLayoutWrapper>
-      </Container>
+      <MenuProvider data={menuItem}>
+        <Header />
+        <Container>
+          <HomeLayoutWrapper>
+            <HomeLayoutContext>
+              <PageList pages={pages} />
+              <MenuList />
+            </HomeLayoutContext>
+            <HomeLayoutContent>
+              <PostList posts={posts} />
+              <ProjectList projects={links} />
+              <Footer />
+            </HomeLayoutContent>
+          </HomeLayoutWrapper>
+        </Container>
+      </MenuProvider>
       <div id="modal-root"></div>
     </>
   )
