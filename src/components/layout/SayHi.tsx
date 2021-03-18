@@ -8,12 +8,25 @@ import ActionButton from '@components/elements/ActionButton'
 import { useMenuContext } from '@state/menu'
 
 export const buttonStyle = clsx([
-  'lg:hidden',
+  'border-2',
+  'ease-linear',
+  'focus:outline-none',
+  'font-bold',
+  'hover:bg-white',
+  'hover:text-black',
+  'lg:px-8',
+  'lg:text-xl',
+  'md:text-lg',
+  'motion-safe:animate-zoomIn',
+  'px-6',
+  'py-1',
+  'bg-black',
   'rounded-full',
-  'bg-white',
-  'text-black',
-  'px-4',
-  'py-1'
+  'text-white',
+  'text',
+  'transform-gpu',
+  'transition',
+  'xl:text-2xl'
 ])
 
 export const modalStyle = clsx([
@@ -74,9 +87,7 @@ export const SayHi = (): JSX.Element => {
 
   return (
     <>
-      <button className={buttonStyle} onClick={handleOpen}>
-        Say Hi.
-      </button>
+      <button className={buttonStyle}>Say Hi.</button>
       <Modal>
         <MotionBox
           initial="hidden"

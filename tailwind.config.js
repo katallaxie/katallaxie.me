@@ -19,10 +19,30 @@ module.exports = {
         black: colors.black,
         white: colors.white,
         gray: colors.trueGray
+      },
+      animation: {
+        fadeIn: 'fadeIn 2s ease-in forwards',
+        slideInLeft: 'slideInLeft 0.5s ease-in forwards',
+        zoomIn: 'zoomIn 150ms ease-in forwars'
+      },
+      keyframes: {
+        slideInLeft: {
+          '0%': { opacity: 0, left: '-100px' },
+          '100%': { opacity: 1, left: 0 }
+        },
+        zoomIn: {
+          '0%': { scale: 0 },
+          '100%': { scale: 1 }
+        },
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 }
+        }
       }
     }
   },
   variants: {
+    animation: ['motion-safe'],
     extend: {}
   },
   plugins: []

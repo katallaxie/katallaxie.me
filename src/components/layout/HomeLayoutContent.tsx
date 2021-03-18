@@ -8,10 +8,11 @@ type DefaultLayouContentProps = {
 const contentStyle = clsx([
   'flex-1',
   'lg:pl-12',
-  'lg:py-24',
+  'lg:py-64',
   'lg:border-l',
   'lg:border-gray-800',
-  'xl:py-36'
+  'min-h-screen',
+  'xl:py-64'
 ])
 
 const DefaultLayoutContent = ({

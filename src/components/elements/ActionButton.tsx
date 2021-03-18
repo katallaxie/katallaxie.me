@@ -1,24 +1,14 @@
 import React from 'react'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 
-export interface ActionButtonProps {
-  children?: React.ReactNode
-  className?: string
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
-}
-
-export const ActionButton = ({
-  children,
-  className,
-  onClick,
-  ...props
-}: ActionButtonProps): JSX.Element => {
-  const style = clsx([className])
+export const ActionButton = ({ ...props }): JSX.Element => {
+  const style = clsx([props.className])
 
   return (
-    <button className={style} onClick={onClick} {...props}>
-      {children ?? `Close`}
-    </button>
+    <motion.button className={style} {...props}>
+      {props.children ?? `Close`}
+    </motion.button>
   )
 }
 

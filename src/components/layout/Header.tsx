@@ -9,10 +9,21 @@ export interface HeaderProps {
   className?: string
 }
 
+export const linkStyle = clsx([
+  'w-24',
+  'md:w-24',
+  'lg:w-28',
+  'xl:32',
+  'block',
+  'h-full',
+  'transition',
+  'transform-gpu'
+])
+
 export const HomeLink = forwardRef<HTMLAnchorElement>(({ ...props }, ref) => {
   return (
     <Link href="/" {...props} passHref>
-      <a ref={ref}>
+      <a ref={ref} className={linkStyle}>
         <Logo />
       </a>
     </Link>
@@ -37,7 +48,8 @@ const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
       'py-16',
       'right-0',
       'xl:px-24',
-      'xl:py-24'
+      'xl:py-24',
+      'z-50'
     ],
     [className]
   )

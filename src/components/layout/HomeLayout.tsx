@@ -29,7 +29,8 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
 
   return (
     <>
-      <MenuProvider data={menuItem}>
+      <Container>Test</Container>
+      {/* <MenuProvider data={menuItem}>
         <Header />
         <Container>
           <HomeLayoutWrapper>
@@ -44,7 +45,7 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
             </HomeLayoutContent>
           </HomeLayoutWrapper>
         </Container>
-      </MenuProvider>
+      </MenuProvider> */}
       <div id="modal-root"></div>
     </>
   )

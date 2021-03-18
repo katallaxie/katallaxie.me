@@ -6,7 +6,7 @@ export interface CopyrightProps {
 }
 
 const Copyright = ({ className, ...props }: CopyrightProps): JSX.Element => {
-  const style = clsx(['col-span-full'], [className])
+  const style = clsx(['col-span-full', 'self-end'], [className])
   const date = new Date()
   const formatDate = new Intl.DateTimeFormat('en-US', {
     year: 'numeric'
