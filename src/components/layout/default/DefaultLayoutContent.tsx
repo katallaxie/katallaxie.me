@@ -12,7 +12,13 @@ const DefaultLayoutContent = ({
   ...props
 }: DefaultLayoutContentProps): JSX.Element => {
   const styles = clsx(
-    ['col-span-10', 'xl:col-span-11', 'overflow-y-auto'],
+    [
+      'col-span-full',
+      'md:mt-0',
+      'md:col-span-10',
+      'xl:col-span-11',
+      'md:overflow-y-auto'
+    ],
     [className]
   )
 

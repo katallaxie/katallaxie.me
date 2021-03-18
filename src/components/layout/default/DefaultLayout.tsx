@@ -23,9 +23,9 @@ const DefaultLayout = ({
       'grid',
       'gap-4',
       'grid-cols-12',
-      'h-screen',
-      'w-screen',
-      'overflow-hidden'
+      'md:h-screen',
+      'md:w-screen',
+      'md:overflow-hidden'
     ],
     [className]
   )

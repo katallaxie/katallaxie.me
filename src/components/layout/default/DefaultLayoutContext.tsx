@@ -12,7 +12,13 @@ const DefaultLayoutContext = ({
   ...props
 }: DefaultLayoutContextProps): JSX.Element => {
   const styles = clsx(
-    ['col-span-2', 'xl:col-span-1', 'border-r', 'border-gray-700'],
+    [
+      'col-span-full',
+      'md:col-span-2',
+      'xl:col-span-1',
+      'md:border-r',
+      'md:border-gray-700'
+    ],
     [className]
   )
 

@@ -11,9 +11,6 @@ export interface HeaderProps {
 
 export const linkStyle = clsx([
   'w-24',
-  'md:w-24',
-  'lg:w-28',
-  'xl:32',
   'block',
   'h-full',
   'transition',
