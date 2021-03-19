@@ -1,7 +1,7 @@
 import { H1, H2, H3 } from './Heading'
 import Blockquote from './Blockquote'
 import CodeBlock from './CodeBlock'
-import DefaultLayout from '@components/layout/PostLayout'
+import DefaultLayout from '@components/layout/post/PostLayout'
 import Link from './Link'
 import Paragraph from './Paragraph'
 import UnorderedList from './UnorderedList'

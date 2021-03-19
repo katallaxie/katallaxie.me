@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import type { Tag } from '../../generated-types'
+import type { Tag } from '../../../generated-types'
 
 export type LayoutTag = Pick<Tag, 'slug'>
 

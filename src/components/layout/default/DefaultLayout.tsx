@@ -1,10 +1,8 @@
 import React from 'react'
-import useLayoutContext from '@hooks/useLayout'
 import Content from '@components/layout/default/DefaultLayoutContent'
 import Context from '@components/layout/default/DefaultLayoutContext'
 import Nav from '@components/layout/default/DefaultLayoutNav'
 import { useMenuContext } from '@state/menu'
-import { guardFactory } from '@utils/graphql'
 import clsx from 'clsx'
 
 interface DefaultLayoutProps {
@@ -17,8 +15,7 @@ const DefaultLayout = ({
   className,
   ...props
 }: DefaultLayoutProps): JSX.Element => {
-  const { page } = useLayoutContext()
-  const { show } = useMenuContext()
+  const { show, items } = useMenuContext()
 
   const styles = clsx(
     [
@@ -47,17 +44,13 @@ const DefaultLayout = ({
       'transform-gpu',
       'w-3/12',
       'h-screen',
-      'opacity-1',
-      'overflow-hidden'
+      'opacity-100',
+      'overflow-hidden',
+      'border-r',
+      'border-gray-700',
+      'py-12'
     ],
-    { 'translate-x-0': show, '-translate-x-full': !show }
-  )
-
-  const pages = page?.refs.filter(guardFactory('__typename', 'Page'))
-  const posts = page?.refs.filter(guardFactory('__typename', 'Post'))
-  const links = page?.refs.filter(guardFactory('__typename', 'Link'))
-  const menuItem = page?.pageMenu?.menu.filter(
-    guardFactory('__typename', 'Link')
+    { 'translate-x-0': show, 'opacity-0': show, '-translate-x-full': !show }
   )
 
   return (
@@ -68,7 +61,19 @@ const DefaultLayout = ({
         </Context>
         <Content>{children}</Content>
       </div>
-      <div className={sidebar}>Hello</div>
+      <div className={sidebar}>
+        <ul>
+          {items.map((item, i) => (
+            <a
+              key={i}
+              href={item.href}
+              className="text-gray-500 text-4xl font-semibold hover:text-white"
+            >
+              <li className="border-b border-gray-700 p-6">{item.title}</li>
+            </a>
+          ))}
+        </ul>
+      </div>
       <div id="modal-root"></div>
     </>
   )

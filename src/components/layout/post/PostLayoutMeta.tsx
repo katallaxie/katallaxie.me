@@ -1,5 +1,4 @@
 import React from 'react'
-import Wrap from './DefaultLayoutWrap'
 import clsx from 'clsx'
 import Tags from './PostLayoutTags'
 import Date from './PostLayoutDate'

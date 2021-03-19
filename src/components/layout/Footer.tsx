@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import Wrap from './PostLayoutWrap'
 import Copyright from './Copyright'
 
 export const footerStyle = clsx(['py-16', 'xl:pt-24', 'text-gray-500'])
@@ -14,11 +13,9 @@ export const headingStyle = clsx([
 const Footer = (): JSX.Element => {
   return (
     <footer className={footerStyle}>
-      <Wrap>
-        <h3 className={headingStyle}>Good Bye.</h3>
-        {/* <MenuList /> */}
-        <Copyright />
-      </Wrap>
+      <h3 className={headingStyle}>Good Bye.</h3>
+      {/* <MenuList /> */}
+      <Copyright />
     </footer>
   )
 }

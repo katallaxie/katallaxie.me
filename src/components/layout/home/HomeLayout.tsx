@@ -29,7 +29,7 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
 
   return (
     <>
-      <MenuProvider>
+      <MenuProvider items={menuItem}>
         <DefaultLayout>
           <Wrap>
             <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 py-24 ">

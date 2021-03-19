@@ -23,7 +23,7 @@ module.exports = {
       animation: {
         fadeIn: 'fadeIn 2s ease-in forwards',
         slideInLeft: 'slideInLeft 0.5s ease-in forwards',
-        zoomIn: 'zoomIn 150ms ease-in forwars'
+        zoomIn: 'zoomIn 2s ease-in forwars'
       },
       keyframes: {
         slideInLeft: {
