@@ -10,6 +10,7 @@ import PageList from '@components/layout/PageList'
 import PostList from '@components/layout/PostList'
 import ProjectList from '@components/layout/ProjectList'
 import Footer from '@components/layout/Footer'
+import { MenuProvider } from '@state/menu'
 import { guardFactory } from '@utils/graphql'
 
 interface HomeLayoutProps {
@@ -28,21 +29,23 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
 
   return (
     <>
-      <DefaultLayout>
-        <Wrap>
-          <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 py-24 ">
-            <Header>
-              <HomeLink />
-            </Header>
-            <PageList pages={pages} />
-          </Container>
-          <Container className="col-span-full lg:col-span-10 xl:border-l xl:border-gray-700 xl:col-start-5 py-12 px-8 xl:pr-12 xl:pl-24 xl:col-span-7">
-            <PostList posts={posts} />
-            <ProjectList projects={links} />
-            <Footer />
-          </Container>
-        </Wrap>
-      </DefaultLayout>
+      <MenuProvider>
+        <DefaultLayout>
+          <Wrap>
+            <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 py-24 ">
+              <Header>
+                <HomeLink />
+              </Header>
+              <PageList pages={pages} />
+            </Container>
+            <Container className="col-span-full lg:col-span-10 xl:border-l xl:border-gray-700 xl:col-start-5 py-12 px-8 xl:pr-12 xl:pl-24 xl:col-span-7">
+              <PostList posts={posts} />
+              <ProjectList projects={links} />
+              <Footer />
+            </Container>
+          </Wrap>
+        </DefaultLayout>
+      </MenuProvider>
     </>
   )
 }

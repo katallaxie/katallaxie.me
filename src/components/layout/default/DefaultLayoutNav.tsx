@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import { useMenuContext } from '@state/menu'
 
 export interface DefaultLayoutNavProps {
   className?: string
@@ -10,6 +11,8 @@ export const DefaultLayoutNav = ({
   className,
   children
 }: DefaultLayoutNavProps): JSX.Element => {
+  const { toggle } = useMenuContext()
+
   const style = clsx(
     ['md:w-full', 'fixed', 'right-0', 'top-0', 'md:relative', 'md:h-full'],
     [className]
@@ -17,14 +20,17 @@ export const DefaultLayoutNav = ({
 
   return (
     <div className={style}>
-      <button className="focus:outline-none, text-gray-500 hover:text-white flex justify-end w-full h-full hover:text-white md:py-12 py-6 px-6">
+      <button
+        className="focus:outline-none text-gray-500 hover:text-white flex justify-end w-full h-full hover:text-white md:py-12 py-6 px-6"
+        onClick={toggle}
+      >
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="w-12"
+            className="w-12 bg-black"
           >
             <path
               strokeLinecap="square"

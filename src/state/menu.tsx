@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { MenuListItem } from '@components/layout/MenuListItem'
 
-export type Menu = Array<MenuListItem>
+export interface Menu {
+  items?: Array<MenuListItem>
+  show?: boolean
+  toggle?: VoidFunction
+  open?: VoidFunction
+  close?: VoidFunction
+}
+
 export const MenuContext = React.createContext<Menu | null>(null)
 
 export const useMenuContext = (): Menu =>
@@ -9,15 +16,24 @@ export const useMenuContext = (): Menu =>
 
 export interface MenuProviderProps {
   children?: React.ReactNode
-  data?: Menu
+  items?: Array<MenuListItem>
 }
 
 export const MenuProvider = ({
-  data,
+  items,
   children
-}: MenuProviderProps): JSX.Element => (
-  <MenuContext.Provider value={data}>{children}</MenuContext.Provider>
-)
+}: MenuProviderProps): JSX.Element => {
+  const [show, setShow] = useState(false)
+  const open = () => setShow(true)
+  const close = () => setShow(false)
+  const toggle = () => setShow(!show)
+
+  return (
+    <MenuContext.Provider value={{ items, open, show, close, toggle }}>
+      {children}
+    </MenuContext.Provider>
+  )
+}
 
 export const MenuConsumer = MenuContext.Consumer
 export default MenuContext
