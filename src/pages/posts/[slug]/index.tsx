@@ -1,6 +1,6 @@
 import { getPostStaticProps, PostProvider } from '@state/post'
 import { HeadProvider, MultiversalPageHeadProps } from '@state/head'
-import { MdxComponents as components } from '@components/mdx/Components'
+import { MdxComponents as components } from '@components/mdx/post/Components'
 import { ListPostsDocument } from '../../../generated-types'
 import { initializeApollo } from '@utils/apollo'
 import { MdxProvider } from '@state/mdx'

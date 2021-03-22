@@ -5,6 +5,7 @@ import { NextPage } from 'next'
 import { OnlyBrowserPageProps } from '@type/page/OnlyBrowserPageProps'
 import { SSGPageProps } from '@type/page/SSGPageProps'
 import { HeadProvider, MultiversalPageHeadProps } from '@state/head'
+import { MdxComponents as components } from '@components/mdx/page/Components'
 import Head from '@components/layout/Head'
 import compose from '@utils/compose'
 import MdxRenderer from '@components/layout/MdxRenderer'
@@ -22,7 +23,7 @@ const Home: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
         <HeadProvider data={head}>
           <Head />
           <MdxProvider source={mdxSource}>
-            <MdxRenderer />
+            <MdxRenderer components={components} />
           </MdxProvider>
         </HeadProvider>
       </PageProvider>

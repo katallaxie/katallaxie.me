@@ -1,4 +1,4 @@
-import { DefaultComponents as components } from '@components/layout/MdxRenderer'
+import { MdxComponents as components } from '@components/mdx/page/Components'
 import { initializeApollo } from '@utils/apollo'
 import { PageDocument, PageQuery } from '../generated-types'
 import { MultiversalPageHeadProps } from './head'
@@ -26,7 +26,7 @@ export const PageProvider = ({
     }
   }
 
-  const { data } = useQuery(PageDocument, queryOptions)
+  const { data, error } = useQuery(PageDocument, queryOptions)
 
   return <PageContext.Provider value={data}>{children}</PageContext.Provider>
 }

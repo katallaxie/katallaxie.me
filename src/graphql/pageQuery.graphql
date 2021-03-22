@@ -35,4 +35,12 @@ query Page($slug: String = "home") {
       }
     }
   }
+  menu(where: {title: "contact"}) {
+    menu {
+      ...on Link {
+        title
+        href
+      }
+    }
+  }
 }

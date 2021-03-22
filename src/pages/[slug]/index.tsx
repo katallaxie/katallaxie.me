@@ -1,6 +1,7 @@
 import React from 'react'
 import { getPageStaticProps, PageProvider } from '@state/page'
 import { MdxProvider } from '@state/mdx'
+import { MdxComponents as components } from '@components/mdx/page/Components'
 import { NextPage } from 'next'
 import { ListPagesDocument } from '../../generated-types'
 import { initializeApollo } from '@utils/apollo'
@@ -37,7 +38,7 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false }
 }
 
-const Home: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
+const Page: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
   const { query } = useRouter()
 
   return (
@@ -45,11 +46,11 @@ const Home: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
       <HeadProvider data={head}>
         <Head />
         <MdxProvider source={mdxSource}>
-          <MdxRenderer />
+          <MdxRenderer components={components} />
         </MdxProvider>
       </HeadProvider>
     </PageProvider>
   )
 }
 
-export default Home
+export default Page

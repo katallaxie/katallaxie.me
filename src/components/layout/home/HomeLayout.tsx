@@ -2,7 +2,7 @@ import React from 'react'
 import Header, {
   HomeLink
 } from '@components/layout/default/DefaultLayoutHeader'
-import useLayoutContext from '@hooks/useLayout'
+import usePageContext from '@hooks/usePage'
 import DefaultLayout from '@components/layout/default/DefaultLayout'
 import Container from '@components/layout/default/DefaultLayoutContainer'
 import Wrap from '@components/layout/default/DefaultLayoutWrap'
@@ -18,7 +18,7 @@ interface HomeLayoutProps {
 }
 
 const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
-  const { page } = useLayoutContext()
+  const { page } = usePageContext()
 
   const pages = page?.refs.filter(guardFactory('__typename', 'Page'))
   const posts = page?.refs.filter(guardFactory('__typename', 'Post'))
@@ -32,7 +32,7 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
       <MenuProvider items={menuItem}>
         <DefaultLayout>
           <Wrap>
-            <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 py-24 ">
+            <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 py-24">
               <Header>
                 <HomeLink />
               </Header>

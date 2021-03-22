@@ -1,16 +1,16 @@
 import React from 'react'
 import clsx from 'clsx'
 
-type PostLayoutContextProps = {
+type PostLayoutContentProps = {
   children: React.ReactNode
 }
 
 const contextStyle = clsx(['col-span-7'])
 
-const PostLayoutContext = ({
+const PostLayoutContent = ({
   children,
   ...props
-}: PostLayoutContextProps): JSX.Element => {
+}: PostLayoutContentProps): JSX.Element => {
   return (
     <div className={contextStyle} {...props}>
       {children}
@@ -18,4 +18,4 @@ const PostLayoutContext = ({
   )
 }
 
-export default PostLayoutContext
+export default PostLayoutContent

@@ -1,4 +1,4 @@
-import { MdxComponents as components } from '@components/mdx/Components'
+import { MdxComponents as components } from '@components/mdx/post/Components'
 import { initializeApollo } from '@utils/apollo'
 import { PostDocument, PostQuery } from '../generated-types'
 import { MultiversalPageHeadProps } from './head'
@@ -49,15 +49,15 @@ export const getPostStaticProps: TComposeFunction<
 
   const { errors, data } = await apolloClient.query(queryOptions)
 
-  const mdxSource = await renderToString(data?.post?.content, {
-    components,
-    provider: { component: PostContext.Provider, props: { value: data } }
-  })
-
   if (errors) {
     console.error(errors)
     throw new Error('Errors were detected in GraphQL query.')
   }
+
+  const mdxSource = await renderToString(data?.post?.content, {
+    components,
+    provider: { component: PostContext.Provider, props: { value: data } }
+  })
 
   return {
     props: {

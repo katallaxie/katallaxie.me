@@ -2,6 +2,7 @@ import { H1, H2, H3 } from './Heading'
 import Blockquote from './Blockquote'
 import CodeBlock from './CodeBlock'
 import DefaultLayout from '@components/layout/post/PostLayout'
+import Container from '@components/layout/default/DefaultLayoutContainer'
 import Link from './Link'
 import Paragraph from './Paragraph'
 import UnorderedList from './UnorderedList'
@@ -23,6 +24,11 @@ export const MdxComponents: MdxRenderComponents = {
   h1: H1,
   h2: H2,
   h3: H3
+}
+
+export const MdxPageComponents: MdxRenderComponents = {
+  DefaultLayout,
+  Container
 }
 
 export default MdxComponents

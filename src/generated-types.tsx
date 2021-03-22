@@ -4383,6 +4383,11 @@ export type PageQuery = { __typename?: 'Query' } & {
         >
       }
   >
+  menu?: Maybe<
+    { __typename?: 'Menu' } & {
+      menu: Array<{ __typename?: 'Link' } & Pick<Link, 'title' | 'href'>>
+    }
+  >
 }
 
 export type PostQueryVariables = Exact<{
@@ -4570,6 +4575,14 @@ export const PageDocument = gql`
             title
             href
           }
+        }
+      }
+    }
+    menu(where: { title: "contact" }) {
+      menu {
+        ... on Link {
+          title
+          href
         }
       }
     }
