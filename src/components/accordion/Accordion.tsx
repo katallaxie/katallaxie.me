@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import clsx from 'clsx'
 import type { AccordionTabProps } from './AccordionTab'
 
 export interface AccordionProps {
@@ -8,6 +9,7 @@ export interface AccordionProps {
 
 export const Accordion = ({ children, name }: AccordionProps): JSX.Element => {
   const [tab, setTab] = useState(0)
+  const styles = clsx(['py-12'])
 
   const tabs = React.Children.map(
     children,
@@ -21,7 +23,7 @@ export const Accordion = ({ children, name }: AccordionProps): JSX.Element => {
     }
   )
 
-  return <div>{tabs}</div>
+  return <div className={styles}>{tabs}</div>
 }
 
 export default Accordion

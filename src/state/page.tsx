@@ -26,7 +26,7 @@ export const PageProvider = ({
     }
   }
 
-  const { data, error } = useQuery(PageDocument, queryOptions)
+  const { data } = useQuery(PageDocument, queryOptions)
 
   return <PageContext.Provider value={data}>{children}</PageContext.Provider>
 }
