@@ -8,11 +8,15 @@ import UnorderedList from './UnorderedList'
 import UnorderedListItem from './UnorderedListItem'
 import UnorderedListHeading from './UnorderedListHeading'
 import HomeLayout from '@components/layout/home/HomeLayout'
+import Accordion from '@components/accordion/Accordion'
+import AccordionTab from '@components/accordion/AccordionTab'
 import type { MdxRenderComponents } from '@components/layout/MdxRenderer'
 
 export const MdxComponents: MdxRenderComponents = {
   PageLayout,
   HomeLayout,
+  Accordion,
+  AccordionTab,
   Wrap,
   Container,
   Section,
