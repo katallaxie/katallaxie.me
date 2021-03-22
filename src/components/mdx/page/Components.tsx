@@ -11,6 +11,7 @@ import HomeLayout from '@components/layout/home/HomeLayout'
 import Accordion from '@components/accordion/Accordion'
 import AccordionTab from '@components/accordion/AccordionTab'
 import type { MdxRenderComponents } from '@components/layout/MdxRenderer'
+import { H1, H2, H3 } from '@components/mdx/post/Heading'
 
 export const MdxComponents: MdxRenderComponents = {
   PageLayout,
@@ -24,7 +25,10 @@ export const MdxComponents: MdxRenderComponents = {
   Emphasize,
   UnorderedList,
   UnorderedListItem,
-  UnorderedListHeading
+  UnorderedListHeading,
+  H1,
+  H2,
+  H3
 }
 
 export default MdxComponents
