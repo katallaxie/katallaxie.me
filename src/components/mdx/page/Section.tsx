@@ -7,9 +7,12 @@ export interface SectionProps {
 }
 
 export const Section = ({ children, className }: SectionProps): JSX.Element => {
-  const style = clsx(['md:grid', 'md:grid-cols-12'], [className])
+  const style = clsx(
+    ['md:grid', 'md:grid-cols-12', 'pt-6', 'pb-6'],
+    [className]
+  )
 
-  return <div className={style}>{children}</div>
+  return <section className={style}>{children}</section>
 }
 
 export default Section

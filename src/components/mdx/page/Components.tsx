@@ -21,12 +21,14 @@ import {
   H4,
   H5
 } from '@components/layout/default/DefaultLayoutHeading'
+import Footer from './Footer'
 
 export const MdxComponents: MdxRenderComponents = {
   Accordion,
   AccordionTab,
   Container,
   Emphasize,
+  em: Emphasize,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -34,6 +36,7 @@ export const MdxComponents: MdxRenderComponents = {
   h5: H5,
   HomeLink,
   Header,
+  Footer,
   HomeLayout,
   PageLayout,
   Paragraph,

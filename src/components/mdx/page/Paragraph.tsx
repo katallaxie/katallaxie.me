@@ -11,12 +11,13 @@ export const Paragraph = forwardRef<HTMLParagraphElement>(
     const styles = clsx(
       [
         'text-2xl',
-        'md:text-3xl',
-        'lg:text-4xl',
+        'lg:text-3xl',
+        'xl:text-4xl',
         'leading-normal',
+        'lg:leading-relaxed',
         'col-span-full',
         'py-3',
-        'md:py-6'
+        'lg:py-6'
       ],
       [className]
     )

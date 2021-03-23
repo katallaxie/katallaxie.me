@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import Copyright from './Copyright'
+import Copyright from '../mdx/page/Copyright'
 
 export const footerStyle = clsx(['py-16', 'xl:pt-24', 'text-gray-500'])
 export const headingStyle = clsx([

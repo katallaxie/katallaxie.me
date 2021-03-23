@@ -21,7 +21,7 @@ export const DefaultLayoutNav = ({
   return (
     <aside className={style}>
       <button
-        className="focus:outline-none text-gray-500 hover:text-white flex justify-end w-full h-full hover:text-white md:py-12 py-6 px-12 md:px-6"
+        className="focus:outline-none text-gray-500 hover:text-white flex justify-end w-full h-full hover:text-white md:py-12 py-6 px-6"
         onClick={toggle}
       >
         <div>

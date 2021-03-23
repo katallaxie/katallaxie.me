@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react'
 import Link from 'next/link'
 import Logo from '../../../svg/Logo.svg'
-import Menu from './DefaultLayoutMenu'
 import clsx from 'clsx'
 
 export interface HeaderProps {
@@ -36,7 +35,7 @@ const Header = ({
   children,
   ...props
 }: HeaderProps): JSX.Element => {
-  const styles = clsx([], [className])
+  const styles = clsx(['pb-12'], [className])
 
   return (
     <header className={styles} {...props}>
