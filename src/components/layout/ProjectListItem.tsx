@@ -10,17 +10,22 @@ export interface ProjectListItemProps {
   link?: ProjectListItem
 }
 
+export const itemStyle = clsx(['py-6'])
+
 export const textStyle = clsx([
   'text-2xl',
   'md:text-3xl',
   'lg:text-4xl',
   'font-normal'
 ])
-export const dateStyle = clsx([
-  'text-4xl',
+
+export const descriptionStyle = clsx([
+  'text-2xl',
+  'md:text-3xl',
+  'lg:text-4xl',
   'font-normal',
   'text-gray-500',
-  'italic'
+  'py-4'
 ])
 
 export const ProjectListItem = ({
@@ -28,12 +33,13 @@ export const ProjectListItem = ({
   ...props
 }: ProjectListItemProps): JSX.Element => {
   return (
-    <div {...props}>
+    <div {...props} className={itemStyle}>
       <PageLink href={link.href}>
         <a>
           <h2 className={textStyle}>{link.linkTitle}</h2>
         </a>
       </PageLink>
+      <p className={descriptionStyle}>{link.alt}</p>
     </div>
   )
 }

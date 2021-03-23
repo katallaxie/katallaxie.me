@@ -7,27 +7,26 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
 
   const styles = useMemo(
     () =>
-      clsx(
-        [
-          'fixed',
-          'bg-black',
-          'top-0',
-          'transition',
-          'left-0',
-          'transform-gpu',
-          'w-8/12',
-          'md:w-6/12',
-          'lg:w-6/12',
-          'xl:w-3/12',
-          'h-screen',
-          'opacity-100',
-          'overflow-hidden',
-          'border-r',
-          'border-gray-700',
-          'py-12'
-        ],
-        { 'translate-x-0': show, 'opacity-0': show, '-translate-x-full': !show }
-      ),
+      clsx([
+        'fixed',
+        'bg-black',
+        'top-0',
+        'transition',
+        'left-0',
+        'transform-gpu',
+        'w-8/12',
+        'md:w-6/12',
+        'lg:w-6/12',
+        'xl:w-3/12',
+        'h-screen',
+        'opacity-100',
+        'overflow-hidden',
+        'border-r',
+        'border-gray-700',
+        'py-12',
+        show && 'opacity-0 translate-x-0',
+        !show && '-translate-x-full'
+      ]),
     [items, show]
   )
 
@@ -38,7 +37,7 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
           <a
             key={i}
             href={item.href}
-            className="text-gray-500 text-4xl font-semibold hover:text-white"
+            className="text-gray-500 text-2xl md:text-3xl lg:text-4xl font-semibold hover:text-white"
           >
             <li className="border-b border-gray-700 p-6">{item.title}</li>
           </a>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import clsx from 'clsx'
 import { useMenuContext } from '@state/menu'
 
@@ -12,6 +12,7 @@ export const DefaultLayoutNav = ({
   children
 }: DefaultLayoutNavProps): JSX.Element => {
   const { toggle, show } = useMenuContext()
+  const buttonEl = useRef(null)
 
   const style = clsx(
     ['md:w-full', 'fixed', 'right-0', 'top-0', 'md:relative', 'md:h-full'],
@@ -22,6 +23,7 @@ export const DefaultLayoutNav = ({
     <aside className={style}>
       <button
         className="focus:outline-none text-gray-500 hover:text-white flex justify-end w-full h-full hover:text-white md:py-12 py-6 px-6"
+        ref={buttonEl}
         onClick={toggle}
       >
         <div>

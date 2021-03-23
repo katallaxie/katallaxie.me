@@ -1,7 +1,7 @@
 import React from 'react'
 import { Post } from 'src/generated-types'
 import clsx from 'clsx'
-import Link from 'next/link'
+import PageLink from 'next/link'
 
 export type PostListItem = Pick<
   Post,
@@ -27,8 +27,7 @@ export const dateStyle = clsx([
   'lg:text-4xl',
   'font-normal',
   'text-gray-500',
-  'py-4',
-  'italic'
+  'py-4'
 ])
 
 export const PostListItem = ({
@@ -44,11 +43,11 @@ export const PostListItem = ({
 
   return (
     <div className={itemStyle} {...props}>
-      <Link href={`/posts/${post?.slug}`} {...props}>
+      <PageLink href={`/posts/${post?.slug}`} {...props}>
         <a>
           <h2 className={textStyle}>{post.title}</h2>
         </a>
-      </Link>
+      </PageLink>
       <p className={dateStyle}>{formatDate}</p>
     </div>
   )

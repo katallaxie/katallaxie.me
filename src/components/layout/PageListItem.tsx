@@ -1,6 +1,6 @@
 import React from 'react'
 import { Page } from 'src/generated-types'
-import clsx from 'clsx'
+import { H4 } from '@components/layout/default/DefaultLayoutHeading'
 import PageLink from './PageLink'
 
 export type PageListItem = Pick<
@@ -12,15 +12,13 @@ export interface PageListItemProps {
   page?: PageListItem
 }
 
-const textStyle = clsx(['text-xl', 'lg:text-2xl', 'py-4', 'lg:py-6'])
-
 export const PageListItem = ({
   page,
   ...props
 }: PageListItemProps): JSX.Element => {
   return (
     <div {...props}>
-      <p className={textStyle}>{page.teaser}</p>
+      <H4>{page.teaser}</H4>
       <PageLink href={`/${page.pageSlug}`} />
     </div>
   )

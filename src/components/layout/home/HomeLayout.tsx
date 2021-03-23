@@ -8,8 +8,8 @@ import Container from '@components/layout/default/DefaultLayoutContainer'
 import Wrap from '@components/layout/default/DefaultLayoutWrap'
 import PageList from '@components/layout/PageList'
 import PostList from '@components/layout/PostList'
+import Footer from '@components/mdx/page/Footer'
 import ProjectList from '@components/layout/ProjectList'
-import Footer from '@components/layout/Footer'
 import { MenuProvider } from '@state/menu'
 import { guardFactory } from '@utils/graphql'
 
@@ -32,7 +32,7 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
       <MenuProvider items={menuItem}>
         <DefaultLayout>
           <Wrap>
-            <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 py-24">
+            <Container className="col-span-full lg:col-span-10 xl:col-span-4 px-8 pt-24">
               <Header>
                 <HomeLink />
               </Header>
