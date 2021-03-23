@@ -13,13 +13,19 @@ export const H1 = props => (
 export const H2 = props => (
   <h2
     {...props}
-    className={clsx(['text-2xl', 'lg:text-4xl', 'py-8'], [props.className])}
+    className={clsx(['text-3xl', 'lg:text-4xl', 'py-6'], [props.className])}
   />
 )
 export const H3 = props => (
   <h3
     {...props}
-    className={clsx(['text-2xl', 'md:text-3xl', 'py-8'], [props.className])}
+    className={clsx([
+      'text-2xl',
+      'md:text-3xl',
+      'py-3',
+      'md:py-6',
+      props.className
+    ])}
   />
 )
 export const H4 = props => (

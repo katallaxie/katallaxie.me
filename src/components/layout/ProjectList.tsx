@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ProjectListItem } from './ProjectListItem'
 import Project from './ProjectListItem'
-import SectionTitle from './HomeLayoutSectionTitle'
+import { H2 } from '@components/layout/default/DefaultLayoutHeading'
 
 export interface ProjectListProps {
   projects?: ProjectListItem[]
@@ -12,12 +12,12 @@ export const ProjectList = ({
   ...props
 }: ProjectListProps): JSX.Element => {
   return (
-    <div {...props}>
-      <SectionTitle>Projects.</SectionTitle>
+    <section className="pb-8 lg:pb-12" {...props}>
+      <H2 className="text-gray-500">Projects.</H2>
       {projects.map((link, i) => (
         <Project key={i} link={link} />
       ))}
-    </div>
+    </section>
   )
 }
 

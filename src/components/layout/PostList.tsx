@@ -1,7 +1,7 @@
 import React from 'react'
 import type { PostListItem } from './PostListItem'
 import Post from './PostListItem'
-import SectionTitle from './HomeLayoutSectionTitle'
+import { H2 } from '@components/layout/default/DefaultLayoutHeading'
 
 export interface PostListProps {
   posts?: PostListItem[]
@@ -9,12 +9,12 @@ export interface PostListProps {
 
 export const PostList = ({ posts, ...props }: PostListProps): JSX.Element => {
   return (
-    <div {...props}>
-      <SectionTitle>Writing.</SectionTitle>
+    <section className="pb-8 lg:pb-12" {...props}>
+      <H2 className="text-gray-500">Writing.</H2>
       {posts.map((post, i) => (
         <Post key={i} post={post} />
       ))}
-    </div>
+    </section>
   )
 }
 
