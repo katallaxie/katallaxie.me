@@ -38,7 +38,7 @@ const HomeLayout = ({}: HomeLayoutProps): JSX.Element => {
               </Header>
               <PageList pages={pages} />
             </Container>
-            <Container className="col-span-full lg:col-span-10 xl:border-l xl:border-gray-700 xl:col-start-5 py-12 px-8 xl:pr-12 xl:pl-24 xl:col-span-7">
+            <Container className="col-span-full lg:col-span-10 xl:border-l xl:border-gray-700 xl:col-start-5 py-12 px-8 xl:pr-12 xl:py-24 xl:pl-24 xl:col-span-7">
               <PostList posts={posts} />
               <ProjectList projects={links} />
               <Footer />

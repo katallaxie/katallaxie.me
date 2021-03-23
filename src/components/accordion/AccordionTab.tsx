@@ -29,6 +29,8 @@ export const AccordionTab = ({
     idx === tab && 'max-h-screen'
   ])
   const stylesLabel = clsx([
+    'flex',
+    'items-center',
     'cursor-pointer',
     'block',
     'border-t',
@@ -38,6 +40,14 @@ export const AccordionTab = ({
     'hover:text-white',
     idx === tab && 'text-white',
     idx !== tab && 'text-gray-500'
+  ])
+
+  const arrowStyles = clsx([
+    'transform-gpu',
+    'transition-all',
+    'border-gray-500',
+    'm-6',
+    idx === tab && 'rotate-180'
   ])
 
   return (
@@ -50,7 +60,17 @@ export const AccordionTab = ({
         onChange={onChange}
       />
       <label className={stylesLabel} htmlFor={`${name}+${idx}`}>
-        <H4 className="py-6">{label}</H4>
+        <H4 className="py-6 flex-grow">{label}</H4>
+        <div
+          className={arrowStyles}
+          style={{
+            width: 0,
+            height: 0,
+            borderLeft: '8px solid transparent',
+            borderRight: '8px solid transparent',
+            borderTop: '8px solid'
+          }}
+        ></div>
       </label>
       <div className={stylesContent}>
         <div className="py-6">{children}</div>
