@@ -9,7 +9,7 @@ export interface AccordionProps {
 
 export const Accordion = ({ children, name }: AccordionProps): JSX.Element => {
   const [tab, setTab] = useState(0)
-  const styles = clsx(['py-12'])
+  const styles = clsx(['py-8', 'md:py-12'])
 
   const tabs = React.Children.map(
     children,

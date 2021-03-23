@@ -11,7 +11,14 @@ export const UnorderedListItem = ({
   className
 }: UnorderedListItemProps): JSX.Element => {
   const style = clsx(
-    ['py-3', 'col-span-full', 'lg:col-span-6', 'text-2xl', 'leading-normal'],
+    [
+      'py-3',
+      'col-span-full',
+      'lg:col-span-6',
+      'text-xl',
+      'md:text-2xl',
+      'leading-normal'
+    ],
     [className]
   )
 

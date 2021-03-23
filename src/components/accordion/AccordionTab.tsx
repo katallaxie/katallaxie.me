@@ -24,7 +24,8 @@ export const AccordionTab = ({
   const stylesInput = clsx(['absolute', 'opacity-0'], {})
   const stylesContent = clsx([
     'overflow-hidden',
-    'text-2xl',
+    'text-xl',
+    'md:text-2xl',
     idx !== tab && 'max-h-0 -mb-1',
     idx === tab && 'max-h-screen'
   ])
@@ -44,9 +45,14 @@ export const AccordionTab = ({
 
   const arrowStyles = clsx([
     'transform-gpu',
+    'w-0',
+    'h-0',
+    'border-l-8',
+    'border-r-8',
+    'border-t-8',
     'transition-all',
-    'border-gray-500',
-    'm-6',
+    'border-transparent',
+    'border-solid',
     idx === tab && 'rotate-180'
   ])
 
@@ -64,10 +70,6 @@ export const AccordionTab = ({
         <div
           className={arrowStyles}
           style={{
-            width: 0,
-            height: 0,
-            borderLeft: '8px solid transparent',
-            borderRight: '8px solid transparent',
             borderTop: '8px solid'
           }}
         ></div>

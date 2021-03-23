@@ -9,7 +9,8 @@ export interface HeaderProps {
 }
 
 export const linkStyle = clsx([
-  'w-24',
+  'w-20',
+  'md:w-24',
   'block',
   'h-full',
   'transition',
@@ -35,7 +36,7 @@ const Header = ({
   children,
   ...props
 }: HeaderProps): JSX.Element => {
-  const styles = clsx(['pb-12'], [className])
+  const styles = clsx(['pb-8', 'md:pb-12'], [className])
 
   return (
     <header className={styles} {...props}>

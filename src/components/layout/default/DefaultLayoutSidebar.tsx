@@ -37,7 +37,7 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
           <a
             key={i}
             href={item.href}
-            className="text-gray-500 text-2xl md:text-3xl lg:text-4xl font-semibold hover:text-white"
+            className="text-gray-500 text-xl md:text-2xl lg:text-3xl font-semibold hover:text-white"
           >
             <li className="border-b border-gray-700 p-6">{item.title}</li>
           </a>
