@@ -4,6 +4,7 @@ import clsx from 'clsx'
 export interface UnorderedListProps {
   children?: React.ReactNode
   className?: string
+  title?: string
 }
 
 export const UnorderedList = ({
@@ -11,7 +12,7 @@ export const UnorderedList = ({
   className
 }: UnorderedListProps): JSX.Element => {
   const style = clsx(
-    ['text-2xl', 'sm:grid', 'md:grid-cols-12', 'md:gap-4', 'lg:block'],
+    ['col-span-full', 'md:grid', 'md:grid-cols-12', 'py-3', 'lg:py-6'],
     [className]
   )
 

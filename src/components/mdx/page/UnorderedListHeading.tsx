@@ -15,9 +15,9 @@ export const UnorderedListHeading = ({
       'text-2xl',
       'lg:text-3xl',
       'py-6',
-      'border-b-2',
+      'border-b',
       'xl:text-current',
-      'border-gray-900',
+      'border-gray-500',
       'xl:border-none'
     ],
     [className]

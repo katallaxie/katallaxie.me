@@ -7,10 +7,7 @@ export interface SectionProps {
 }
 
 export const Section = ({ children, className }: SectionProps): JSX.Element => {
-  const style = clsx(
-    ['xl:col-start-6', 'col-span-full', 'lg:col-span-8', 'z-10'],
-    [className]
-  )
+  const style = clsx(['md:grid', 'md:grid-cols-12'], [className])
 
   return <div className={style}>{children}</div>
 }

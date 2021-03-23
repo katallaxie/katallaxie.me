@@ -37,8 +37,12 @@ export const MdxComponents: MdxRenderComponents = {
   HomeLayout,
   PageLayout,
   Paragraph,
+  p: Paragraph,
   Section,
+  section: Section,
   UnorderedList,
+  ul: UnorderedList,
+  li: UnorderedListItem,
   UnorderedListHeading,
   UnorderedListItem,
   Wrap

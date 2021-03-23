@@ -28,10 +28,10 @@ const DefaultLayout = ({
           'transition',
           'transform-gpu',
           'grid',
-          'gap-4',
+          'gap-x-4',
           'grid-cols-12',
-          'md:h-screen',
-          'md:w-screen',
+          'h-screen',
+          'w-screen',
           'md:overflow-hidden'
         ],
         { 'md:translate-x-2/4 lg:translate-x-2/4 xl:translate-x-1/4': show },

@@ -10,7 +10,10 @@ export const UnorderedListItem = ({
   children,
   className
 }: UnorderedListItemProps): JSX.Element => {
-  const style = clsx(['py-3', 'col-span-6'], [className])
+  const style = clsx(
+    ['py-3', 'col-span-full', 'lg:col-span-6', 'text-2xl', 'leading-normal'],
+    [className]
+  )
 
   return <li className={style}>{children}</li>
 }
