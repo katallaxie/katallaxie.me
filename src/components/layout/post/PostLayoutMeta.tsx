@@ -1,7 +1,7 @@
 import React from 'react'
-import clsx from 'clsx'
 import Tags from './PostLayoutTags'
 import Date from './PostLayoutDate'
+import { H2 } from '@components/layout/default/DefaultLayoutHeading'
 import type { LayoutTag } from './PostLayoutTag'
 
 export interface MetaProps {
@@ -12,28 +12,13 @@ export interface MetaProps {
   createdAt?: string
 }
 
-export const headerStyle = clsx([
-  'col-span-12',
-  'lg:col-span-10',
-  'lg:pb-22',
-  'lg:pt-32',
-  'lg:text-4xl',
-  'md:pt-22',
-  'md:text-3xl',
-  'pt-20',
-  'text-2xl',
-  'xl:col-span-8',
-  'xl:pb-30',
-  'xl:pt-30'
-])
-
 export const Meta = ({ title, createdAt, tags }: MetaProps): JSX.Element => {
   return (
-    <>
-      <h1 className={headerStyle}>{title}</h1>
+    <aside className="py-8">
+      <H2>{title}</H2>
       <Date>{createdAt}</Date>
       <Tags tags={tags} />
-    </>
+    </aside>
   )
 }
 

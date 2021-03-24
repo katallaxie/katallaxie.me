@@ -6,10 +6,24 @@ export interface HeadingProps {
   className?: string
 }
 
-const h1 = props => <h1 {...props} className={clsx(['text-5xl', 'py-8'])} />
-const h2 = props => <h2 {...props} className={clsx(['text-4xl', 'py-8'])} />
-const h3 = props => <h3 {...props} className={clsx(['text-3xl', 'py-8'])} />
-const h4 = props => <h4 {...props} />
+const h1 = props => (
+  <h1
+    {...props}
+    className={clsx(['text-3xl', 'md:text-4xl', 'lg:text-5xl', 'py-8'])}
+  />
+)
+const h2 = props => (
+  <h2 {...props} className={clsx(['text-3xl', 'lg:text-4xl', 'py-6'])} />
+)
+const h3 = props => (
+  <h3
+    {...props}
+    className={clsx(['text-2xl', 'md:text-3xl', 'py-3', 'md:py-6'])}
+  />
+)
+const h4 = props => (
+  <h4 {...props} className={clsx(['text-xl', 'md:text-2xl', 'py-6'])} />
+)
 const h5 = props => <h5 {...props} />
 
 export const Heading = (

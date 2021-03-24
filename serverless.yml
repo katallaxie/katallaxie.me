@@ -5,10 +5,16 @@ nextApp:
   inputs:
     cloudfront:
       /posts/*:
-        ttl: 86400 # 1 day cache
+        minTTL: 1000
+        maxTTL: 1000
+        defaultTTL: 1000
       /:
-        ttl: 3000 # 5 minutes
+        minTTL: 1000
+        maxTTL: 1000
+        defaultTTL: 1000
       /home:
-        ttl: 3000 # 5 minutes
+        minTTL: 1000
+        maxTTL: 1000
+        defaultTTL: 1000
     memory: 1024
     domain: ["katallaxie.dev"]
