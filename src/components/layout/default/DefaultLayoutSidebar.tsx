@@ -11,8 +11,8 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
         'fixed',
         'bg-black',
         'top-0',
-        'transition',
         'left-0',
+        'transition-transform',
         'transform-gpu',
         'w-8/12',
         'md:w-6/12',
@@ -25,7 +25,7 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
         'border-gray-700',
         'py-12',
         show && 'opacity-0 translate-x-0',
-        !show && '-translate-x-full'
+        !show && 'transition -translate-x-full'
       ]),
     [items, show]
   )
