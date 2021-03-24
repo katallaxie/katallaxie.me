@@ -34,7 +34,7 @@ export const getStaticPaths = async () => {
 
   const paths = data.posts.map(post => ({ params: { slug: post.slug } }))
 
-  return { paths, fallback: false }
+  return { paths, fallback: true }
 }
 
 const Post: NextPage<Props> = ({ mdxSource, head }): JSX.Element => {
