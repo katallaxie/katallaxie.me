@@ -37,6 +37,8 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
           <li key={i} className="border-b border-gray-700 p-6">
             <a
               href={item.href}
+              target="_blank"
+              rel="noreferrer"
               className="text-gray-500 text-xl md:text-2xl lg:text-3xl font-semibold hover:text-white"
             >
               {item.title}

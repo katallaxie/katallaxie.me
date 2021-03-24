@@ -14,7 +14,13 @@ export const Link = forwardRef<HTMLAnchorElement>(
     )
 
     return (
-      <a ref={ref} className={styles} {...props}>
+      <a
+        ref={ref}
+        className={styles}
+        target="_blank"
+        rel="noreferrer"
+        {...props}
+      >
         {children}
       </a>
     )
