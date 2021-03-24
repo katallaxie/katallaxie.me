@@ -20,7 +20,7 @@ export const linkStyle = clsx([
 export const HomeLink = forwardRef<HTMLAnchorElement>(({ ...props }, ref) => {
   return (
     <Link href="/" {...props} passHref>
-      <a ref={ref} className={linkStyle}>
+      <a ref={ref} className={linkStyle} aria-label="Home">
         <Logo />
       </a>
     </Link>

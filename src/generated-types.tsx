@@ -2437,6 +2437,7 @@ export type Page = Node & {
   refs: Array<PageRefs>
   pageRefs?: Maybe<Page>
   menu?: Maybe<Menu>
+  description?: Maybe<Scalars['String']>
   /** List of Page versions */
   history: Array<Version>
 }
@@ -2497,6 +2498,7 @@ export type PageCreateInput = {
   refs?: Maybe<PageRefsCreateManyInlineInput>
   pageRefs?: Maybe<PageCreateOneInlineInput>
   menu?: Maybe<MenuCreateOneInlineInput>
+  description?: Maybe<Scalars['String']>
 }
 
 export type PageCreateManyInlineInput = {
@@ -2689,6 +2691,25 @@ export type PageManyWhereInput = {
   teaser_not_ends_with?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageWhereInput>
   menu?: Maybe<MenuWhereInput>
+  description?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  description_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  description_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  description_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: Maybe<Scalars['String']>
 }
 
 export enum PageOrderByInput {
@@ -2707,7 +2728,9 @@ export enum PageOrderByInput {
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
   TeaserAsc = 'teaser_ASC',
-  TeaserDesc = 'teaser_DESC'
+  TeaserDesc = 'teaser_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC'
 }
 
 export type PageRefs = Link | Page | Post
@@ -2814,6 +2837,7 @@ export type PageUpdateInput = {
   refs?: Maybe<PageRefsUpdateManyInlineInput>
   pageRefs?: Maybe<PageUpdateOneInlineInput>
   menu?: Maybe<MenuUpdateOneInlineInput>
+  description?: Maybe<Scalars['String']>
 }
 
 export type PageUpdateManyInlineInput = {
@@ -2837,6 +2861,7 @@ export type PageUpdateManyInput = {
   content?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
   teaser?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
 }
 
 export type PageUpdateManyWithNestedWhereInput = {
@@ -3034,6 +3059,25 @@ export type PageWhereInput = {
   teaser_not_ends_with?: Maybe<Scalars['String']>
   pageRefs?: Maybe<PageWhereInput>
   menu?: Maybe<MenuWhereInput>
+  description?: Maybe<Scalars['String']>
+  /** All values that are not equal to given value. */
+  description_not?: Maybe<Scalars['String']>
+  /** All values that are contained in given list. */
+  description_in?: Maybe<Array<Scalars['String']>>
+  /** All values that are not contained in given list. */
+  description_not_in?: Maybe<Array<Scalars['String']>>
+  /** All values containing the given string. */
+  description_contains?: Maybe<Scalars['String']>
+  /** All values not containing the given string. */
+  description_not_contains?: Maybe<Scalars['String']>
+  /** All values starting with the given string. */
+  description_starts_with?: Maybe<Scalars['String']>
+  /** All values not starting with the given string. */
+  description_not_starts_with?: Maybe<Scalars['String']>
+  /** All values ending with the given string. */
+  description_ends_with?: Maybe<Scalars['String']>
+  /** All values not ending with the given string */
+  description_not_ends_with?: Maybe<Scalars['String']>
 }
 
 /** References Page record uniquely */
@@ -4361,7 +4405,7 @@ export type PageQuery = { __typename?: 'Query' } & {
   page?: Maybe<
     { __typename?: 'Page' } & Pick<
       Page,
-      'id' | 'title' | 'slug' | 'content' | 'teaser'
+      'id' | 'title' | 'slug' | 'content' | 'teaser' | 'description'
     > & {
         refs: Array<
           | ({ __typename: 'Link' } & Pick<Link, 'href' | 'alt'> & {
@@ -4548,6 +4592,7 @@ export const PageDocument = gql`
       slug
       content
       teaser
+      description
       refs {
         __typename
         ... on Page {

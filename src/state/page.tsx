@@ -35,11 +35,13 @@ export default PageContext
 
 export const getPageStaticProps: TComposeFunction<
   MultiversalPageProps<MultiversalPageHeadProps>
-> = async ({ params }) => {
+> = async ({ params, ...props }) => {
   const apolloClient = initializeApollo()
   const variables = {
     slug: params?.slug
   }
+
+  console.log(params, props)
 
   const queryOptions = {
     displayName: 'PAGE_QUERY',
@@ -66,7 +68,9 @@ export const getPageStaticProps: TComposeFunction<
       isStaticRendering: true,
       mdxSource,
       head: {
-        seoTitle: data?.page?.title
+        seoTitle: data?.page?.title,
+        seoUrl: `https://katallaxie.me/${data?.page?.slug}`,
+        seoDescription: data?.page?.description
       }
     }
   }

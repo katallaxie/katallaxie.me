@@ -5,6 +5,7 @@ query Page($slug: String = "home") {
     slug
     content
     teaser
+    description
     refs {
       __typename
       ...on Page {

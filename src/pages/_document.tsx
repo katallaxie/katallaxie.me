@@ -42,8 +42,7 @@ class AppDocument extends Document<DocumentRenderProps> {
     // const { lang }: DocumentRenderProps = this.props
 
     return (
-      <Html>
-        {/* <Html lang={lang}> */}
+      <Html lang="en">
         <Head />
         <body
           className="bg-white text-black dark:bg-black dark:text-white"

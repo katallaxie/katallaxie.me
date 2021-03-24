@@ -98,14 +98,14 @@ const Head = (): JSX.Element => {
       })} */}
 
       <meta property="og:url" content={head?.seoUrl} />
-      <meta property="og:title" content={head?.seoUrl} />
+      <meta property="og:title" content={head?.seoTitle} />
       <meta property="og:description" content={head?.seoDescription} />
-      <meta name="twitter:site" content={head?.seoUrl} />
+      {/* <meta name="twitter:site" content={head?.seoUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={head?.seoImage} />
       <meta property="og:image" content={head?.seoImage} />
       <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:height" content="630" /> */}
 
       {/* Detect outdated browser and display a popup about how to upgrade to a more recent browser/version */}
       {/* XXX See public/static/CDN/README.md */}

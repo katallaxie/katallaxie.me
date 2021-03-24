@@ -34,13 +34,14 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
     <div className={styles}>
       <ul>
         {items.map((item, i) => (
-          <a
-            key={i}
-            href={item.href}
-            className="text-gray-500 text-xl md:text-2xl lg:text-3xl font-semibold hover:text-white"
-          >
-            <li className="border-b border-gray-700 p-6">{item.title}</li>
-          </a>
+          <li key={i} className="border-b border-gray-700 p-6">
+            <a
+              href={item.href}
+              className="text-gray-500 text-xl md:text-2xl lg:text-3xl font-semibold hover:text-white"
+            >
+              {item.title}
+            </a>
+          </li>
         ))}
       </ul>
     </div>

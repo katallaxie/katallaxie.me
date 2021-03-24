@@ -3240,6 +3240,7 @@ type Page implements Node {
     """
     locales: [Locale!]
   ): Menu
+  description: String
 
   """List of Page versions"""
   history(
@@ -3285,6 +3286,7 @@ input PageCreateInput {
   refs: PageRefsCreateManyInlineInput
   pageRefs: PageCreateOneInlineInput
   menu: MenuCreateOneInlineInput
+  description: String
 }
 
 """"""
@@ -3553,6 +3555,34 @@ input PageManyWhereInput {
   teaser_not_ends_with: String
   pageRefs: PageWhereInput
   menu: MenuWhereInput
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string"""
+  description_not_ends_with: String
 }
 
 """"""
@@ -3573,6 +3603,8 @@ enum PageOrderByInput {
   title_DESC
   teaser_ASC
   teaser_DESC
+  description_ASC
+  description_DESC
 }
 
 """"""
@@ -3708,6 +3740,7 @@ input PageUpdateInput {
   refs: PageRefsUpdateManyInlineInput
   pageRefs: PageUpdateOneInlineInput
   menu: MenuUpdateOneInlineInput
+  description: String
 }
 
 """"""
@@ -3741,6 +3774,7 @@ input PageUpdateManyInput {
   content: String
   title: String
   teaser: String
+  description: String
 }
 
 """"""
@@ -4021,6 +4055,34 @@ input PageWhereInput {
   teaser_not_ends_with: String
   pageRefs: PageWhereInput
   menu: MenuWhereInput
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string"""
+  description_not_ends_with: String
 }
 
 """References Page record uniquely"""
