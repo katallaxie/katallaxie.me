@@ -41,8 +41,6 @@ export const getPageStaticProps: TComposeFunction<
     slug: params?.slug
   }
 
-  console.log(params, props)
-
   const queryOptions = {
     displayName: 'PAGE_QUERY',
     query: PageDocument,

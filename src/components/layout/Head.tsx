@@ -41,10 +41,27 @@ const Head = (): JSX.Element => {
       <title>{head?.seoTitle}</title>
       <meta name="description" content={head?.seoDescription} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {/*<link rel="icon" sizes="192x192" href="/touch-icon.png" />*/}
-      {/*<link rel="apple-touch-icon" href="/touch-icon.png" />*/}
-      {/*<link rel="mask-icon" href="/favicon-mask.svg" color="#49B882" />*/}
-      <link rel="icon" href={head?.favicon} />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png?v=E6w3p0w8MX"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png?v=E6w3p0w8MX"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png?v=E6w3p0w8MX"
+      />
+      <link rel="manifest" href="/site.webmanifest?v=E6w3p0w8MX" />
+      <link rel="shortcut icon" href="/favicon.ico?v=E6w3p0w8MX" />
+      <meta name="msapplication-TileColor" content="#da532c" />
+      <meta name="theme-color" content="#ffffff"></meta>
 
       {/* Perf optimisation (preload normal and bold fonts because they're the most used) - See https://web.dev/uses-rel-preload*/}
       {/* TODO See if it's actually a good thing, seems to conflict with WebFontLoader - See https://github.com/GoogleChrome/lighthouse/issues/10892 */}
