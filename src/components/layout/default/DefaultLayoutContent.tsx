@@ -23,7 +23,7 @@ const DefaultLayoutContent = ({
   )
 
   return (
-    <div className={styles} {...props}>
+    <div id="containerDiv" className={styles} {...props}>
       {children}
     </div>
   )

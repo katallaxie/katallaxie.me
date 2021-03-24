@@ -3,23 +3,17 @@ import useMdxContext from '@hooks/useMdx'
 import hydrate from 'next-mdx-remote/hydrate'
 import { MdxRemote } from 'next-mdx-remote/types'
 import HomeLayout from '@components/layout/home/HomeLayout'
-import DefaultLayout from '@components/layout/DefaultLayout'
 import Link from 'next/link'
 import Footer from './Footer'
 import Paragraph from './Paragraph'
-import Teaser from './Teaser'
 import Emphasize from './Emphasize'
-import Wrap from './DefaultLayoutWrap'
 
 export type MdxRenderComponents = MdxRemote.Components
 
 export const DefaultComponents: MdxRenderComponents = {
   HomeLayout,
-  DefaultLayout,
-  Wrap,
   Footer,
   Link,
-  Teaser,
   Paragraph,
   Emphasize
 }

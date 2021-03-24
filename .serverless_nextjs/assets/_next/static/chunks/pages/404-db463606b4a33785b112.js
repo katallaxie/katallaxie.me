@@ -1,2 +1,0 @@
-_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[8],{"i6+/":function(n,i,t){"use strict";t.r(i);t("nKUr");var _=t("q1tI"),r=t.n(_),u=t("AeFk");i.default=function(n){return Object(u.a)(r.a.Fragment,null)}},i67r:function(n,i,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/404",function(){return t("i6+/")}])}},[["i67r",0,1,2]]]);
-//# sourceMappingURL=404-db463606b4a33785b112.js.map

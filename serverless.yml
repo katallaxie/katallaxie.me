@@ -1,7 +1,7 @@
-name: Demo
+name: katallaxie
 
 nextApp:
-  component: "@sls-next/serverless-component@1.19.0-alpha.33"
+  component: "@sls-next/serverless-component@1.19.0-alpha.38"
   inputs:
     memory: 1024
-    domain: ["playground", "andersnormal.us"]
+    domain: ["katallaxie.dev"]
