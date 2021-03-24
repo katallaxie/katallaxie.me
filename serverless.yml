@@ -3,5 +3,12 @@ name: katallaxie
 nextApp:
   component: "@sls-next/serverless-component@1.19.0-alpha.38"
   inputs:
+    cloudfront:
+      /post/*:
+        ttl: 86400 # 1 day cache
+      /:
+        ttl: 3000 # 5 minutes
+      /home:
+        ttl: 3000 # 5 minutes
     memory: 1024
     domain: ["katallaxie.dev"]

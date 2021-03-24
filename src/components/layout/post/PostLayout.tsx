@@ -8,6 +8,7 @@ import DefaultLayout from '@components/layout/default/DefaultLayout'
 import Container from '@components/layout/default/DefaultLayoutContainer'
 import Wrap from '@components/layout/default/DefaultLayoutWrap'
 import Content from './PostLayoutContent'
+import Footer from '@components/mdx/page/Footer'
 import { MenuProvider } from '@state/menu'
 
 interface PostLayoutProps {
@@ -32,6 +33,7 @@ const PostLayout = ({ children, ...props }: PostLayoutProps): JSX.Element => {
                 title={post?.title}
               />
               <Content>{children}</Content>
+              <Footer />
             </Container>
           </Wrap>
         </DefaultLayout>
