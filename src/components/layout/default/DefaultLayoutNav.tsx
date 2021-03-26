@@ -22,6 +22,7 @@ export const DefaultLayoutNav = ({
   return (
     <aside className={style}>
       <button
+        aria-label="Open Menu"
         className="focus:outline-none text-gray-500 hover:text-white w-full md:w-min md:flex h-full hover:text-white md:py-12 py-6 px-6"
         ref={buttonEl}
         onClick={toggle}
