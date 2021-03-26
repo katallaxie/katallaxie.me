@@ -11,21 +11,18 @@ export const DefaultLayoutSidebar = (): JSX.Element => {
         'fixed',
         'bg-black',
         'top-0',
-        'left-0',
-        'transition-transform',
-        'transform-gpu',
-        'w-8/12',
-        'md:w-6/12',
-        'lg:w-6/12',
-        'xl:w-3/12',
+        'w-2/3',
+        'lg:w-1/3',
+        !show && 'opacity-0 -left-2/3 lg:-left-1/3',
+        show && 'opacity-100 lg:left-0',
         'h-screen',
+        'transition-all',
+        'transform-gpu',
         'opacity-100',
         'overflow-hidden',
         'border-r',
         'border-gray-700',
-        'py-12',
-        show && 'opacity-0 translate-x-0',
-        !show && 'transition -translate-x-full'
+        'py-12'
       ]),
     [items, show]
   )

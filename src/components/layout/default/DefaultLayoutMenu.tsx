@@ -1,18 +1,8 @@
 import React from 'react'
-import clsx from 'clsx'
 
 type DefaultLayoutMenuProps = {
   children?: React.ReactNode
 }
-
-const contextStyle = clsx([
-  'mx-auto',
-  'w-6/12',
-  'border-l-2',
-  'border-r-2',
-  'p-2',
-  'border-gray-700'
-])
 
 const DefaultLayoutMenu = ({
   children,

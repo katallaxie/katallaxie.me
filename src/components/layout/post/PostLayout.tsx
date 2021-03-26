@@ -23,7 +23,7 @@ const PostLayout = ({ children, ...props }: PostLayoutProps): JSX.Element => {
       <MenuProvider items={menu.menu}>
         <DefaultLayout {...props}>
           <Wrap>
-            <Container className="col-span-full xl:col-span-8 px-8 py-24 ">
+            <Container className="col-span-full xl:col-span-8 px-8 pt-12 md:py-24">
               <Header>
                 <HomeLink />
               </Header>

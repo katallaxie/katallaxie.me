@@ -22,19 +22,19 @@ const DefaultLayout = ({
     () =>
       clsx(
         [
-          'fixed',
+          'md:fixed',
           'top-0',
           'left-0',
-          'transition',
+          'transition-all',
           'transform-gpu',
           'grid',
           'gap-x-4',
           'grid-cols-12',
           'h-screen',
           'w-screen',
-          'md:overflow-hidden'
+          'md:overflow-hidden',
+          show && 'left-2/3 lg:left-1/3'
         ],
-        { 'md:translate-x-2/4 lg:translate-x-2/4 xl:translate-x-1/4': show },
         [className]
       ),
     [show]

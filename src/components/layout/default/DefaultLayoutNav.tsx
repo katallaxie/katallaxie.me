@@ -15,18 +15,18 @@ export const DefaultLayoutNav = ({
   const buttonEl = useRef(null)
 
   const style = clsx(
-    ['md:w-full', 'fixed', 'right-0', 'top-0', 'md:relative', 'md:h-full'],
+    ['w-full', 'h-full', 'flex', 'justify-start', 'md:justify-end'],
     [className]
   )
 
   return (
     <aside className={style}>
       <button
-        className="focus:outline-none text-gray-500 hover:text-white flex justify-end w-full h-full hover:text-white md:py-12 py-6 px-6"
+        className="focus:outline-none text-gray-500 hover:text-white w-full md:w-min md:flex h-full hover:text-white md:py-12 my-6 px-6"
         ref={buttonEl}
         onClick={toggle}
       >
-        <div>
+        <div className="w-full flex flex-row-reverse md:block justify-between">
           {show ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,10 +60,7 @@ export const DefaultLayoutNav = ({
           )}
           {}
 
-          <h2
-            className="hidden md:block transform-gpu md:-rotate-180 whitespace-nowrap text-4xl py-6 font-semibold"
-            style={{ writingMode: 'vertical-rl' }}
-          >
+          <h2 className="transform-gpu hidden md:block md:-rotate-180 whitespace-nowrap text-3xl md:text-4xl py-6 font-semibold md:vertical-rl">
             {children}
           </h2>
         </div>

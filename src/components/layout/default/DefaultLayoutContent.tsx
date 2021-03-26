@@ -14,10 +14,10 @@ const DefaultLayoutContent = ({
   const styles = clsx(
     [
       'col-span-full',
-      'md:mt-0',
+      'md:pt-0',
       'md:col-span-10',
       'xl:col-span-11',
-      'overflow-y-auto'
+      'md:overflow-y-auto'
     ],
     [className]
   )
