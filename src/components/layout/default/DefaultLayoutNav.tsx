@@ -33,7 +33,7 @@ export const DefaultLayoutNav = ({
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-10 bg-black"
+              className="h-10 m-3 md:m-0 bg-black"
             >
               <path
                 strokeLinecap="square"
@@ -48,7 +48,7 @@ export const DefaultLayoutNav = ({
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-10 bg-black"
+              className="h-10 m-3 md:m-0 bg-black"
             >
               <path
                 strokeLinecap="square"
