@@ -17,8 +17,8 @@ const DefaultLayoutContent = ({
       'md:pt-0',
       'md:col-span-10',
       'xl:col-span-11',
-      'md:overflow-x-auto',
-      'md:overflow-y-hidden'
+      'md:overflow-y-auto',
+      'md:overflow-x-hidden'
     ],
     [className]
   )
