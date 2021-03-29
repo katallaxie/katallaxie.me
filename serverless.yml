@@ -1,20 +1,7 @@
 name: katallaxie
 
 nextApp:
-  component: "@sls-next/serverless-component@1.19.0-alpha.38"
+  component: "@sls-next/serverless-component@1.19.0-alpha.40"
   inputs:
-    cloudfront:
-      /posts/*:
-        minTTL: 1000
-        maxTTL: 1000
-        defaultTTL: 1000
-      /:
-        minTTL: 1000
-        maxTTL: 1000
-        defaultTTL: 1000
-      /home:
-        minTTL: 1000
-        maxTTL: 1000
-        defaultTTL: 1000
     memory: 1024
     domain: ["katallaxie.dev"]

@@ -28,9 +28,9 @@ module.exports = withBundleAnalyzer(
   withSourceMaps({
     target: 'serverless',
     dev: process.env.NODE_ENV !== 'production',
-    experimental: {
-      sprFlushToDisk: !process.env.NODE_ENV !== 'production'
-    },
+    // experimental: {
+    //   sprFlushToDisk: !process.env.NODE_ENV !== 'production'
+    // },
 
     webpack: (config, options) => {
       // In `pages/_app.js`, Sentry is imported from @sentry/browser. While

@@ -1,4 +1,5 @@
-import PageLayout from '@components/layout/page/PageLayout'
+import dynamic from 'next/dynamic'
+
 import Container from '@components/layout/default/DefaultLayoutContainer'
 import Wrap from '@components/layout/default/DefaultLayoutWrap'
 import Section from './Section'
@@ -6,8 +7,6 @@ import Paragraph from './Paragraph'
 import Emphasize from './Emphasize'
 import UnorderedList from './UnorderedList'
 import UnorderedListItem from './UnorderedListItem'
-import UnorderedListHeading from './UnorderedListHeading'
-import HomeLayout from '@components/layout/home/HomeLayout'
 import Accordion from '@components/accordion/Accordion'
 import Header, {
   HomeLink
@@ -23,11 +22,13 @@ import {
 } from '@components/layout/default/DefaultLayoutHeading'
 import Footer from './Footer'
 
+const HomeLayout = dynamic(() => import('../../layout/home/HomeLayout'))
+const PageLayout = dynamic(() => import('../../layout/page/PageLayout'))
+
 export const MdxComponents: MdxRenderComponents = {
   Accordion,
   AccordionTab,
   Container,
-  Emphasize,
   em: Emphasize,
   h1: H1,
   h2: H2,
@@ -35,19 +36,14 @@ export const MdxComponents: MdxRenderComponents = {
   h4: H4,
   h5: H5,
   HomeLink,
-  Header,
-  Footer,
-  HomeLayout,
+  header: Header,
+  footer: Footer,
   PageLayout,
-  Paragraph,
+  HomeLayout,
   p: Paragraph,
-  Section,
   section: Section,
-  UnorderedList,
   ul: UnorderedList,
   li: UnorderedListItem,
-  UnorderedListHeading,
-  UnorderedListItem,
   Wrap
 }
 
