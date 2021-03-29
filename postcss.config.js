@@ -1,10 +1,21 @@
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {
-      autoprefixer: {
-        flexbox: 'no-2009'
+  plugins: [
+    'postcss-import',
+    '@tailwindcss/jit',
+    'autoprefixer',
+    'postcss-url',
+    'postcss-flexbugs-fixes',
+    [
+      'postcss-preset-env',
+      {
+        autoprefixer: {
+          flexbox: 'no-2009'
+        },
+        stage: 3,
+        features: {
+          'custom-properties': false
+        }
       }
-    }
-  }
+    ]
+  ]
 }
