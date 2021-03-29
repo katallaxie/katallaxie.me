@@ -1,9 +1,9 @@
 module.exports = {
   plugins: [
     'postcss-import',
+    'postcss-url',
     '@tailwindcss/jit',
     'autoprefixer',
-    'postcss-url',
     'postcss-flexbugs-fixes',
     [
       'postcss-preset-env',

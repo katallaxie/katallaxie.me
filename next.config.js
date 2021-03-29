@@ -1,4 +1,5 @@
 const bundleAnalyzer = require('@next/bundle-analyzer')
+const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 
 const {
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
@@ -69,6 +70,14 @@ module.exports = withBundleAnalyzer({
       test: /\.svg$/,
       use: ['@svgr/webpack']
     })
+
+    // check for deduplication
+    config.plugins.push(new DuplicatePackageCheckerPlugin())
+    config.resolve.alias['fast-deep-equal'] = path.resolve(
+      __dirname,
+      'node_modules',
+      'fast-deep-equal'
+    )
 
     // // When all the Sentry configuration env variables are available/configured
     // // The Sentry webpack plugin gets pushed to the webpack plugins to build
