@@ -1,5 +1,4 @@
 const bundleAnalyzer = require('@next/bundle-analyzer')
-const nextSourceMaps = require('@zeit/next-source-maps')
 
 const {
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
@@ -17,7 +16,6 @@ const COMMIT_SHA =
   VERCEL_GITLAB_COMMIT_SHA ||
   VERCEL_BITBUCKET_COMMIT_SHA
 
-const withSourceMaps = nextSourceMaps()
 const withBundleAnalyzer = bundleAnalyzer({
   // Run with "yarn analyse:bundle" - See https://www.npmjs.com/package/@next/bundle-analyzer
   enabled: process.env.ANALYZE_BUNDLE === 'true'
@@ -25,7 +23,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 // next.config.js
 module.exports = withBundleAnalyzer(
-  withSourceMaps({
+  {
     target: 'serverless',
     dev: process.env.NODE_ENV !== 'production',
     // experimental: {
@@ -157,7 +155,7 @@ module.exports = withBundleAnalyzer(
       SENTRY_DSN: process.env.SENTRY_DSN
     },
     poweredByHeader: false,
-    productionBrowserSourceMaps: true
-  }),
-  { enabled: process.env.ANALYZE === 'true' }
+    productionBrowserSourceMaps: false
+  },
+  { enabled: process.env.ANALYZE_BUNDLE === 'true' }
 )

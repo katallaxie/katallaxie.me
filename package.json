@@ -34,7 +34,6 @@
     "@sentry/tracing": "^6.2.2",
     "@sentry/webpack-plugin": "^1.14.2",
     "@slack/webhook": "^6.0.0",
-    "@zeit/next-source-maps": "^0.0.4-canary.1",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
