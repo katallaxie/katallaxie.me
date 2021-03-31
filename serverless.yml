@@ -4,4 +4,4 @@ nextApp:
   component: "@sls-next/serverless-component@1.19.0-alpha.40"
   inputs:
     memory: 1024
-    domain: ["katallaxie.dev"]
+    domain: ["katallaxie.me"]
