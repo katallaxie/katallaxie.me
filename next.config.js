@@ -1,5 +1,6 @@
 const bundleAnalyzer = require('@next/bundle-analyzer')
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
+const path = require('path')
 
 const {
   NEXT_PUBLIC_SENTRY_DSN: SENTRY_DSN,
