@@ -33,7 +33,6 @@ export const AccordionTab = ({
     'flex',
     'items-center',
     'cursor-pointer',
-    'block',
     'border-t',
     'border-gray-500',
     'border-b',
