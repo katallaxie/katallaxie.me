@@ -5,3 +5,5 @@ nextApp:
   inputs:
     memory: 1024
     domain: ["katallaxie.me"]
+    cloudfront:
+      aliases: ["katallaxie.dev", "www.katallaxie.dev"]
