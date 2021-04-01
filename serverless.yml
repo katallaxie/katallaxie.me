@@ -1,7 +1,12 @@
 name: katallaxie
 
 nextApp:
-  component: "@sls-next/serverless-component@1.19.0-alpha.40"
+  component: "@sls-next/serverless-component@1.19.0-alpha.41"
   inputs:
     memory: 1024
     domain: ["katallaxie.me"]
+    cloudfront:
+      aliases: ["katallaxie.dev", "www.katallaxie.dev"]
+      certificate:
+        cloudFrontDefaultCertificate: false
+        acmCertificateArn: "arn:aws:acm:us-east-1:812538918571:certificate/ec60caa6-df96-4043-9af9-1a52162dc7f0"
