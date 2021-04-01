@@ -25,7 +25,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 // next.config.js
 module.exports = withBundleAnalyzer({
-  target: 'serverless',
+  target: 'experimental-serverless-trace',
   dev: process.env.NODE_ENV !== 'production',
   // experimental: {
   //   sprFlushToDisk: !process.env.NODE_ENV !== 'production'
