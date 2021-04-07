@@ -6,7 +6,7 @@ nextApp:
     memory: 1024
     domain: ["katallaxie.me"]
     cloudfront:
-      aliases: ["katallaxie.dev", "www.katallaxie.dev"]
+      aliases: ["katallaxie.dev", "www.katallaxie.dev", "pixelmilk.com", "www.pixelmilk.com", "pixelmilk.de", "www.pixelmilk.de"]
       certificate:
         cloudFrontDefaultCertificate: false
-        acmCertificateArn: "arn:aws:acm:us-east-1:812538918571:certificate/ec60caa6-df96-4043-9af9-1a52162dc7f0"
+        acmCertificateArn: "arn:aws:acm:us-east-1:812538918571:certificate/dbc8c3d6-c905-4ab6-bc1b-114e6f1515c8"
