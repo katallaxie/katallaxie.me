@@ -74,11 +74,44 @@ module.exports = withBundleAnalyzer({
 
     // check for deduplication
     config.plugins.push(new DuplicatePackageCheckerPlugin())
+
     config.resolve.alias['fast-deep-equal'] = path.resolve(
       __dirname,
       'node_modules',
       'fast-deep-equal'
     )
+
+    config.resolve.alias['@babel/runtime'] = path.resolve(
+      __dirname, 'node_modules/@babel/runtime'
+    )
+
+    config.resolve.alias['@babel/core'] = path.resolve(
+      __dirname, 'node_modules', '@babel', 'core'
+    )
+
+    config.resolve.alias['@babel/helper-plugin-utils'] = path.resolve(
+      __dirname, 'node_modules', '@babel', 'helper-plugin-utils'
+    )
+
+    config.resolve.alias['@babel/plugin-proposal-object-rest-spread'] = path.resolve(
+      __dirname, 'node_modules', '@babel', 'plugin-proposal-object-rest-spread'
+    )
+
+    config.resolve.alias['@babel/plugin-syntax-jsx'] = path.resolve(
+      __dirname, 'node_modules', '@babel', 'plugin-syntax-jsx'
+    )
+
+    config.resolve.alias['tslib'] = path.resolve(
+      __dirname, 'node_modules', 'tslib'
+    )
+
+    config.resolve.alias['inherits'] = path.resolve(
+      __dirname, 'node_modules', 'inherits'
+    )
+
+    // config.resolve.alias['semver'] = path.resolve(
+    //   __dirname, 'node_modules', 'core-js-compat', 'node_modules', 'semver'
+    // )
 
     // // When all the Sentry configuration env variables are available/configured
     // // The Sentry webpack plugin gets pushed to the webpack plugins to build
