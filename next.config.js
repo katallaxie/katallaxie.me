@@ -31,6 +31,13 @@ module.exports = withBundleAnalyzer({
   //   sprFlushToDisk: !process.env.NODE_ENV !== 'production'
   // },
 
+  trailingSlash: true,
+  exportPathMap: function() {
+    return {
+      '/': { page: '/' }
+    };
+  },
+
   webpack: (config, options) => {
     // In `pages/_app.js`, Sentry is imported from @sentry/browser. While
     // @sentry/node will run in a Node.js environment. @sentry/node will use
